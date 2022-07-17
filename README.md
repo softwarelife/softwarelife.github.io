@@ -1,1 +1,0 @@
-# softwarelife.github.io
