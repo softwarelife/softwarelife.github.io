@@ -1140,11 +1140,18 @@
 <p>In your pipeline tasks, use the service principle's client ID and client secret to authenticate and authorize the Azure commands that you want to run. For example, you can use the following command to authenticate using the service principle:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login<span class="w"> </span>-<span class="w"> </span>service-principal<span class="w"> </span>-u<span class="w"> </span><span class="nv">$AZURE_CLIENT_ID</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$AZURE_CLIENT_SECRET</span><span class="w"> </span>-<span class="w"> </span>tenant<span class="w"> </span>&lt;tenant-id&gt;
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login<span class="w"> </span>-<span class="w"> </span>service-principal<span class="w"> </span>-u<span class="w"> </span><span class="nv">$AZURE_CLIENT_ID</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$AZURE_CLIENT_SECRET</span><span class="w"> </span>-<span class="w"> </span>tenant<span class="w"> </span><span class="nv">$TENANT_ID</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace <tenant-id> with the ID of your Azure Active Directory tenant.</p>
+<ul>
+<li>
+<p>Replace <code>TENANT_ID</code> with the ID of your Azure Active Directory tenant.</p>
+</li>
+<li>
+<p>Don't forget to store AZURE_CLIENT_ID &amp; AZURE_CLIENT_SECRET in Key-Vault for Future Use.</p>
+</li>
+</ul>
 </div>
 
 
