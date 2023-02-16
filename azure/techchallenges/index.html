@@ -1129,22 +1129,29 @@
 <div class="tabbed-block"></div>
 </div>
 </div>
-<p><div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Login to Azure &quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Login to Azure &quot;</span>
+
+
+az<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span><span class="k">$(</span>username<span class="k">)</span><span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>password<span class="k">)</span>
+
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fetching Current Feature Branch &quot;</span>
+
+
+<span class="nv">$PR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>az<span class="w"> </span>repos<span class="w"> </span>pr<span class="w"> </span>list<span class="w"> </span>--repository<span class="w"> </span><span class="k">$(</span>Repo<span class="k">)</span><span class="w"> </span>--target-branch<span class="w"> </span><span class="k">$(</span>targetbranch<span class="k">)</span><span class="w"> </span>--organization<span class="w"> </span><span class="k">$(</span>URL<span class="k">)</span><span class="w"> </span>--project<span class="w"> </span><span class="k">$(</span>project<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sourceRefName<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span>
+
+
+<span class="nv">$Branchname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$PR</span>.Split<span class="o">(</span><span class="s2">&quot;/&quot;</span><span class="o">)[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/&quot;&quot;/\ /g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/,/\ /g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^[ \t]*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Foreach<span class="w"> </span><span class="o">{</span><span class="nv">$_</span>.TrimEnd<span class="o">()}</span>
+
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The Current PR Received from Branch: </span><span class="nv">$Branchname</span><span class="s2"> &quot;</span>
+
+
+git<span class="w"> </span>switch<span class="w"> </span><span class="nv">$Branchname</span>
+
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Commands to Execute&quot;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span><span class="k">$(</span>username<span class="k">)</span><span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>password<span class="k">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fetching Current Feature Branch &quot;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nv">$PR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>az<span class="w"> </span>repos<span class="w"> </span>pr<span class="w"> </span>list<span class="w"> </span>--repository<span class="w"> </span><span class="k">$(</span>Repo<span class="k">)</span><span class="w"> </span>--target-branch<span class="w"> </span><span class="k">$(</span>targetbranch<span class="k">)</span><span class="w"> </span>--organization<span class="w"> </span><span class="k">$(</span>URL<span class="k">)</span><span class="w"> </span>--project<span class="w"> </span><span class="k">$(</span>project<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sourceRefName<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nv">$Branchname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$PR</span>.Split<span class="o">(</span><span class="s2">&quot;/&quot;</span><span class="o">)[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/&quot;&quot;/\ /g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/,/\ /g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^[ \t]*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Foreach<span class="w"> </span><span class="o">{</span><span class="nv">$_</span>.TrimEnd<span class="o">()}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The Current PR Received from Branch: </span><span class="nv">$Branchname</span><span class="s2"> &quot;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span><span class="nv">$Branchname</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Commands to Execute&quot;</span>
-</code></pre></div></p>
 
 
 
