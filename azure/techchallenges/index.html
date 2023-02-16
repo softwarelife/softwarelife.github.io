@@ -1115,12 +1115,12 @@
 <p>[skip ci] or [ci skip] </p>
 </li>
 <li>
-<p><strong><em>NO_CI</em></strong></p>
+<p><code>***NO_CI***</code></p>
 </li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>git commit -m "<Commit Message><strong><em>NO_CI</em></strong>"</p>
+<p>git commit -m "<Commit Message><code>***NO_CI***</code>"</p>
 </div>
 <h2 id="pre-merge-validation-from-variable-source-branches-to-fixed-target-branch">Pre-Merge Validation from Variable Source Branches to Fixed Target Branch<a class="headerlink" href="#pre-merge-validation-from-variable-source-branches-to-fixed-target-branch" title="Permanent link">&para;</a></h2>
 <p>When there is a pull request from a variable feature branch, such as <mark>Feature-A</mark>, <mark>Feature-B</mark>, or <mark>Feature-C</mark> to the development branch, we must determine whether the code in the feature branch is buildable or not. When the feature branch is good, we must only merge it with the development branch. However, in Azure Classic pipelines, we are unable to automatically change the source branch name. The script below will get the variable feature branch name whenever there is a PR and  it will run the Build Validation pipeline by changing the branch name.</p>
@@ -1131,25 +1131,18 @@
 </div>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Login to Azure &quot;</span>
 
-
 az<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span><span class="k">$(</span>username<span class="k">)</span><span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>password<span class="k">)</span>
 
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fetching Current Feature Branch &quot;</span>
 
-
 <span class="nv">$PR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>az<span class="w"> </span>repos<span class="w"> </span>pr<span class="w"> </span>list<span class="w"> </span>--repository<span class="w"> </span><span class="k">$(</span>Repo<span class="k">)</span><span class="w"> </span>--target-branch<span class="w"> </span><span class="k">$(</span>targetbranch<span class="k">)</span><span class="w"> </span>--organization<span class="w"> </span><span class="k">$(</span>URL<span class="k">)</span><span class="w"> </span>--project<span class="w"> </span><span class="k">$(</span>project<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sourceRefName<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span>
-
-
 <span class="nv">$Branchname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$PR</span>.Split<span class="o">(</span><span class="s2">&quot;/&quot;</span><span class="o">)[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/&quot;&quot;/\ /g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/,/\ /g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^[ \t]*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Foreach<span class="w"> </span><span class="o">{</span><span class="nv">$_</span>.TrimEnd<span class="o">()}</span>
 
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The Current PR Received from Branch: </span><span class="nv">$Branchname</span><span class="s2"> &quot;</span>
 
-
 git<span class="w"> </span>switch<span class="w"> </span><span class="nv">$Branchname</span>
-
-
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Commands to Execute&quot;</span>
 </code></pre></div>
 
