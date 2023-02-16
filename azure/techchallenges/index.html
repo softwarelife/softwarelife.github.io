@@ -1120,9 +1120,8 @@
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>git commit -m "<Commit Message> ***No_CI*** "</p>
+<p>git commit -m " Commit Message ***No_CI*** "</p>
 </div>
-<p>"</p>
 <h2 id="pre-merge-validation-from-variable-source-branches-to-fixed-target-branch">Pre-Merge Validation from Variable Source Branches to Fixed Target Branch<a class="headerlink" href="#pre-merge-validation-from-variable-source-branches-to-fixed-target-branch" title="Permanent link">&para;</a></h2>
 <p>When there is a pull request from a variable feature branch, such as <mark>Feature-A</mark>, <mark>Feature-B</mark>, or <mark>Feature-C</mark> to the development branch, we must determine whether the code in the feature branch is buildable or not. When the feature branch is good, we must only merge it with the development branch. However, in Azure Classic pipelines, we are unable to automatically change the source branch name. The script below will get the variable feature branch name whenever there is a PR and  it will run the Build Validation pipeline by changing the branch name.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Pre-Merge Validation from Feature-Dev Branch</label></div>
