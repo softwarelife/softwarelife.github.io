@@ -935,13 +935,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#here-are-some-technical-challenges-that-can-arise-when-using-azure-devops" class="md-nav__link">
-    Here are some technical challenges that can arise when using Azure DevOps:
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1098,13 +1091,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#here-are-some-technical-challenges-that-can-arise-when-using-azure-devops" class="md-nav__link">
-    Here are some technical challenges that can arise when using Azure DevOps:
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1122,6 +1108,29 @@
 
 
 <h1 id="azure-devops-technical-challanges">Azure DevOps Technical Challanges<a class="headerlink" href="#azure-devops-technical-challanges" title="Permanent link">&para;</a></h1>
+<p>Here are some common technical challenges that can arise when using Azure DevOps:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Challenges</label><label for="__tabbed_1_2">Tips to Overcome</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Integration challenges:</strong> Integrating Azure DevOps with other tools in your tech stack can be challenging. This includes integrating with other Azure services, as well as non-Azure tools like GitHub or Jira.</p>
+<p><strong>Pipeline complexity:</strong> Azure DevOps provides powerful tools for building and deploying pipelines, but creating complex pipelines can be challenging. For example, setting up continuous delivery with multiple environments can require configuring many moving parts.</p>
+<p><strong>Security and compliance:</strong> Ensuring security and compliance across your pipelines and repositories can be challenging. Azure DevOps provides security features like RBAC, but implementing and enforcing security policies can require careful planning and configuration.</p>
+<p><strong>Release management:</strong> Managing the release of software to multiple environments can be challenging. This includes configuring release gates and approvals, rolling back releases, and tracking deployments across environments.</p>
+<p><strong>Performance and scalability:</strong> As your pipeline and repository size grows, you may encounter performance and scalability issues. This can include slow build times, long queue times, and issues with concurrent builds.</p>
+<p><strong>Version control:</strong> Using Git for version control in Azure DevOps can be challenging for teams not familiar with Git. It requires a different workflow than centralized version control systems, and can be difficult to manage if multiple teams are working on the same codebase.</p>
+<p><strong>Continuous testing:</strong> Setting up and maintaining continuous testing with Azure DevOps can be challenging. This includes configuring test plans, integrating with test automation tools, and ensuring that tests run reliably and accurately. </p>
+</div>
+<div class="tabbed-block">
+<p><strong>Integration challenges:</strong> To overcome integration challenges, it's important to understand the capabilities of Azure DevOps and the tools you want to integrate with. Azure DevOps provides a range of APIs and extensions that can help with integration. It's also important to plan integration in advance and test it thoroughly before deployment.</p>
+<p><strong>Pipeline complexity:</strong> To simplify complex pipelines, it's important to break them down into smaller, more manageable pieces. Use templates and variables to reduce duplication and improve consistency. It's also important to test pipelines regularly and optimize for speed and reliability.</p>
+<p><strong>Security and compliance:</strong> To ensure security and compliance, it's important to understand the security features of Azure DevOps and how to configure them properly. You should also establish clear security policies and ensure that all users are aware of them. Regular audits and monitoring can also help ensure compliance.</p>
+<p><strong>Release management:</strong> To manage releases effectively, it's important to establish clear release policies and automate as much of the release process as possible. Use release gates and approvals to control the release process and ensure that releases are tested thoroughly before deployment. Monitor releases closely and be prepared to roll back if necessary.</p>
+<p><strong>Performance and scalability:</strong> To improve performance and scalability, it's important to optimize pipelines for speed and reduce queue times. This can involve using parallelism, caching, and distributed builds. It's also important to monitor performance regularly and scale resources as necessary.</p>
+<p><strong>Version control:</strong> To overcome version control challenges, it's important to establish clear version control policies and train all users in the use of Git. Use branching and merging effectively to manage code changes, and ensure that code reviews are conducted regularly to maintain code quality.</p>
+<p><strong>Continuous testing:</strong> To set up and maintain continuous testing, it's important to establish clear testing policies and automate as much of the testing process as possible. Use test plans and test suites to organize and manage tests, and integrate with test automation tools for better efficiency. Monitor test results closely and be prepared to adjust your testing strategy as necessary. </p>
+</div>
+</div>
+</div>
 <h2 id="skipping-ci-for-git-push">Skipping CI for Git Push<a class="headerlink" href="#skipping-ci-for-git-push" title="Permanent link">&para;</a></h2>
 <p>Moreover, you may instruct Azure Pipelines to forego starting a pipeline that a push would typically start. To prevent Azure Pipelines from performing CI for this push, just put [skip ci] in the message or description of any of the commits that are a part of a push. Any of the following modifications are also acceptable.</p>
 <ul>
@@ -1138,7 +1147,7 @@
 </div>
 <h2 id="pre-merge-validation-from-variable-source-branches-to-fixed-target-branch">Pre-Merge Validation from Variable Source Branches to Fixed Target Branch<a class="headerlink" href="#pre-merge-validation-from-variable-source-branches-to-fixed-target-branch" title="Permanent link">&para;</a></h2>
 <p>When there is a pull request from a variable feature branch, such as <code>Feature-A</code>, <code>Feature-B</code>, or <code>Feature-C</code> to the <code>Development</code> branch, we must determine whether the code in the feature branch is buildable or not. When the feature branch is good, we must only merge it with the development branch. However, in Azure Classic pipelines, we are unable to automatically change the source branch name. The script below will get the variable feature branch name whenever there is a PR and  it will run the Build Validation pipeline by changing the branch name.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Pre-Merge Validation from Feature-Dev Branch</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Pre-Merge Validation from Feature-Dev Branch</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1162,29 +1171,6 @@ git<span class="w"> </span>switch<span class="w"> </span><span class="nv">$Branc
 npm<span class="w"> </span>i<span class="w"> </span><span class="c1">#Example Commands</span>
 npm<span class="w"> </span>run<span class="w"> </span>build<span class="w"> </span><span class="c1">#Example Commands</span>
 </code></pre></div>
-<h2 id="here-are-some-technical-challenges-that-can-arise-when-using-azure-devops">Here are some technical challenges that can arise when using Azure DevOps:<a class="headerlink" href="#here-are-some-technical-challenges-that-can-arise-when-using-azure-devops" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Challenges</label><label for="__tabbed_2_2">Tips to Overcome</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><strong>Integration challenges:</strong> Integrating Azure DevOps with other tools in your tech stack can be challenging. This includes integrating with other Azure services, as well as non-Azure tools like GitHub or Jira.</p>
-<p><strong>Pipeline complexity:</strong> Azure DevOps provides powerful tools for building and deploying pipelines, but creating complex pipelines can be challenging. For example, setting up continuous delivery with multiple environments can require configuring many moving parts.</p>
-<p><strong>Security and compliance:</strong> Ensuring security and compliance across your pipelines and repositories can be challenging. Azure DevOps provides security features like RBAC, but implementing and enforcing security policies can require careful planning and configuration.</p>
-<p><strong>Release management:</strong> Managing the release of software to multiple environments can be challenging. This includes configuring release gates and approvals, rolling back releases, and tracking deployments across environments.</p>
-<p><strong>Performance and scalability:</strong> As your pipeline and repository size grows, you may encounter performance and scalability issues. This can include slow build times, long queue times, and issues with concurrent builds.</p>
-<p><strong>Version control:</strong> Using Git for version control in Azure DevOps can be challenging for teams not familiar with Git. It requires a different workflow than centralized version control systems, and can be difficult to manage if multiple teams are working on the same codebase.</p>
-<p><strong>Continuous testing:</strong> Setting up and maintaining continuous testing with Azure DevOps can be challenging. This includes configuring test plans, integrating with test automation tools, and ensuring that tests run reliably and accurately. </p>
-</div>
-<div class="tabbed-block">
-<p><strong>Integration challenges:</strong> To overcome integration challenges, it's important to understand the capabilities of Azure DevOps and the tools you want to integrate with. Azure DevOps provides a range of APIs and extensions that can help with integration. It's also important to plan integration in advance and test it thoroughly before deployment.</p>
-<p><strong>Pipeline complexity:</strong> To simplify complex pipelines, it's important to break them down into smaller, more manageable pieces. Use templates and variables to reduce duplication and improve consistency. It's also important to test pipelines regularly and optimize for speed and reliability.</p>
-<p><strong>Security and compliance:</strong> To ensure security and compliance, it's important to understand the security features of Azure DevOps and how to configure them properly. You should also establish clear security policies and ensure that all users are aware of them. Regular audits and monitoring can also help ensure compliance.</p>
-<p><strong>Release management:</strong> To manage releases effectively, it's important to establish clear release policies and automate as much of the release process as possible. Use release gates and approvals to control the release process and ensure that releases are tested thoroughly before deployment. Monitor releases closely and be prepared to roll back if necessary.</p>
-<p><strong>Performance and scalability:</strong> To improve performance and scalability, it's important to optimize pipelines for speed and reduce queue times. This can involve using parallelism, caching, and distributed builds. It's also important to monitor performance regularly and scale resources as necessary.</p>
-<p><strong>Version control:</strong> To overcome version control challenges, it's important to establish clear version control policies and train all users in the use of Git. Use branching and merging effectively to manage code changes, and ensure that code reviews are conducted regularly to maintain code quality.</p>
-<p><strong>Continuous testing:</strong> To set up and maintain continuous testing, it's important to establish clear testing policies and automate as much of the testing process as possible. Use test plans and test suites to organize and manage tests, and integrate with test automation tools for better efficiency. Monitor test results closely and be prepared to adjust your testing strategy as necessary. </p>
-</div>
-</div>
-</div>
 
 
 
