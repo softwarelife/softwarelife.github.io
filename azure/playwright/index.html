@@ -1081,17 +1081,31 @@
 <h1 id="automation-testing-using-playwright">Automation Testing using Playwright<a class="headerlink" href="#automation-testing-using-playwright" title="Permanent link">&para;</a></h1>
 <p>Playwright is a popular open-source testing framework for web applications that allows developers to write end-to-end tests in a simple and concise manner. With Azure DevOps, you can automate your Playwright tests and integrate them into your CI/CD pipeline for continuous testing and deployment.</p>
 <p>Here are the steps to set up Playwright automation with Azure DevOps:</p>
-<p>Create a new project in Azure DevOps: Navigate to the Azure DevOps portal and create a new project.</p>
-<p>Set up a build pipeline: In the project, create a new build pipeline and configure it to use the appropriate build agent. Then, add a task to install the necessary dependencies for running Playwright tests, such as Node.js and Playwright.</p>
+<ul>
+<li>
+<p><strong>Create a new project in Azure DevOps:</strong> Navigate to the Azure DevOps portal and create a new project.</p>
+</li>
+<li>
+<p><strong>Set up a build pipeline:</strong> In the project, create a new build pipeline and configure it to use the appropriate build agent. Then, add a task to install the necessary dependencies for running Playwright tests, such as Node.js and Playwright.</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
 </code></pre></div>
-<p>Configure the Playwright test task: Add a new task to the build pipeline for running Playwright tests. This task should run the command to execute your Playwright tests, such as "npx playwright test" or "npm test". You can also configure this task to specify the browser and environment in which the tests should run.</p>
+<ul>
+<li><strong>Configure the Playwright test task:</strong> Add a new task to the build pipeline for running Playwright tests. This task should run the command to execute your Playwright tests, such as "npx playwright test" or "npm test". You can also configure this task to specify the browser and environment in which the tests should run.</li>
+</ul>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
 
 npm<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
-<p>Set up test reporting: To view the results of your Playwright tests in Azure DevOps, you can add a test reporting task to the build pipeline. This task should publish the test results to Azure DevOps so that you can view them in the test summary.</p>
-<p>Set up continuous testing: Once your build pipeline is set up, you can configure it to trigger automatically whenever changes are made to your code repository. This will enable continuous testing and allow you to catch any issues early in the development process.</p>
+<ul>
+<li>
+<p><strong>Set up test reporting:</strong> To view the results of your Playwright tests in Azure DevOps, you can add a test reporting task to the build pipeline. This task should publish the test results to Azure DevOps so that you can view them in the test summary.</p>
+</li>
+<li>
+<p><strong>Set up continuous testing:</strong> Once your build pipeline is set up, you can configure it to trigger automatically whenever changes are made to your code repository. This will enable continuous testing and allow you to catch any issues early in the development process.</p>
+</li>
+</ul>
 <p>By following these steps, you can set up Playwright automation with Azure DevOps and integrate it into your development workflow for continuous testing and deployment.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
