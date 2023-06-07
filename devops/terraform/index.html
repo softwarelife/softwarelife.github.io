@@ -1284,30 +1284,18 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
-
 <span class="p">}</span>
 
-
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">ami</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
-
 <span class="w">  </span><span class="na">instance_type</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
-
 <span class="w">  </span><span class="na">key_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
-
 <span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
-
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
-
 <span class="w">    </span><span class="na">Team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
-
 <span class="w">  </span><span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div>
 </div>
@@ -1376,32 +1364,19 @@
 <p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>vars.tf
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
-
 <span class="p">}</span>
-
-
 
 <span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;ZONE1&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2a&quot;</span>
-
 <span class="p">}</span>
 
-
 <span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;AMIS&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="err">any</span><span class="p">)</span>
-
 <span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">us-east-2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
-
 <span class="w">    </span><span class="na">us-east-1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0e1d30f2c40c4c701&quot;</span>
-
 <span class="w">  </span><span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div></p>
 <h2 id="terraform-provider">Terraform Provider<a class="headerlink" href="#terraform-provider" title="Permanent link">&para;</a></h2>
@@ -1409,32 +1384,21 @@
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>provider.tf
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.REGION</span>
-
 <span class="p">}</span>
 </code></pre></div>
 <p>Launching Instance with Vars File</p>
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Instance.tf
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">ami</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">var.AMIS[var.REGION</span><span class="p">]</span>
-
 <span class="w">  </span><span class="na">instance_type</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
-
 <span class="w">  </span><span class="na">key_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
-
 <span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
-
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
-
 <span class="w">    </span><span class="na">Team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
-
 <span class="w">  </span><span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="terraform-provisioning">Terraform Provisioning<a class="headerlink" href="#terraform-provisioning" title="Permanent link">&para;</a></h2>
@@ -1442,106 +1406,61 @@
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>instance_prov.tf
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_key_pair&quot;</span><span class="w"> </span><span class="nv">&quot;testing007&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">key_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;testing007&quot;</span>
-
 <span class="w">  </span><span class="na">public_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;testing007.pub&quot;</span><span class="p">)</span>
-
 <span class="w"> </span><span class="p">}</span>
 
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">ami</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">var.AMIS[var.REGION</span><span class="p">]</span>
-
 <span class="w">  </span><span class="na">instance_type</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
-
 <span class="w">  </span><span class="na">key_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_key_pair.testing007.key_name</span>
-
 <span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
-
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
-
 <span class="w">    </span><span class="na">Team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
-
 <span class="w"> </span><span class="p">}</span>
 
 <span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;file&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">source</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./web.sh&quot;</span>
-
 <span class="w">    </span><span class="na">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/tmp/web.sh&quot;</span>
-
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;remote-exec&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">inline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-
 <span class="w">      </span><span class="s2">&quot;chmod u+x /tmp/web.sh&quot;</span><span class="p">,</span>
-
 <span class="w">      </span><span class="s2">&quot;sudo /tmp/web.sh&quot;</span>
-
 <span class="w">    </span><span class="p">]</span>
-
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">connection</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">user</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">var.USER</span>
-
 <span class="w">    </span><span class="na">private_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;testing007&quot;</span><span class="p">)</span>
-
 <span class="w">    </span><span class="na">host</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">self.public_ip</span>
-
 <span class="w">  </span><span class="p">}</span>
-
 <span class="w"> </span><span class="p">}</span>
 
 <span class="kr">output</span><span class="w"> </span><span class="nv">&quot;PublicIP&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.Instance.public_ip</span>
-
 <span class="p">}</span>
 </code></pre></div>
 <p>Variables file - vars.tf </p>
 <div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
-
 <span class="p">}</span>
-
-
 
 <span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;ZONE1&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2a&quot;</span>
-
 <span class="p">}</span>
-
-
 
 <span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;USER&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu&quot;</span>
-
 <span class="p">}</span>
 
-
-
 <span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;AMIS&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="err">any</span><span class="p">)</span>
-
 <span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">us-east-2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
-
 <span class="w">    </span><span class="na">us-east-1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0e1d30f2c40c4c701&quot;</span>
-
-
-
 <span class="w">  </span><span class="p">}</span>
 
 <span class="p">}</span>
@@ -1549,17 +1468,11 @@
 <h2 id="to-store-state-remotely-in-s3-bucket">To Store State Remotely in S3 Bucket<a class="headerlink" href="#to-store-state-remotely-in-s3-bucket" title="Permanent link">&para;</a></h2>
 <p>Create an S3 Bucket</p>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-state-009&quot;</span>
-
 <span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform/remote&quot;</span>
-
 <span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
-
 <span class="w">  </span><span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div>
 
