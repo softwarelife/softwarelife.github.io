@@ -1455,30 +1455,30 @@ To Execute the playbook
 <div class="highlight"><pre><span></span><code>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>&lt;Inventory<span class="w"> </span>file<span class="w"> </span>path&gt;<span class="w"> </span>sample.yml
 </code></pre></div></p>
 <h2 id="writing-playbook-for-installing-httpd-service-in-remote-machines-with-start-and-enable-and-copying-indexhtml-files-from-local-machine-to-the-remote-machine">Writing Playbook For Installing Httpd service in remote machines with start and enable and copying index.html files from local machine to the remote machine<a class="headerlink" href="#writing-playbook-for-installing-httpd-service-in-remote-machines-with-start-and-enable-and-copying-indexhtml-files-from-local-machine-to-the-remote-machine" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install httpd and start the service</span>
-<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
-<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
-<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Installing the Apache package</span>
-<span class="w">       </span><span class="nt">yum</span><span class="p">:</span>
-<span class="w">         </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd</span>
-<span class="w">         </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<div class="highlight"><pre><span></span><code>- name: Install httpd and start the service
+  hosts: all
+  tasks:
+     - name: Installing the Apache package
+       yum:
+         name: httpd
+         state: present
 
 
-<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Starting service</span>
-<span class="w">       </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">         </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd</span>
-<span class="w">         </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span>
-<span class="w">         </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+     - name: Starting service
+       service:
+         name: httpd
+         state: started
+         enabled: yes
 
-<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copy file with owner and permissions</span>
-<span class="w">       </span><span class="nt">copy</span><span class="p">:</span>
-<span class="w">         </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./index.html</span>
-<span class="w">         </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/www/html/index.html</span>
+     - name: Copy file with owner and permissions
+       copy:
+         src: ./index.html
+         dest: /var/www/html/index.html
 
-<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Restarting service</span>
-<span class="w">       </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">         </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd</span>
-<span class="w">         </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restarted</span>
+     - name: Restarting service
+       service:
+         name: httpd
+         state: restarted
 </code></pre></div>
 <h2 id="writing-playbook-for-setting-up-website-in-remote-machine">Writing Playbook for Setting Up Website in Remote Machine<a class="headerlink" href="#writing-playbook-for-setting-up-website-in-remote-machine" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setting up Website</span>
