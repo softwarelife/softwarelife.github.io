@@ -1312,60 +1312,60 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>provider &quot;aws&quot; {
-  region = &quot;us-east-1&quot;
-}
+<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<span class="p">}</span>
 
-resource &quot;aws_key_pair&quot; &quot;example_keypair&quot; {
-  key_name   = &quot;satrun&quot;
-  public_key = tls_private_key.example_keypair.public_key_openssh
-}
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_key_pair&quot;</span><span class="w"> </span><span class="nv">&quot;example_keypair&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">key_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;satrun&quot;</span>
+<span class="w">  </span><span class="na">public_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">tls_private_key.example_keypair.public_key_openssh</span>
+<span class="p">}</span>
 
-resource &quot;tls_private_key&quot; &quot;example_keypair&quot; {
-  algorithm = &quot;RSA&quot;
-}
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;tls_private_key&quot;</span><span class="w"> </span><span class="nv">&quot;example_keypair&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span>
+<span class="p">}</span>
 
-resource &quot;local_file&quot; &quot;private_key_file&quot; {
-  content  = tls_private_key.example_keypair.private_key_pem
-  filename = &quot;satrun.pem&quot;
-}
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;local_file&quot;</span><span class="w"> </span><span class="nv">&quot;private_key_file&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">content</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">tls_private_key.example_keypair.private_key_pem</span>
+<span class="w">  </span><span class="na">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;satrun.pem&quot;</span>
+<span class="p">}</span>
 
-resource &quot;aws_security_group&quot; &quot;example_security_group&quot; {
-  name        = &quot;satrun-security-group&quot;
-  description = &quot;Example Security Group&quot;
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_security_group&quot;</span><span class="w"> </span><span class="nv">&quot;example_security_group&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;satrun-security-group&quot;</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Example Security Group&quot;</span>
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = &quot;tcp&quot;
-    cidr_blocks = [&quot;183.82.115.199/32&quot;]
-  }
+<span class="w">  </span><span class="nb">ingress</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">from_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">22</span>
+<span class="w">    </span><span class="na">to_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">22</span>
+<span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
+<span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;183.82.115.199/32&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = &quot;tcp&quot;
-    cidr_blocks = [&quot;183.82.115.199/32&quot;]
-  }
+<span class="w">  </span><span class="nb">ingress</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">from_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
+<span class="w">    </span><span class="na">to_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
+<span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
+<span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;183.82.115.199/32&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = &quot;-1&quot;
-    cidr_blocks = [&quot;0.0.0.0/0&quot;]
-  }
-}
+<span class="w">  </span><span class="nb">egress</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">from_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w">    </span><span class="na">to_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;-1&quot;</span>
+<span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0.0.0.0/0&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 
-resource &quot;aws_instance&quot; &quot;example_instance&quot; {
-  ami                = &quot;ami-09e67e426f25ce0d7&quot; # Ubuntu 20.04 LTS in us-east-1 (N. Virginia) region
-  instance_type      = &quot;t2.micro&quot;
-  key_name           = aws_key_pair.example_keypair.key_name
-  vpc_security_group_ids = [aws_security_group.example_security_group.id]
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;example_instance&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-09e67e426f25ce0d7&quot;</span><span class="c1"> # Ubuntu 20.04 LTS in us-east-1 (N. Virginia) region</span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+<span class="w">  </span><span class="na">key_name</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_key_pair.example_keypair.key_name</span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_security_group.example_security_group.id</span><span class="p">]</span>
 
-  tags = {
-    Name = &quot;satrun-instance&quot;
-  }
-}
+<span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;satrun-instance&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
