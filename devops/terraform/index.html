@@ -1283,28 +1283,28 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Utilizing an existing key and security group</label><label for="__tabbed_2_2">Provisioning with New Key and Security Group</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">regio</span><span class="kc">n</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
 
 <span class="p">}</span>
 
 
-<span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_instance&quot;</span><span class="w"> </span><span class="s2">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">ami</span><span class="w">                    </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
 
-<span class="w">  </span><span class="err">i</span><span class="kc">nstan</span><span class="err">ce_</span><span class="kc">t</span><span class="err">ype</span><span class="w">          </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
 
-<span class="w">  </span><span class="err">key_</span><span class="kc">na</span><span class="err">me</span><span class="w">               </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
+<span class="w">  </span><span class="na">key_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
 
-<span class="w">  </span><span class="err">vpc_securi</span><span class="kc">t</span><span class="err">y_group_ids</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
 
-<span class="w">  </span><span class="kc">ta</span><span class="err">gs</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="err">Name</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
+<span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
 
-<span class="w">    </span><span class="err">Team</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
+<span class="w">    </span><span class="na">Team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
 
 <span class="w">  </span><span class="p">}</span>
 
@@ -1375,30 +1375,30 @@
 <p>Create a File vars.tf </p>
 <p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>vars.tf
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="err">variable</span><span class="w"> </span><span class="s2">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">de</span><span class="kc">fault</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
-
-<span class="p">}</span>
-
-
-
-<span class="err">variable</span><span class="w"> </span><span class="s2">&quot;ZONE1&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="err">de</span><span class="kc">fault</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;us-east-2a&quot;</span>
+<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
 
 <span class="p">}</span>
 
 
-<span class="err">variable</span><span class="w"> </span><span class="s2">&quot;AMIS&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kc">t</span><span class="err">ype</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">map(a</span><span class="kc">n</span><span class="err">y)</span>
+<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;ZONE1&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">de</span><span class="kc">fault</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2a&quot;</span>
 
-<span class="w">    </span><span class="err">us</span><span class="mf">-e</span><span class="err">as</span><span class="kc">t</span><span class="mi">-2</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
+<span class="p">}</span>
 
-<span class="w">    </span><span class="err">us</span><span class="mf">-e</span><span class="err">as</span><span class="kc">t</span><span class="mi">-1</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;ami-0e1d30f2c40c4c701&quot;</span>
+
+<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;AMIS&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="err">any</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="na">us-east-2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
+
+<span class="w">    </span><span class="na">us-east-1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0e1d30f2c40c4c701&quot;</span>
 
 <span class="w">  </span><span class="p">}</span>
 
@@ -1408,30 +1408,30 @@
 <p>Example for AWS
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>provider.tf
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">regio</span><span class="kc">n</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">var.REGION</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.REGION</span>
 
 <span class="p">}</span>
 </code></pre></div>
 <p>Launching Instance with Vars File</p>
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Instance.tf
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_instance&quot;</span><span class="w"> </span><span class="s2">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">ami</span><span class="w">                    </span><span class="err">=</span><span class="w"> </span><span class="err">var.AMIS</span><span class="p">[</span><span class="err">var.REGION</span><span class="p">]</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">var.AMIS[var.REGION</span><span class="p">]</span>
 
-<span class="w">  </span><span class="err">i</span><span class="kc">nstan</span><span class="err">ce_</span><span class="kc">t</span><span class="err">ype</span><span class="w">          </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
 
-<span class="w">  </span><span class="err">key_</span><span class="kc">na</span><span class="err">me</span><span class="w">               </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
+<span class="w">  </span><span class="na">key_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
 
-<span class="w">  </span><span class="err">vpc_securi</span><span class="kc">t</span><span class="err">y_group_ids</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
 
-<span class="w">  </span><span class="kc">ta</span><span class="err">gs</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="err">Name</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
+<span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
 
-<span class="w">    </span><span class="err">Team</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
+<span class="w">    </span><span class="na">Team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
 
 <span class="w">  </span><span class="p">}</span>
 
@@ -1441,43 +1441,43 @@
 <p>Launching AWS Resources with Terraform Provisioning</p>
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>instance_prov.tf
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_key_pair&quot;</span><span class="w"> </span><span class="s2">&quot;testing007&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_key_pair&quot;</span><span class="w"> </span><span class="nv">&quot;testing007&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">key_</span><span class="kc">na</span><span class="err">me</span><span class="w">   </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;testing007&quot;</span>
+<span class="w">  </span><span class="na">key_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;testing007&quot;</span>
 
-<span class="w">  </span><span class="err">public_key</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="kc">f</span><span class="err">ile(</span><span class="s2">&quot;testing007.pub&quot;</span><span class="err">)</span>
-
-<span class="w"> </span><span class="p">}</span>
-
-<span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_instance&quot;</span><span class="w"> </span><span class="s2">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="err">ami</span><span class="w">                    </span><span class="err">=</span><span class="w"> </span><span class="err">var.AMIS</span><span class="p">[</span><span class="err">var.REGION</span><span class="p">]</span>
-
-<span class="w">  </span><span class="err">i</span><span class="kc">nstan</span><span class="err">ce_</span><span class="kc">t</span><span class="err">ype</span><span class="w">          </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
-
-<span class="w">  </span><span class="err">key_</span><span class="kc">na</span><span class="err">me</span><span class="w">               </span><span class="err">=</span><span class="w"> </span><span class="err">aws_key_pair.</span><span class="kc">test</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="mf">007.</span><span class="err">key_</span><span class="kc">na</span><span class="err">me</span>
-
-<span class="w">  </span><span class="err">vpc_securi</span><span class="kc">t</span><span class="err">y_group_ids</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
-
-<span class="w">  </span><span class="kc">ta</span><span class="err">gs</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="err">Name</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
-
-<span class="w">    </span><span class="err">Team</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
+<span class="w">  </span><span class="na">public_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;testing007.pub&quot;</span><span class="p">)</span>
 
 <span class="w"> </span><span class="p">}</span>
 
-<span class="w">  </span><span class="err">provisio</span><span class="kc">ner</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="err">source</span><span class="w">      </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;./web.sh&quot;</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">var.AMIS[var.REGION</span><span class="p">]</span>
 
-<span class="w">    </span><span class="err">des</span><span class="kc">t</span><span class="err">i</span><span class="kc">nat</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;/tmp/web.sh&quot;</span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+
+<span class="w">  </span><span class="na">key_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_key_pair.testing007.key_name</span>
+
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sg-0138c7796472ac9a9&quot;</span><span class="p">]</span>
+
+<span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;IAAC&quot;</span>
+
+<span class="w">    </span><span class="na">Team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DevOps&quot;</span>
+
+<span class="w"> </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;file&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="na">source</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./web.sh&quot;</span>
+
+<span class="w">    </span><span class="na">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/tmp/web.sh&quot;</span>
 
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="err">provisio</span><span class="kc">ner</span><span class="w"> </span><span class="s2">&quot;remote-exec&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;remote-exec&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="err">i</span><span class="kc">nl</span><span class="err">i</span><span class="kc">ne</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="na">inline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
 <span class="w">      </span><span class="s2">&quot;chmod u+x /tmp/web.sh&quot;</span><span class="p">,</span>
 
@@ -1487,58 +1487,58 @@
 
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="err">co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">connection</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="err">user</span><span class="w">        </span><span class="err">=</span><span class="w"> </span><span class="err">var.USER</span>
+<span class="w">    </span><span class="na">user</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">var.USER</span>
 
-<span class="w">    </span><span class="err">priva</span><span class="kc">te</span><span class="err">_key</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="kc">f</span><span class="err">ile(</span><span class="s2">&quot;testing007&quot;</span><span class="err">)</span>
+<span class="w">    </span><span class="na">private_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;testing007&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="err">hos</span><span class="kc">t</span><span class="w">        </span><span class="err">=</span><span class="w"> </span><span class="err">sel</span><span class="kc">f</span><span class="err">.public_ip</span>
+<span class="w">    </span><span class="na">host</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">self.public_ip</span>
 
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w"> </span><span class="p">}</span>
 
-<span class="err">ou</span><span class="kc">t</span><span class="err">pu</span><span class="kc">t</span><span class="w"> </span><span class="s2">&quot;PublicIP&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;PublicIP&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">value</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">aws_i</span><span class="kc">nstan</span><span class="err">ce.I</span><span class="kc">nstan</span><span class="err">ce.public_ip</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.Instance.public_ip</span>
 
 <span class="p">}</span>
 </code></pre></div>
 <p>Variables file - vars.tf </p>
-<div class="highlight"><pre><span></span><code><span class="err">variable</span><span class="w"> </span><span class="s2">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">de</span><span class="kc">fault</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
-
-<span class="p">}</span>
-
-
-
-<span class="err">variable</span><span class="w"> </span><span class="s2">&quot;ZONE1&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="err">de</span><span class="kc">fault</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;us-east-2a&quot;</span>
+<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
 
 <span class="p">}</span>
 
 
 
-<span class="err">variable</span><span class="w"> </span><span class="s2">&quot;USER&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;ZONE1&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">de</span><span class="kc">fault</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;ubuntu&quot;</span>
+<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2a&quot;</span>
 
 <span class="p">}</span>
 
 
 
-<span class="err">variable</span><span class="w"> </span><span class="s2">&quot;AMIS&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;USER&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kc">t</span><span class="err">ype</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">map(a</span><span class="kc">n</span><span class="err">y)</span>
+<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu&quot;</span>
 
-<span class="w">  </span><span class="err">de</span><span class="kc">fault</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span>
 
-<span class="w">    </span><span class="err">us</span><span class="mf">-e</span><span class="err">as</span><span class="kc">t</span><span class="mi">-2</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
 
-<span class="w">    </span><span class="err">us</span><span class="mf">-e</span><span class="err">as</span><span class="kc">t</span><span class="mi">-1</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;ami-0e1d30f2c40c4c701&quot;</span>
+
+<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;AMIS&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="err">any</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="na">us-east-2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0fb653ca2d3203ac1&quot;</span>
+
+<span class="w">    </span><span class="na">us-east-1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0e1d30f2c40c4c701&quot;</span>
 
 
 
@@ -1548,15 +1548,15 @@
 </code></pre></div>
 <h2 id="to-store-state-remotely-in-s3-bucket">To Store State Remotely in S3 Bucket<a class="headerlink" href="#to-store-state-remotely-in-s3-bucket" title="Permanent link">&para;</a></h2>
 <p>Create an S3 Bucket</p>
-<div class="highlight"><pre><span></span><code><span class="kc">terraf</span><span class="err">orm</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="err">backe</span><span class="kc">n</span><span class="err">d</span><span class="w"> </span><span class="s2">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="err">bucke</span><span class="kc">t</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;terraform-state-009&quot;</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-state-009&quot;</span>
 
-<span class="w">    </span><span class="err">key</span><span class="w">    </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;terraform/remote&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform/remote&quot;</span>
 
-<span class="w">    </span><span class="err">regio</span><span class="kc">n</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
 
 <span class="w">  </span><span class="p">}</span>
 
