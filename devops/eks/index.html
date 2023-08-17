@@ -836,8 +836,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-create-a-vpc-and-subnets" class="md-nav__link">
-    Step 1: Create a VPC and Subnets
+  <a href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" class="md-nav__link">
+    Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:
   </a>
   
 </li>
@@ -1322,8 +1322,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-create-a-vpc-and-subnets" class="md-nav__link">
-    Step 1: Create a VPC and Subnets
+  <a href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" class="md-nav__link">
+    Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:
   </a>
   
 </li>
@@ -1408,13 +1408,6 @@
 <li>
 <p><strong>AWS CLI</strong>: Install and configure the AWS Command Line Interface (CLI) on your local machine. You can download it from the <a href="https://aws.amazon.com/cli/">AWS CLI Documentation</a>.</p>
 </li>
-</ol>
-<blockquote>
-<p>Configure the AWS CLI with the IAM user's access key ID and secret access key:
-   <div class="highlight"><pre><span></span><code>aws configure
-</code></pre></div></p>
-</blockquote>
-<ol>
 <li>
 <p><strong>kubectl</strong>: Install <code>kubectl</code>, the Kubernetes command-line tool, to interact with your cluster. You can follow the installation instructions in the <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubernetes Documentation</a>.</p>
 </li>
@@ -1426,13 +1419,9 @@
 </li>
 </ol>
 <h2 id="steps-to-create-an-eks-cluster">Steps to Create an EKS Cluster<a class="headerlink" href="#steps-to-create-an-eks-cluster" title="Permanent link">&para;</a></h2>
-<h3 id="step-1-create-a-vpc-and-subnets">Step 1: Create a VPC and Subnets<a class="headerlink" href="#step-1-create-a-vpc-and-subnets" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Use the AWS Management Console or the AWS CLI to create a Virtual Private Cloud (VPC) with public and private subnets in your desired AWS region.</li>
-</ol>
-<blockquote>
-<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4dd.svg" title=":memo:" /> <strong>Note:</strong> </p>
-</blockquote>
+<h3 id="step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key">Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:<a class="headerlink" href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>aws configure
+</code></pre></div>
 <h3 id="step-2-create-an-eks-cluster">Step 2: Create an EKS Cluster<a class="headerlink" href="#step-2-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
 <p>Of course, here are all the commands following the format you've provided:</p>
 <h3 id="command-1-create-an-eks-cluster">Command 1: Create an EKS Cluster<a class="headerlink" href="#command-1-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
