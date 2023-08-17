@@ -1482,6 +1482,9 @@ Creating docker Volume, use the below command to see all the available options o
 Creating a new docker volume with name <mark>datadb</mark>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>datadb
 </code></pre></div>
+Command removes all Docker volumes that are present on your system.
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span>-q<span class="k">)</span>
+</code></pre></div>
 Now run your container with that volume
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db02<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>secret123<span class="w"> </span>-p<span class="w"> </span><span class="m">3301</span>:3306<span class="w"> </span>-v<span class="w"> </span>datadb:/var/lib/mysql<span class="w"> </span>-d<span class="w"> </span>mysql:5.7
 </code></pre></div>
