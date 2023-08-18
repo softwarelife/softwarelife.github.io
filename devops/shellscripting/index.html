@@ -685,6 +685,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#shell-script-for-setting-up-website" class="md-nav__link">
     Shell Script For Setting Up Website
   </a>
@@ -1278,6 +1285,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#shell-script-for-setting-up-website" class="md-nav__link">
     Shell Script For Setting Up Website
   </a>
@@ -1440,8 +1454,35 @@
 </div>
 </div>
 </div>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Empty String </label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Certainly! Here's an example of how you can create a Bash script with a main function to call the <code>check_empty_string</code> function:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+check_empty_string<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: Input string is empty!&quot;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Input string is not empty.&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="o">}</span>
+
+main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">input</span><span class="o">=</span><span class="s2">&quot;example&quot;</span>
+<span class="w">    </span>check_empty_string<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># Call the main function</span>
+main
+</code></pre></div>
+<p>In this script, the <code>main</code> function is defined to call the <code>check_empty_string</code> function with the <code>input</code> variable. You can replace <code>"example"</code> with any input string you want to test. When you run the script, it will execute the <code>main</code> function, which in turn calls the <code>check_empty_string</code> function.</p>
+</div>
+</div>
+</div>
 <h2 id="shell-script-for-setting-up-website">Shell Script For Setting Up Website<a class="headerlink" href="#shell-script-for-setting-up-website" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Ubuntu</label><label for="__tabbed_4_2">Centos</label><label for="__tabbed_4_3">Using Variables</label><label for="__tabbed_4_4">Using If Else Condition</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Ubuntu</label><label for="__tabbed_5_2">Centos</label><label for="__tabbed_5_3">Using Variables</label><label for="__tabbed_5_4">Using If Else Condition</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
