@@ -1481,8 +1481,73 @@ main
 </div>
 </div>
 </div>
+<p>Sure, here are a few basic reusable Bash functions along with their use cases and examples:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">greet</label><label for="__tabbed_5_2">is_even</label><label for="__tabbed_5_3">file_info</label><label for="__tabbed_5_4">Sum</label><label for="__tabbed_5_5">reverse</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Use Case: A function to greet a person.</p>
+<div class="highlight"><pre><span></span><code>greet<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, </span><span class="nv">$1</span><span class="s2">!&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># Example usage</span>
+greet<span class="w"> </span><span class="s2">&quot;Alice&quot;</span>
+greet<span class="w"> </span><span class="s2">&quot;Bob&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Use Case: A function to check if a number is even.</p>
+<div class="highlight"><pre><span></span><code>is_even<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span>%<span class="w"> </span><span class="nv">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Even&quot;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Odd&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="c1"># Example usage</span>
+is_even<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># Output: Even</span>
+is_even<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="c1"># Output: Odd</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Use Case: A function to display information about a file.</p>
+<div class="highlight"><pre><span></span><code>file_info<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;File: </span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Size: </span><span class="k">$(</span>du<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Owner: </span><span class="k">$(</span>stat<span class="w"> </span>-c<span class="w"> </span>%U<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># Example usage</span>
+file_info<span class="w"> </span><span class="s2">&quot;/path/to/somefile.txt&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Use Case: A function to calculate the sum of two numbers.</p>
+<div class="highlight"><pre><span></span><code>sum<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$((</span><span class="nv">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">$2</span><span class="k">))</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># Example usage</span>
+<span class="nv">result</span><span class="o">=</span><span class="k">$(</span>sum<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sum: </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Output: Sum: 8</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Use Case: A function to reverse a string.</p>
+<div class="highlight"><pre><span></span><code>reverse<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>rev
+<span class="o">}</span>
+
+<span class="c1"># Example usage</span>
+<span class="nv">reversed</span><span class="o">=</span><span class="k">$(</span>reverse<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Reversed: </span><span class="nv">$reversed</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Output: Reversed: olleh</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="shell-script-for-setting-up-website">Shell Script For Setting Up Website<a class="headerlink" href="#shell-script-for-setting-up-website" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Ubuntu</label><label for="__tabbed_5_2">Centos</label><label for="__tabbed_5_3">Using Variables</label><label for="__tabbed_5_4">Using If Else Condition</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Ubuntu</label><label for="__tabbed_6_2">Centos</label><label for="__tabbed_6_3">Using Variables</label><label for="__tabbed_6_4">Using If Else Condition</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
