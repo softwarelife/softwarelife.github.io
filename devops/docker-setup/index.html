@@ -1783,7 +1783,7 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 Now Access From the Browser, Make sure you have to allow the port number in my case 9999 in your security group if you are using cloud VM.
 <div class="highlight"><pre><span></span><code>Public-IPaddress:9999
 </code></pre></div></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Single Docker File</label><label for="__tabbed_6_2">Multi Docker File</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Single Docker File</label><label for="__tabbed_6_2">Multi Docker File</label><label for="__tabbed_6_3">Multiple Dockerfiles in Same Directory</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Creating Docker Compose for a single local Docker File</p>
@@ -1815,29 +1815,28 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8082:80&quot;</span><span class="w">      </span><span class="c1"># Map port 8082 on the host to port 80 in the container</span>
 </code></pre></div>
 </div>
-</div>
-</div>
-<p>=== "Multiple Dockerfiles in Same Directory
-    If you have multiple Dockerfiles in the same build context directory, you can use the dockerfile option to specify a different Dockerfile name.</p>
-<div class="highlight"><pre><span></span><code>```yaml
-version: &#39;3&#39;
+<div class="tabbed-block">
+<p>If you have multiple Dockerfiles in the same build context directory, you can use the dockerfile option to specify a different Dockerfile name.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
 
-services:
-  website1:
-    build:
-      context: ./website1
-      dockerfile: Dockerfile1
-    ports:
-      - &quot;8080:80&quot;  # Map host port 8080 to container port 80
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">website1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./website1</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile1</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8080:80&quot;</span><span class="w">  </span><span class="c1"># Map host port 8080 to container port 80</span>
 
-  website2:
-    build:
-      context: ./website2
-      dockerfile: Dockerfile2
-    ports:
-      - &quot;8081:80&quot;  # Map host port 8081 to container port 80
-```
+<span class="w">  </span><span class="nt">website2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./website2</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile2</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8081:80&quot;</span><span class="w">  </span><span class="c1"># Map host port 8081 to container port 80</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>Creating Docker Compose for DockerHub Images
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
 <span class="nt">services</span><span class="p">:</span>
