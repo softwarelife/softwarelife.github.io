@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.30068a00.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
@@ -1783,12 +1783,10 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 Now Access From the Browser, Make sure you have to allow the port number in my case 9999 in your security group if you are using cloud VM.
 <div class="highlight"><pre><span></span><code>Public-IPaddress:9999
 </code></pre></div></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Docker Compose</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Single Docker File</label><label for="__tabbed_6_2">Multi Docker File</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<p>Creating Docker Compose for local Docker File</p>
+<div class="tabbed-block">
+<p>Creating Docker Compose for a single local Docker File</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">Wavecafe</span><span class="p">:</span>
@@ -1798,6 +1796,48 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5555:80&quot;</span>
 <span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavecafe</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Creating Docker Compose for a Multi local Docker File</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">website1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home</span><span class="w">   </span><span class="c1"># Path to the first Dockerfile directory</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8081:80&quot;</span><span class="w">      </span><span class="c1"># Map port 8081 on the host to port 80 in the container</span>
+
+<span class="w">  </span><span class="nt">website2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span><span class="w">    </span><span class="c1"># Path to the second Dockerfile directory</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8082:80&quot;</span><span class="w">      </span><span class="c1"># Map port 8082 on the host to port 80 in the container</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>=== "Multiple Dockerfiles in Same Directory
+    If you have multiple Dockerfiles in the same build context directory, you can use the dockerfile option to specify a different Dockerfile name.</p>
+<div class="highlight"><pre><span></span><code>```yaml
+version: &#39;3&#39;
+
+services:
+  website1:
+    build:
+      context: ./website1
+      dockerfile: Dockerfile1
+    ports:
+      - &quot;8080:80&quot;  # Map host port 8080 to container port 80
+
+  website2:
+    build:
+      context: ./website2
+      dockerfile: Dockerfile2
+    ports:
+      - &quot;8081:80&quot;  # Map host port 8081 to container port 80
+```
+</code></pre></div>
 <p>Creating Docker Compose for DockerHub Images
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
 <span class="nt">services</span><span class="p">:</span>
@@ -1805,6 +1845,51 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe:v1</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8085:80&quot;</span>
+</code></pre></div></p>
+<p>Start all containers defined in the docker-compose.yml file
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up
+</code></pre></div></p>
+<p>Start containers in the background (detached mode)
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div></p>
+<p>Stop and remove all containers defined in the docker-compose.yml file
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down
+</code></pre></div>
+Stop, remove containers, and remove volumes
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>-v
+</code></pre></div></p>
+<p>List containers and their current status
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>ps
+</code></pre></div></p>
+<p>View logs of all containers defined in the docker-compose.yml file
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>logs
+</code></pre></div>
+Follow logs in real-time
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>logs<span class="w"> </span>-f
+</code></pre></div></p>
+<p>Build or rebuild Docker images for all services
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>build
+</code></pre></div></p>
+<p>Pull the latest images for all services
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>pull
+</code></pre></div></p>
+<p>Restart all containers
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>restart
+</code></pre></div></p>
+<p>Execute a command in a running container
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;service-name&gt;<span class="w"> </span>&lt;command&gt;
+</code></pre></div></p>
+<p>Stop all containers without removing them
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>stop
+</code></pre></div></p>
+<p>Start stopped containers
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>start
+</code></pre></div></p>
+<p>Stop and remove containers, networks, volumes, and associated Docker images
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>--rmi<span class="w"> </span>all
+</code></pre></div></p>
+<p>Remove containers for services not defined in the docker-compose.yml file
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>--remove-orphans
 </code></pre></div></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Docker Volume</label></div>
 <div class="tabbed-content">
