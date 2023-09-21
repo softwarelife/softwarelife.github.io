@@ -1772,7 +1772,7 @@ Push an image to a registry.
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>push<span class="w"> </span>myrepo/myimage:2.0
 </code></pre></div></p>
 <h2 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Sample Dockerfile</label><label for="__tabbed_5_2">Using Variables</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Sample Dockerfile</label><label for="__tabbed_5_2">Using Variables</label><label for="__tabbed_5_3">Using Existing zip/tar File</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Sample Dockerfile for Deploying a Static website.</p>
@@ -1811,7 +1811,7 @@ Push an image to a registry.
 </code></pre></div></p>
 </div>
 <div class="tabbed-block">
-<p>Sample Dockerfile for Deploying a Static website.</p>
+<p>Using Variables in Dockerfile for Deploying a Static website.</p>
 <p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Dockerfile
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp"># Define variables</span>
@@ -1838,6 +1838,43 @@ Push an image to a registry.
 <span class="cm"># Set the image name and optionally a tag</span>
 <span class="cm">LABEL &quot;name&quot;=&quot;$PROJECT&quot;</span>
 </code></pre></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Dockerfile
+</code></pre></div>
+Adding Existing zip/tar files in Dockerfile</p>
+<blockquote>
+<p>Docker expects the wave.tar.gz file to exist in the same directory where you are executing the docker build command. Docker will then copy the contents of that file into the /var/www/html/ directory within the Docker image being built. </p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp"># Use the latest Ubuntu base image</span>
+<span class="n">FROM</span><span class="w"> </span><span class="n">ubuntu</span><span class="o">:</span><span class="n">latest</span>
+
+<span class="cp"># Set metadata labels for author and project</span>
+<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Author&quot;</span><span class="o">=</span><span class="s">&quot;Saiteja Irrinki&quot;</span>
+<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;Wave&quot;</span>
+
+<span class="cp"># Set environment variable to make the installation non-interactive</span>
+<span class="n">ENV</span><span class="w"> </span><span class="n">DEBIAN_FRONTEND</span><span class="o">=</span><span class="n">noninteractive</span>
+
+<span class="cp"># Update package list and install Apache2 and Git</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">apache2</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+
+<span class="cp"># Add the contents of &#39;wave.tar.gz&#39; to the Apache web server</span>
+<span class="cp"># You can use either &#39;COPY&#39; or &#39;ADD&#39;. Here, we&#39;re using &#39;ADD&#39;.</span>
+<span class="n">ADD</span><span class="w"> </span><span class="n">wave</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
+
+<span class="cp"># Start the Apache2 web server in the foreground</span>
+<span class="n">CMD</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;/usr/sbin/apache2ctl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOREGROUND&quot;</span><span class="p">]</span>
+
+<span class="cp"># Expose port 80 for web traffic</span>
+<span class="n">EXPOSE</span><span class="w"> </span><span class="mi">80</span>
+
+<span class="cp"># Set the working directory to the Apache web server&#39;s document root</span>
+<span class="n">WORKDIR</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
+
+<span class="cp"># Create a volume for Apache2 log files</span>
+<span class="n">VOLUME</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">apache2</span>
+</code></pre></div>
 </div>
 </div>
 </div>
