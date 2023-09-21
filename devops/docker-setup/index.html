@@ -1684,10 +1684,10 @@ sudo<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </spa
 sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/docker-compose
 docker-compose<span class="w"> </span>--version
 </code></pre></div>
-Give Execute permission for script
+Now, grant execute permission to the script:
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>docker_setup.sh
 </code></pre></div>
-Now run the Script
+Finally, run the script to install Docker and Docker Compose:
 <div class="highlight"><pre><span></span><code>./docker_setup.sh
 </code></pre></div></p>
 <h2 id="docker-commands">Docker Commands<a class="headerlink" href="#docker-commands" title="Permanent link">&para;</a></h2>
@@ -1696,15 +1696,18 @@ Now run the Script
 <div class="tabbed-block"></div>
 </div>
 </div>
-<p>List all images that are locally stored with the Docker Engine
+<p>To display all locally stored Docker images, use the following command:
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>image<span class="w"> </span>ls
 </code></pre></div>
-Build an image from the Dockerfile in the current directory and tag the image
+To create an image from a Dockerfile in the current directory and assign a tag, utilize this command:
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;<span class="w"> </span>
 </code></pre></div>
-Delete an image from the local image store
+Delete an Image</p>
+<blockquote>
+<p>Remove an image from the local image store using the following command:
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>image<span class="w"> </span>rm<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
 </code></pre></div></p>
+</blockquote>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Containers</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
