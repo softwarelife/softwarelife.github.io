@@ -1794,6 +1794,111 @@
 <li>Trigger your workflow manually or by pushing code changes.</li>
 </ol>
 <p>This workflow will execute and print "Hello, World!" when triggered by a code push.</p>
+<h2 id="more-workflows">More Workflows<a class="headerlink" href="#more-workflows" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">GitHub Auto-Push Workflow</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>This GitHub Actions workflow is designed to automate the process of pushing changes to a GitHub repository's main branch</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push Changes to GitHub</span>
+
+<span class="c1"># Define the trigger for this workflow: it runs when there are pushes to the specified branch (main).</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span><span class="w">  </span><span class="c1"># Replace with the branch you want to trigger this on</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Specify that this job runs on a self-hosted runner.</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self-hosted</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Disable persisting credentials to use a personal access token (PAC) instead of the GITHUB_TOKEN.</span>
+<span class="w">        </span><span class="nt">persist-credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">        </span><span class="c1"># Set the fetch depth to 0 to ensure the full history is fetched, avoiding errors when pushing refs.</span>
+<span class="w">        </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create local changes</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no"># Execute the &#39;free -m&#39; command and redirect the output to a file named &#39;memory.txt&#39;.</span>
+<span class="w">        </span><span class="no">free -m &gt; memory.txt</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Commit files</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no"># Add all changes to the Git staging area.</span>
+<span class="w">        </span><span class="no">git add .</span>
+
+<span class="w">        </span><span class="no"># Configure the user email and name for this local Git session.</span>
+<span class="w">        </span><span class="no">git config --local user.email &quot;41898282+github-actions[bot]@users.noreply.github.com&quot;</span>
+<span class="w">        </span><span class="no">git config --local user.name &quot;github-actions[bot]&quot;</span>
+
+<span class="w">        </span><span class="no"># Commit all changes with the message &quot;Add changes [skip ci]&quot;.</span>
+<span class="w">        </span><span class="no">git commit -a -m &quot;Add changes [skip ci]&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push changes</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ad-m/github-push-action@master</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Provide the GitHub token (PAC) stored in GitHub secrets for authentication.</span>
+<span class="w">        </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.PAC }}</span>
+
+<span class="w">        </span><span class="c1"># Specify the target branch for pushing the changes (main).</span>
+<span class="w">        </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="automated-github-website-deployment">Automated GitHub Website Deployment<a class="headerlink" href="#automated-github-website-deployment" title="Permanent link">&para;</a></h3>
+<p>This script automates the process of setting up a website by downloading and extracting files from a URL, adding them to a Git repository, committing the changes, and pushing them to a remote Git repository. It also includes package installation and cleanup steps in a Linux Ubuntu OS.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># Website setup script</span>
+
+<span class="c1"># Define variables for URLs, file names, and repository information.</span>
+<span class="nv">URL</span><span class="o">=</span>https://www.tooplate.com/zip-templates/2118_chilling_cafe.zip
+<span class="nv">FILE</span><span class="o">=</span>2118_chilling_cafe
+<span class="nv">GIT_URL</span><span class="o">=</span>git@github.com:<span class="sb">`</span>username<span class="sb">`</span>/<span class="sb">`</span>username<span class="sb">`</span>.github.io.git
+<span class="nv">GIT_REPO</span><span class="o">=</span><span class="sb">`</span>username<span class="sb">`</span>.github.io<span class="w"> </span><span class="c1">#use your github username </span>
+<span class="nv">PKG</span><span class="o">=</span>apt
+<span class="nv">EMAIL</span><span class="o">=</span>admin123@gmail.com
+<span class="nv">USER</span><span class="o">=</span>admin
+
+<span class="c1"># Install necessary packages (e.g., git, wget, unzip) using the package manager specified in PKG.</span>
+sudo<span class="w"> </span><span class="nv">$PKG</span><span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>wget<span class="w"> </span>unzip<span class="w"> </span>-y
+
+<span class="c1"># Create a directory structure for Git and navigate to it.</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/git
+<span class="nb">cd</span><span class="w"> </span>~/git
+
+<span class="c1"># Clone the specified Git repository.</span>
+git<span class="w"> </span>clone<span class="w"> </span><span class="nv">$GIT_URL</span>
+
+<span class="c1"># Remove the contents of the Git repository directory.</span>
+rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$GIT_REPO</span>/*
+
+<span class="c1"># Download a file from the specified URL and unzip it.</span>
+wget<span class="w"> </span><span class="nv">$URL</span>
+unzip<span class="w"> </span><span class="nv">$FILE</span>.zip
+
+<span class="c1"># Copy the unzipped files to the Git repository directory.</span>
+cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$FILE</span>/*<span class="w"> </span><span class="nv">$GIT_REPO</span>/
+
+<span class="c1"># Navigate to the Git repository directory.</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$GIT_REPO</span>
+
+<span class="c1"># Configure Git user email and name globally.</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL</span><span class="s2">&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span>
+
+<span class="c1"># Add all changes, commit with the current date, and push to the remote repository.</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+git<span class="w"> </span>push
+
+<span class="c1"># Remove the temporary git directory.</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>~/git
+</code></pre></div>
 
 
 
