@@ -1852,52 +1852,52 @@
 </div>
 <h3 id="automated-github-website-deployment">Automated GitHub Website Deployment<a class="headerlink" href="#automated-github-website-deployment" title="Permanent link">&para;</a></h3>
 <p>This script automates the process of setting up a website by downloading and extracting files from a URL, adding them to a Git repository, committing the changes, and pushing them to a remote Git repository. It also includes package installation and cleanup steps in a Linux Ubuntu OS.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#!/bin/bash</span>
 <span class="c1"># Website setup script</span>
 
 <span class="c1"># Define variables for URLs, file names, and repository information.</span>
-<span class="nv">URL</span><span class="o">=</span>https://www.tooplate.com/zip-templates/2118_chilling_cafe.zip
-<span class="nv">FILE</span><span class="o">=</span>2118_chilling_cafe
-<span class="nv">GIT_URL</span><span class="o">=</span>git@github.com:username/username.github.io.git
-<span class="nv">GIT_REPO</span><span class="o">=</span>username.github.io<span class="w"> </span><span class="c1">#use your github username </span>
-<span class="nv">PKG</span><span class="o">=</span>apt
-<span class="nv">EMAIL</span><span class="o">=</span>admin123@gmail.com
-<span class="nv">USER</span><span class="o">=</span>admin
+<span class="l l-Scalar l-Scalar-Plain">URL=https://www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
+<span class="l l-Scalar l-Scalar-Plain">FILE=2118_chilling_cafe</span>
+<span class="l l-Scalar l-Scalar-Plain">GIT_URL=git@github.com:username/username.github.io.git</span>
+<span class="l l-Scalar l-Scalar-Plain">GIT_REPO=username.github.io</span><span class="w"> </span><span class="c1">#use your github username </span>
+<span class="l l-Scalar l-Scalar-Plain">PKG=apt</span>
+<span class="l l-Scalar l-Scalar-Plain">EMAIL=admin123@gmail.com</span>
+<span class="l l-Scalar l-Scalar-Plain">USER=admin</span>
 
-<span class="c1"># Install necessary packages (e.g., git, wget, unzip) using the package manager specified in PKG.</span>
-sudo<span class="w"> </span><span class="nv">$PKG</span><span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>wget<span class="w"> </span>unzip<span class="w"> </span>-y
+<span class="l l-Scalar l-Scalar-Plain"># Install necessary packages (e.g., git, wget, unzip) using the package manager specified in PKG.</span>
+<span class="l l-Scalar l-Scalar-Plain">sudo $PKG install git wget unzip -y</span>
 
-<span class="c1"># Create a directory structure for Git and navigate to it.</span>
-mkdir<span class="w"> </span>-p<span class="w"> </span>~/git
-<span class="nb">cd</span><span class="w"> </span>~/git
+<span class="l l-Scalar l-Scalar-Plain"># Create a directory structure for Git and navigate to it.</span>
+<span class="l l-Scalar l-Scalar-Plain">mkdir -p ~/git</span>
+<span class="l l-Scalar l-Scalar-Plain">cd ~/git</span>
 
-<span class="c1"># Clone the specified Git repository.</span>
-git<span class="w"> </span>clone<span class="w"> </span><span class="nv">$GIT_URL</span>
+<span class="l l-Scalar l-Scalar-Plain"># Clone the specified Git repository.</span>
+<span class="l l-Scalar l-Scalar-Plain">git clone $GIT_URL</span>
 
-<span class="c1"># Remove the contents of the Git repository directory.</span>
-rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$GIT_REPO</span>/*
+<span class="l l-Scalar l-Scalar-Plain"># Remove the contents of the Git repository directory.</span>
+<span class="l l-Scalar l-Scalar-Plain">rm -rf $GIT_REPO/*</span>
 
-<span class="c1"># Download a file from the specified URL and unzip it.</span>
-wget<span class="w"> </span><span class="nv">$URL</span>
-unzip<span class="w"> </span><span class="nv">$FILE</span>.zip
+<span class="l l-Scalar l-Scalar-Plain"># Download a file from the specified URL and unzip it.</span>
+<span class="l l-Scalar l-Scalar-Plain">wget $URL</span>
+<span class="l l-Scalar l-Scalar-Plain">unzip $FILE.zip</span>
 
-<span class="c1"># Copy the unzipped files to the Git repository directory.</span>
-cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$FILE</span>/*<span class="w"> </span><span class="nv">$GIT_REPO</span>/
+<span class="l l-Scalar l-Scalar-Plain"># Copy the unzipped files to the Git repository directory.</span>
+<span class="l l-Scalar l-Scalar-Plain">cp -r $FILE/* $GIT_REPO/</span>
 
-<span class="c1"># Navigate to the Git repository directory.</span>
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$GIT_REPO</span>
+<span class="l l-Scalar l-Scalar-Plain"># Navigate to the Git repository directory.</span>
+<span class="l l-Scalar l-Scalar-Plain">cd $GIT_REPO</span>
 
-<span class="c1"># Configure Git user email and name globally.</span>
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL</span><span class="s2">&quot;</span>
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain"># Configure Git user email and name globally.</span>
+<span class="l l-Scalar l-Scalar-Plain">git config --global user.email &quot;$EMAIL&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">git config --global user.name &quot;$USER&quot;</span>
 
-<span class="c1"># Add all changes, commit with the current date, and push to the remote repository.</span>
-git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-git<span class="w"> </span>push
+<span class="l l-Scalar l-Scalar-Plain"># Add all changes, commit with the current date, and push to the remote repository.</span>
+<span class="l l-Scalar l-Scalar-Plain">git add .</span>
+<span class="l l-Scalar l-Scalar-Plain">git commit -m &quot;$(date)&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">git push</span>
 
-<span class="c1"># Remove the temporary git directory.</span>
-rm<span class="w"> </span>-rf<span class="w"> </span>~/git
+<span class="l l-Scalar l-Scalar-Plain"># Remove the temporary git directory.</span>
+<span class="l l-Scalar l-Scalar-Plain">rm -rf ~/git</span>
 </code></pre></div>
 
 
