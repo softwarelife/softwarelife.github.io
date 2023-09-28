@@ -817,7 +817,7 @@
       
         <li class="md-nav__item">
   <a href="#to-bring-up-vm" class="md-nav__link">
-    To Bring up VM
+    To Bring up VM 🚀
   </a>
   
 </li>
@@ -1638,7 +1638,7 @@
       
         <li class="md-nav__item">
   <a href="#to-bring-up-vm" class="md-nav__link">
-    To Bring up VM
+    To Bring up VM 🚀
   </a>
   
 </li>
@@ -1658,15 +1658,15 @@
                   
 
 
-<h1 id="vagrant">Vagrant<a class="headerlink" href="#vagrant" title="Permanent link">&para;</a></h1>
+<h1 id="vagrant">Vagrant 🛠️<a class="headerlink" href="#vagrant" title="Permanent link">&para;</a></h1>
 <p>Vagrant is an open-source tool that helps us to automate the creation and management of Virtual Machines. In a nutshell, we can specify the configuration of a virtual machine in a simple configuration file, and Vagrant creates the same Virtual machine using just one simple command. It provides command-line interfaces to automate such tasks.</p>
 <details class="info" open="open">
 <summary>Requirements</summary>
-<p>Virtualbox</p>
-<p>Vagrant</p>
+<p>Virtualbox 📦</p>
+<p>Vagrant 📦</p>
 </details>
 <h2 id="installing-virtualbox-in-the-host-machine">Installing Virtualbox in the Host Machine<a class="headerlink" href="#installing-virtualbox-in-the-host-machine" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Ubuntu Desktop</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows 🪟</label><label for="__tabbed_1_2">Ubuntu Desktop 🐧</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Download link
@@ -1684,7 +1684,7 @@
 </div>
 <details class="note" open="open">
 <summary>Note</summary>
-<p>To Run Virtual Machine You should need to Disable the Secure-Boot in BIOS Options of your Machine</p>
+<p>To Run Virtual Machine You should need to Disable the Secure-Boot in BIOS Options of your Machine 🚫</p>
 </details>
 <p>To Verify that your Virtual Box is Working fine or not in Linux, Please hit the below command.
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>virtualbox.service
@@ -1711,14 +1711,14 @@
 <p>You Should Need to Restart Your Machine After Installation of Vagrant </p>
 </details>
 <h2 id="creating-a-common-directory-for-all-vms">Creating a Common Directory for all VMs<a class="headerlink" href="#creating-a-common-directory-for-all-vms" title="Permanent link">&para;</a></h2>
-<p>Create a Directory with name <mark>vagrantvms</mark>
+<p>Create a Directory with name <mark>vagrantvms</mark> 📂
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>vagrantvms
 </code></pre></div>
 Change Directory to <mark>vagrantvms</mark>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>vagrantvms
 </code></pre></div></p>
-<h2 id="to-bring-up-vm">To Bring up VM<a class="headerlink" href="#to-bring-up-vm" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ubuntu</label><label for="__tabbed_3_2">CentOS</label></div>
+<h2 id="to-bring-up-vm">To Bring up VM 🚀<a class="headerlink" href="#to-bring-up-vm" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ubuntu 🐧</label><label for="__tabbed_3_2">CentOS 🐧</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Create a Directory name <mark>ubuntu</mark>
@@ -1754,7 +1754,7 @@ Now Bring up your centos VM
 Once your VM is up then login to your VM 
 <div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>ssh
 </code></pre></div>
-Now you can see the prompt of the centos machine, If you wanna exit type <mark>exit</mark></p>
+Now you can see the prompt of the centos machine, If you wanna exit type  👉 exit</p>
 </div>
 </div>
 </div>
@@ -1762,11 +1762,7 @@ Now you can see the prompt of the centos machine, If you wanna exit type <mark>e
 <summary>To Init Specific Vagrant box</summary>
 <p><a href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a></p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Multi VMS Vagrantfile</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<p>=== "Multi VMS Vagrantfile" 📦</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span><span class="w"> </span>
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">manage_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
