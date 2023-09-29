@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../canary/">
+        <link rel="prev" href="../kubeadm/">
       
       
-        <link rel="next" href="../ldap/">
+        <link rel="next" href="../../../azure/intro/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
     
     
       
-        <title>Active Directory - SAITEJA IRRINKI</title>
+        <title>k3s - SAITEJA IRRINKI</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.d451bc0e.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d451bc0e.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a5377069.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a5377069.min.css">
       
       
 
@@ -50,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#miscellaneous" class="md-skip">
+        <a href="#creating-kubernetes-cluster-with-k3s" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="SAITEJA IRRINKI" class="md-header__button md-logo" aria-label="SAITEJA IRRINKI" data-md-component="logo">
+    <a href="../../.." title="SAITEJA IRRINKI" class="md-header__button md-logo" aria-label="SAITEJA IRRINKI" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2h-4Z"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Active Directory
+              k3s
             
           </span>
         </div>
@@ -222,7 +222,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -241,7 +241,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
     
@@ -261,7 +261,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../profile_summary/" class="md-tabs__link">
+        <a href="../../../profile_summary/" class="md-tabs__link">
           
   
     
@@ -277,11 +277,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../devops/awsdevops/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../awsdevops/" class="md-tabs__link">
           
   
     
@@ -301,7 +303,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../azure/intro/" class="md-tabs__link">
+        <a href="../../../azure/intro/" class="md-tabs__link">
           
   
     
@@ -317,21 +319,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../bluegreen_deployment/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../miscellaneous/bluegreen_deployment/" class="md-tabs__link">
           
   
     
@@ -352,7 +350,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../fund/" class="md-tabs__link">
+      <a href="../../../fund/" class="md-tabs__link">
         
   
     
@@ -392,7 +390,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="SAITEJA IRRINKI" class="md-nav__button md-logo" aria-label="SAITEJA IRRINKI" data-md-component="logo">
+    <a href="../../.." title="SAITEJA IRRINKI" class="md-nav__button md-logo" aria-label="SAITEJA IRRINKI" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2h-4Z"/></svg>
@@ -421,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -485,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/" class="md-nav__link">
+      <a href="../../../blog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -505,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about/" class="md-nav__link">
+      <a href="../../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -581,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profile_summary/" class="md-nav__link">
+      <a href="../../../profile_summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical_skills/" class="md-nav__link">
+      <a href="../../../technical_skills/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -621,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../job_roles/" class="md-nav__link">
+      <a href="../../../job_roles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../project/" class="md-nav__link">
+      <a href="../../../project/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -666,6 +664,8 @@
       
   
   
+    
+  
   
     
     
@@ -697,12 +697,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -716,7 +716,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             DevOps
@@ -729,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/awsdevops/" class="md-nav__link">
+      <a href="../../awsdevops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -749,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/vagrant/" class="md-nav__link">
+      <a href="../../vagrant/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -769,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/shellscripting/" class="md-nav__link">
+      <a href="../../shellscripting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -789,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/aws-cli/" class="md-nav__link">
+      <a href="../../aws-cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -809,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/git/" class="md-nav__link">
+      <a href="../../git/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/jenkins/" class="md-nav__link">
+      <a href="../../jenkins/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -849,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/ansible/" class="md-nav__link">
+      <a href="../../ansible/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/" class="md-nav__link">
+      <a href="../../terraform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -889,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/docker-setup/" class="md-nav__link">
+      <a href="../../docker-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -907,6 +907,8 @@
                 
   
   
+    
+  
   
     
     
@@ -932,12 +934,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" checked>
         
           
           <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="">
@@ -951,7 +953,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_10">
             <span class="md-nav__icon md-icon"></span>
             Kubernetes
@@ -964,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/k8s/intro/" class="md-nav__link">
+      <a href="../intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -984,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/k8s/architecture/" class="md-nav__link">
+      <a href="../architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/k8s/eks/" class="md-nav__link">
+      <a href="../eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1024,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/k8s/kops/" class="md-nav__link">
+      <a href="../kops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1044,7 +1046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/k8s/kubeadm/" class="md-nav__link">
+      <a href="../kubeadm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1062,9 +1064,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../devops/k8s/k3s/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    k3s
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1073,6 +1095,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1084,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/k8sdashboard.md" class="md-nav__link">
+      <a href="../../k8sdashboard.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1172,7 +1221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../azure/intro/" class="md-nav__link">
+      <a href="../../../azure/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1192,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../azure/serviceprinciple/" class="md-nav__link">
+      <a href="../../../azure/serviceprinciple/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1212,7 +1261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../azure/branchingstrategy/" class="md-nav__link">
+      <a href="../../../azure/branchingstrategy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../azure/techchallenges/" class="md-nav__link">
+      <a href="../../../azure/techchallenges/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1252,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../azure/playwright/" class="md-nav__link">
+      <a href="../../../azure/playwright/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1272,7 +1321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../azure/comparison/" class="md-nav__link">
+      <a href="../../../azure/comparison/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1297,8 +1346,6 @@
       
   
   
-    
-  
   
     
     
@@ -1320,12 +1367,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1339,7 +1386,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Miscellaneous
@@ -1397,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bluegreen_deployment/" class="md-nav__link">
+      <a href="../../../miscellaneous/bluegreen_deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1417,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../canary/" class="md-nav__link">
+      <a href="../../../miscellaneous/canary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1443,18 +1490,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../miscellaneous/activedir/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1463,7 +1501,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1475,7 +1512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ldap/" class="md-nav__link">
+      <a href="../../../miscellaneous/ldap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1495,7 +1532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../nexus/" class="md-nav__link">
+      <a href="../../../miscellaneous/nexus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sonarqube/" class="md-nav__link">
+      <a href="../../../miscellaneous/sonarqube/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1542,7 +1579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../fund/" class="md-nav__link">
+      <a href="../../../fund/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1575,6 +1612,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1588,8 +1640,15 @@
                   
 
 
-<h1 id="miscellaneous">MISCELLANEOUS<a class="headerlink" href="#miscellaneous" title="Permanent link">&para;</a></h1>
-<p>To Setup Active Directory Domain Service in Windows Server <a href="https://drive.google.com/file/d/1JBPKtSZCUqJRhyzyBxmu3Toiyv1tdrkb/view?usp=sharing">Click here</a></p>
+<h1 id="creating-kubernetes-cluster-with-k3s">Creating Kubernetes Cluster with k3s<a class="headerlink" href="#creating-kubernetes-cluster-with-k3s" title="Permanent link">&para;</a></h1>
+<p>K3s is a lightweight Kubernetes distribution that Rancher Labs, which is a fully certified Kubernetes offering by CNCF. In K3s, we see that the memory footprint or binary which contains the components to run a cluster is small. It means that K3s are small in size.</p>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.k3s.io<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>/etc/rancher/k3s/k3s.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span><span class="nv">$KUBECONFIG</span>
+</code></pre></div></p>
 
 
 
@@ -1619,7 +1678,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../canary/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Canary">
+          <a href="../kubeadm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kubeadm">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1629,20 +1688,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Canary
+                Kubeadm
               </div>
             </div>
           </a>
         
         
           
-          <a href="../ldap/" class="md-footer__link md-footer__link--next" aria-label="Next: LDAP">
+          <a href="../../../azure/intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                LDAP
+                Introduction
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1771,12 +1830,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.726fbb30.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.726fbb30.min.js"></script>
       
-        <script src="../../js/prism.js"></script>
+        <script src="../../../js/prism.js"></script>
       
     
   </body>
