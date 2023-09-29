@@ -935,29 +935,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-docker-engine-docker-compose-on-ubuntu-centos" class="md-nav__link">
-    Install Docker Engine &amp; Docker-Compose on Ubuntu &amp; CentOS
+  <a href="#installation-of-docker-engine-docker-compose-on-ubuntu-centos" class="md-nav__link">
+    Installation of Docker Engine &amp; Docker Compose on Ubuntu &amp; CentOS 📥
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#docker-commands" class="md-nav__link">
-    Docker Commands
+    Docker Commands 🚀
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#dockerfile" class="md-nav__link">
-    Dockerfile
+    Dockerfile 📋
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#docker-compose" class="md-nav__link">
-    Docker Compose
+    Docker Compose 📟
   </a>
   
 </li>
@@ -1616,29 +1616,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-docker-engine-docker-compose-on-ubuntu-centos" class="md-nav__link">
-    Install Docker Engine &amp; Docker-Compose on Ubuntu &amp; CentOS
+  <a href="#installation-of-docker-engine-docker-compose-on-ubuntu-centos" class="md-nav__link">
+    Installation of Docker Engine &amp; Docker Compose on Ubuntu &amp; CentOS 📥
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#docker-commands" class="md-nav__link">
-    Docker Commands
+    Docker Commands 🚀
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#dockerfile" class="md-nav__link">
-    Dockerfile
+    Dockerfile 📋
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#docker-compose" class="md-nav__link">
-    Docker Compose
+    Docker Compose 📟
   </a>
   
 </li>
@@ -1658,15 +1658,15 @@
                   
 
 
-<h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
-<p>Docker is a containerized tool designed to make it easier to create, deploy and run applications using containers. Containers allow a developer to package up an application with libraries and other dependencies and deploy it as one package. Containers are OS virtualization. We don't need an OS in the container to install our application. It depends on the Host OS kernel.</p>
-<h2 id="install-docker-engine-docker-compose-on-ubuntu-centos">Install Docker Engine &amp; Docker-Compose on Ubuntu &amp; CentOS<a class="headerlink" href="#install-docker-engine-docker-compose-on-ubuntu-centos" title="Permanent link">&para;</a></h2>
+<h1 id="docker">Docker 🐳<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
+<p>Docker is a powerful containerization tool designed to simplify the process of creating, deploying, and running applications using containers. Containers package applications along with their dependencies, making it easy to deploy them consistently across different environments. Unlike traditional virtualization, containers share the host OS kernel, making them lightweight and efficient.</p>
+<h2 id="installation-of-docker-engine-docker-compose-on-ubuntu-centos">Installation of Docker Engine &amp; Docker Compose on Ubuntu &amp; CentOS 📥<a class="headerlink" href="#installation-of-docker-engine-docker-compose-on-ubuntu-centos" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Docker Setup</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
-<p>Create a file name docker_setup.sh and copy the below script
+<p>To streamline the installation process, you can use the following script to install Docker Engine and Docker Compose on both Ubuntu and CentOS:
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>docker_setup.sh
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -1721,98 +1721,93 @@ Now, grant execute permission to the script:
 Finally, run the script to install Docker and Docker Compose:
 <div class="highlight"><pre><span></span><code>./docker_setup.sh
 </code></pre></div></p>
-<h2 id="docker-commands">Docker Commands<a class="headerlink" href="#docker-commands" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Docker Images</label></div>
+<h2 id="docker-commands">Docker Commands 🚀<a class="headerlink" href="#docker-commands" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Docker Images 🖼️</label><label for="__tabbed_2_2">Containers 📦</label><label for="__tabbed_2_3">Share 🔄</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<p>List All Images</p>
+<div class="tabbed-block">
+<p>List All Images 📋</p>
 <blockquote>
 <p>To display all locally stored Docker images, use the following command:
   <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>image<span class="w"> </span>ls
 </code></pre></div></p>
 </blockquote>
-<p>Build an Image</p>
+<p>Build an Image 🛠️</p>
 <blockquote>
 <p>To create an image from a Dockerfile in the current directory and assign a tag, utilize this command:
  <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;<span class="w"> </span>
 </code></pre></div></p>
 </blockquote>
-<p>Delete an Image</p>
+<p>Delete an Image 🗑️</p>
 <blockquote>
 <p>Remove an image from the local image store using the following command:
  <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>image<span class="w"> </span>rm<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
 </code></pre></div></p>
 </blockquote>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Containers</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
-<p>Run a container in an interactive mode:
+<div class="tabbed-block">
+<p>Run a container in an interactive mode: 
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
-</code></pre></div>
-Run a container from the Image nginx:latest, name the running container “web” and expose port 5000 externally, mapped to port 80 inside the container in detached mode.  </p>
-<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:80<span class="w"> </span>nginx:latest
-</code></pre></div>
-Run a detached container in a previously created container network:
+</code></pre></div></p>
+<p>Run a container from the Image nginx:latest, name it "web," and expose port 5000 externally, mapped to port 80 inside the container in detached mode: ▶️
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:80<span class="w"> </span>nginx:latest
+</code></pre></div></p>
+<p>Run a detached container in a previously created container network: 🌐
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>&lt;mynetwork&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>--net<span class="w"> </span>mynetwork<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:80<span class="w"> </span>nginx:latest
-</code></pre></div>
-Follow the logs of a specific container:
+</code></pre></div></p>
+<p>Follow the logs of a specific container:
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div>
-List only active containers
+</code></pre></div></p>
+<p>List only active containers 🟢
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps
-</code></pre></div>
-List all containers
+</code></pre></div></p>
+<p>List all containers 🟢🔴
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span>-a
-</code></pre></div>
-Stop a container
+</code></pre></div></p>
+<p>Stop a container ⏹️
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div>
-Stop a container (timeout = 1 second)
+</code></pre></div></p>
+<p>Stop a container (timeout = 1 second) 
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>-t1
-</code></pre></div>
-Remove a stopped container
+</code></pre></div></p>
+<p>Remove a stopped container 🗑️
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div>
-Force stop and remove a container
+</code></pre></div></p>
+<p>Force stop and remove a container
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div>
-Remove all containers
+</code></pre></div></p>
+<p>Remove all containers 
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps-aq<span class="k">)</span>
-</code></pre></div>
-Remove all stopped containers
+</code></pre></div></p>
+<p>Remove all stopped containers
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-q<span class="w"> </span>-f<span class="w"> </span>“status<span class="o">=</span>exited”<span class="k">)</span>
-</code></pre></div>
-Execute a new process in an existing container: Execute and access bash inside a container
+</code></pre></div></p>
+<p>Execute a new process in an existing container: Execute and access bash inside a container
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container-id&gt;<span class="w"> </span>bash
 </code></pre></div>
 To inspect the container
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
 </code></pre></div></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Share</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <p>To Establish Connections from Local to Remote. log in with your Dockerhub Credentials.
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login
 </code></pre></div>
 Pull an image from a registry</p>
-<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
 </code></pre></div>
-Retag a local image with a new image name and tag
+<p>Retag a local image with a new image name and tag
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>tag<span class="w"> </span>myimage:1.0<span class="w"> </span>myrepo/myimage:2.0
-</code></pre></div>
-Push an image to a registry.
+</code></pre></div></p>
+<p>Push an image to a registry.
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>push<span class="w"> </span>myrepo/myimage:2.0
 </code></pre></div></p>
-<h2 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Sample Dockerfile</label><label for="__tabbed_5_2">Using Variables</label><label for="__tabbed_5_3">Using Existing zip/tar File</label></div>
+</div>
+</div>
+</div>
+<h2 id="dockerfile">Dockerfile 📋<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Sample Dockerfile</label><label for="__tabbed_3_2">Using Variables</label><label for="__tabbed_3_3">Using Existing zip/tar File</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Sample Dockerfile for Deploying a Static website.</p>
@@ -1918,18 +1913,21 @@ Adding Existing zip/tar files in Dockerfile</p>
 </div>
 </div>
 </div>
-<p>Build the image from the Docker file, Here Change my Name with your registry name and Image.
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>saitejairrinki/wavecafe:v1<span class="w"> </span>.<span class="w"> </span>
+<p>Build the image from the Docker file 🖼️</p>
+<blockquote>
+<p>Replace saitejairrinki/wavecafe:v1 with your preferred image name and tag. 
+  <div class="highlight"><pre><span></span><code><span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>saitejairrinki/wavecafe:v1<span class="w"> </span>.<span class="w"> </span>
 </code></pre></div>
-Run Container From the Image
+Run Container From the Image 📦
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>wavecafe<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9699</span>:80<span class="w"> </span>saitejairrinki/wavecafe:v1
 </code></pre></div>
-Now Access From the Browser, Make sure you have to allow the port number in my case 9699 in your security group if you are using cloud VM.
+Access it from your browser, ensuring that you have allowed port 9699 (or your chosen port) in your security group if you are using a cloud VM. 🌐
 <div class="highlight"><pre><span></span><code>Public-IPaddress:9699
 </code></pre></div></p>
+</blockquote>
 <div class="admonition tip">
 <p class="admonition-title">Docker Image</p>
-<p>You can pull my image and you can also run a container from my image without creating Dockerfile.</p>
+<p>You can pull my image and start a container from it without needing to create a Dockerfile.</p>
 </div>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>saitejairrinki/wavecafe:v1
 </code></pre></div>
@@ -1938,8 +1936,8 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 Now Access From the Browser, Make sure you have to allow the port number in my case 9999 in your security group if you are using cloud VM.
 <div class="highlight"><pre><span></span><code>Public-IPaddress:9999
 </code></pre></div></p>
-<h2 id="docker-compose">Docker Compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Single Docker File</label><label for="__tabbed_6_2">Multi Docker File</label><label for="__tabbed_6_3">Multiple Dockerfiles in Same Directory</label></div>
+<h2 id="docker-compose">Docker Compose 📟<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Single Docker File 📄</label><label for="__tabbed_4_2">Multi Docker File 📑</label><label for="__tabbed_4_3">Multiple Dockerfiles in Same Directory 📂</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Creating Docker Compose for a single local Docker File</p>
@@ -2046,7 +2044,7 @@ Follow logs in real-time
 <p>Remove containers for services not defined in the docker-compose.yml file
 <div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>--remove-orphans
 </code></pre></div></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Docker Volume</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Docker Volume 💽</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
