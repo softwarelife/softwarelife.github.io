@@ -1916,15 +1916,15 @@ Adding Existing zip/tar files in Dockerfile</p>
 <p>Build the image from the Docker file 🖼️</p>
 <blockquote>
 <p>Replace saitejairrinki/wavecafe:v1 with your preferred image name and tag. 
-  <div class="highlight"><pre><span></span><code><span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>saitejairrinki/wavecafe:v1<span class="w"> </span>.<span class="w"> </span>
-</code></pre></div>
-Run Container From the Image 📦
+   <div class="highlight"><pre><span></span><code><span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>saitejairrinki/wavecafe:v1<span class="w"> </span>.<span class="w"> </span>
+</code></pre></div></p>
+</blockquote>
+<p>Run Container From the Image 📦
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>wavecafe<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9699</span>:80<span class="w"> </span>saitejairrinki/wavecafe:v1
 </code></pre></div>
 Access it from your browser, ensuring that you have allowed port 9699 (or your chosen port) in your security group if you are using a cloud VM. 🌐
 <div class="highlight"><pre><span></span><code>Public-IPaddress:9699
 </code></pre></div></p>
-</blockquote>
 <div class="admonition tip">
 <p class="admonition-title">Docker Image</p>
 <p>You can pull my image and start a container from it without needing to create a Dockerfile.</p>
