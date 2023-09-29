@@ -1998,76 +1998,166 @@
 <h2 id="kubernetes-architecture">Kubernetes Architecture 🏛️<a class="headerlink" href="#kubernetes-architecture" title="Permanent link">&para;</a></h2>
 <p>To understand Kubernetes fully, it's essential to grasp its architecture. Kubernetes consists of several major components and concepts working together seamlessly to create a powerful container orchestration system.</p>
 <p><img alt="Kubernetes Architecture" src="https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg" /></p>
-<p>Let's dive into these major components:</p>
+<p>Let's dive into these major components and explore some example commands for managing them:</p>
 <h3 id="k8s-cluster">K8s Cluster 🌐<a class="headerlink" href="#k8s-cluster" title="Permanent link">&para;</a></h3>
 <p>A Kubernetes cluster is the foundation of your container orchestration environment. It's a set of machines, physical or virtual, that run your containerized applications. The cluster is divided into two main components: the control plane and the nodes.</p>
 <h3 id="control-plane">Control Plane 🕹️<a class="headerlink" href="#control-plane" title="Permanent link">&para;</a></h3>
 <p>The control plane is the brain of the Kubernetes cluster. It manages and controls all the nodes and containers within the cluster. It consists of several key components:</p>
 <h4 id="kube-api-server">Kube API Server 🌐<a class="headerlink" href="#kube-api-server" title="Permanent link">&para;</a></h4>
 <p>The Kubernetes API server is the entry point for all administrative tasks. It exposes the Kubernetes API, which administrators, developers, and other services interact with to manage and control the cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--namespace<span class="o">=</span>kube-system
+</code></pre></div>
 <h4 id="etcd-db">Etcd (DB) 🗄️<a class="headerlink" href="#etcd-db" title="Permanent link">&para;</a></h4>
 <p>Etcd is a distributed key-value store used to store all cluster data. It serves as Kubernetes' backing store for all cluster configuration data, ensuring consistency and high availability.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>etcd<span class="w"> </span>--namespace<span class="o">=</span>kube-system
+</code></pre></div>
 <h4 id="kube-scheduler">Kube Scheduler 📅<a class="headerlink" href="#kube-scheduler" title="Permanent link">&para;</a></h4>
 <p>The scheduler is responsible for distributing work (containers) across multiple nodes in the cluster. It considers factors like resource requirements and constraints to make intelligent decisions.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--namespace<span class="o">=</span>kube-system<span class="w"> </span>-o<span class="w"> </span>wide
+</code></pre></div>
 <h4 id="kube-controller-manager">Kube Controller Manager 🕴️<a class="headerlink" href="#kube-controller-manager" title="Permanent link">&para;</a></h4>
 <p>The controller manager runs controller processes that regulate the state of the system. These controllers ensure that the cluster moves towards the desired state and handles events like node failures or application scaling.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>nodes
+</code></pre></div>
 <h3 id="node-components">Node Components 🖥️<a class="headerlink" href="#node-components" title="Permanent link">&para;</a></h3>
 <p>Nodes are the worker machines that run containerized applications. Each node in the cluster has the following components:</p>
 <h4 id="kubelet">Kubelet 🧑‍✈️<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h4>
 <p>The kubelet is an agent that runs on each node. It ensures that containers are running in a Pod, a basic deployable unit in Kubernetes. Kubelet communicates with the control plane to manage containers on the node.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>nodes
+</code></pre></div>
 <h4 id="kube-proxy">Kube Proxy 🔀<a class="headerlink" href="#kube-proxy" title="Permanent link">&para;</a></h4>
 <p>Kube Proxy is responsible for network connectivity. It maintains network rules on nodes and performs network proxying for services in the cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>services
+</code></pre></div>
 <h4 id="container-runtime">Container Runtime 🐳<a class="headerlink" href="#container-runtime" title="Permanent link">&para;</a></h4>
 <p>The container runtime is the software responsible for running containers. Kubernetes supports various container runtimes, including Docker, containerd, and CRI-O.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+</code></pre></div>
 <h3 id="coredns">CoreDNS ☁️<a class="headerlink" href="#coredns" title="Permanent link">&para;</a></h3>
 <p>CoreDNS is a lightweight, flexible, and extensible DNS server that Kubernetes uses for service discovery within the cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>--namespace<span class="o">=</span>kube-system
+</code></pre></div>
 <h3 id="kubectl">Kubectl 🛠️<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h3>
 <p>Kubectl is the command-line tool used to interact with Kubernetes clusters. It allows you to create, inspect, update, and delete resources in your cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>version
+</code></pre></div>
 <h2 id="kubernetes-objects-resources">Kubernetes Objects (Resources) 📦<a class="headerlink" href="#kubernetes-objects-resources" title="Permanent link">&para;</a></h2>
-<p>Kubernetes uses a declarative configuration model. You describe the desired state of your applications and infrastructure using Kubernetes objects or resources. Here are some of the essential types of Kubernetes objects:</p>
+<p>Kubernetes uses a declarative configuration model. You describe the desired state of your applications and infrastructure using Kubernetes objects or resources. Here are some of the essential types of Kubernetes objects along with example commands for managing them:</p>
 <h3 id="workloads">Workloads 💼<a class="headerlink" href="#workloads" title="Permanent link">&para;</a></h3>
 <p>Workloads represent your applications and their components. Common workload objects include:</p>
 <ul>
 <li><strong>Deployment</strong>: Manages the deployment and scaling of Pods.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>my-deployment<span class="w"> </span>--image<span class="o">=</span>my-image:v1
+</code></pre></div>
+<ul>
 <li><strong>ReplicaSet</strong>: Ensures a specified number of replicas of a Pod are running.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>my-deployment<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span>
+</code></pre></div>
+<ul>
 <li><strong>StatefulSet</strong>: Manages stateful applications with unique network identities.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>statefulsets
+</code></pre></div>
+<ul>
 <li><strong>Pod</strong>: The smallest deployable unit in Kubernetes.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+</code></pre></div>
+<ul>
 <li><strong>DaemonSet</strong>: Ensures that all or some nodes run a copy of a Pod.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>daemonset
+</code></pre></div>
+<ul>
 <li><strong>ScheduledJob</strong>: Runs Jobs periodically.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>scheduledjobs
+</code></pre></div>
+<ul>
 <li><strong>Job</strong>: Runs a specified task to completion.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span><span class="nb">jobs</span>
+</code></pre></div>
+<ul>
 <li><strong>CronJob</strong>: Runs Jobs on a schedule.</li>
 </ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>cronjobs
+</code></pre></div>
 <h3 id="services">Services 🌐<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
 <p>Services define networking rules to access your application. They include:</p>
 <ul>
 <li><strong>Service</strong>: Exposes a set of Pods as a network service.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>my-deployment<span class="w"> </span>--port<span class="o">=</span><span class="m">80</span><span class="w"> </span>--target-port<span class="o">=</span><span class="m">8080</span><span class="w"> </span>--type<span class="o">=</span>LoadBalancer
+</code></pre></div>
+<ul>
 <li><strong>Service Types</strong>: ClusterIP, NodePort, LoadBalancer.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>services
+</code></pre></div>
+<ul>
 <li><strong>IngressController and Ingress</strong>: Manages external access to the services.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>ingresses
+</code></pre></div>
+<ul>
 <li><strong>Labels and Selectors</strong>: Labels are used to select and organize objects.</li>
 </ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>my-app
+</code></pre></div>
 <h3 id="configuration">Configuration ⚙️<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>Configuration objects help manage application configuration data:</p>
 <ul>
 <li><strong>Secrets</strong>: Store sensitive information, like passwords or API keys.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>my-secret<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span>myuser<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span>mypassword
+</code></pre></div>
+<ul>
 <li><strong>ConfigMaps</strong>: Store configuration data as key-value pairs.</li>
+</ul>
+<p>```shell
+  kubectl create configmap my-config --from-literal=key1=value1 --from-literal=key2=value</p>
+<p>2
+  ```</p>
+<ul>
 <li><strong>KubeConfig</strong>: Configure access to Kubernetes clusters.</li>
 </ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>config<span class="w"> </span>set-context<span class="w"> </span>my-context<span class="w"> </span>--cluster<span class="o">=</span>my-cluster<span class="w"> </span>--user<span class="o">=</span>my-user
+</code></pre></div>
 <h3 id="storage">Storage 🗄️<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h3>
 <p>Storage objects manage data storage:</p>
 <ul>
 <li><strong>Volumes and PVC</strong>: Provide storage for Pods.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pv
+</code></pre></div>
+<ul>
 <li><strong>Storage Classes</strong>: Define different classes of storage.</li>
 </ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>storageclass
+</code></pre></div>
 <h3 id="security">Security 🔐<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
 <p>Security objects help secure your cluster:</p>
 <ul>
 <li><strong>RBAC (Role-Based Access Control)</strong>: Control access to resources based on roles.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>clusterrole<span class="w"> </span>my-role<span class="w"> </span>--verb<span class="o">=</span>get,list<span class="w"> </span>--resource<span class="o">=</span>pods
+</code></pre></div>
+<ul>
 <li><strong>Service Accounts</strong>: Manage permissions for Pods.</li>
 </ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>serviceaccount<span class="w"> </span>my-serviceaccount
+</code></pre></div>
 <h3 id="set-resource-limits">Set Resource Limits ⚖️<a class="headerlink" href="#set-resource-limits" title="Permanent link">&para;</a></h3>
 <p>You can set resource limits on Pods to manage resource usage effectively.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">set</span><span class="w"> </span>resources<span class="w"> </span>deployment/my-deployment<span class="w"> </span>--limits<span class="o">=</span><span class="nv">cpu</span><span class="o">=</span>500m,memory<span class="o">=</span>256Mi
+</code></pre></div>
 <h3 id="health-checks">Health Checks ❤️<a class="headerlink" href="#health-checks" title="Permanent link">&para;</a></h3>
 <p>Kubernetes supports health checks to ensure that your applications are running correctly.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--field-selector<span class="o">=</span>status.phase<span class="o">=</span>Running
+</code></pre></div>
 
 
 
