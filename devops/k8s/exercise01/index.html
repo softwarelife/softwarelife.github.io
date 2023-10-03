@@ -1215,6 +1215,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#converting-imperative-kubernetes-commands-to-declarative-yaml-files" class="md-nav__link">
+    Converting Imperative Kubernetes Commands to Declarative YAML Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sample-pod-file-imperative-vs-declarative" class="md-nav__link">
     Sample Pod File - Imperative vs. Declarative:
   </a>
@@ -1229,8 +1236,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-grafana-with-nodeport" class="md-nav__link">
-    Deploying Grafana with NodePort:
+  <a href="#deploying-grafana-with-loadbalancer" class="md-nav__link">
+    Deploying Grafana with LoadBalancer:
   </a>
   
 </li>
@@ -1806,6 +1813,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#converting-imperative-kubernetes-commands-to-declarative-yaml-files" class="md-nav__link">
+    Converting Imperative Kubernetes Commands to Declarative YAML Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sample-pod-file-imperative-vs-declarative" class="md-nav__link">
     Sample Pod File - Imperative vs. Declarative:
   </a>
@@ -1820,8 +1834,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-grafana-with-nodeport" class="md-nav__link">
-    Deploying Grafana with NodePort:
+  <a href="#deploying-grafana-with-loadbalancer" class="md-nav__link">
+    Deploying Grafana with LoadBalancer:
   </a>
   
 </li>
@@ -2000,10 +2014,14 @@
 </code></pre></div></p>
 <h3 id="real-time-use-case_1">Real-time Use Case:<a class="headerlink" href="#real-time-use-case_1" title="Permanent link">&para;</a></h3>
 <p>Imagine you are setting up a Continuous Integration/Continuous Deployment (CI/CD) pipeline. Declarative manifests are the preferred choice as they clearly define the desired state of your resources, making it easier to track changes and collaborate with your team.</p>
+<h2 id="converting-imperative-kubernetes-commands-to-declarative-yaml-files">Converting Imperative Kubernetes Commands to Declarative YAML Files<a class="headerlink" href="#converting-imperative-kubernetes-commands-to-declarative-yaml-files" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>my-nginx-pod<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>pod.yaml
+</code></pre></div>
+This command converts an imperative action (creating a pod) into a declarative file using <code>kubectl</code>.</p>
 <h2 id="sample-pod-file-imperative-vs-declarative">Sample Pod File - Imperative vs. Declarative:<a class="headerlink" href="#sample-pod-file-imperative-vs-declarative" title="Permanent link">&para;</a></h2>
 <p>Let's create a sample Pod file to run an Nginx container using both imperative and declarative methods:</p>
 <p><strong>Imperative (command-line):</strong>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>run<span class="w"> </span>my-nginx-pod<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--port<span class="o">=</span><span class="m">80</span><span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>imperative-pod.yaml
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>run<span class="w"> </span>my-nginx-pod<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--port<span class="o">=</span><span class="m">80</span><span class="w"> </span>
 </code></pre></div></p>
 <p><strong>Declarative (pod.yaml):</strong>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w">  </span><span class="c1"># Kubernetes API version 🌐</span>
@@ -2041,9 +2059,9 @@ kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span cla
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-container</span><span class="w">  </span><span class="c1"># Container name 🐳</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w">  </span><span class="c1"># Docker image used for the container 📦</span>
-
-<span class="nn">---</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w">  </span><span class="c1"># Kubernetes API version for Services 🌐</span>
+</code></pre></div></p>
+<p><strong>Declarative (service.yaml):</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w">  </span><span class="c1"># Kubernetes API version for Services 🌐</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w">  </span><span class="c1"># Type of resource: a Service 🚀</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-service</span><span class="w">  </span><span class="c1"># Name of the Service 🏷️</span>
@@ -2056,7 +2074,7 @@ kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span cla
 <span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># Target port on Pods 🎯</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w">  </span><span class="c1"># Type of Service: NodePort for external access 🏃‍♂️🏢</span>
 </code></pre></div></p>
-<h2 id="deploying-grafana-with-nodeport">Deploying Grafana with NodePort:<a class="headerlink" href="#deploying-grafana-with-nodeport" title="Permanent link">&para;</a></h2>
+<h2 id="deploying-grafana-with-loadbalancer">Deploying Grafana with LoadBalancer:<a class="headerlink" href="#deploying-grafana-with-loadbalancer" title="Permanent link">&para;</a></h2>
 <p>To further demonstrate declarative YAML, let's create a deployment and service file to deploy Grafana with a NodePort service. You can customize the Grafana deployment based on your requirements.</p>
 <p><strong>deployment.yaml:</strong>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w">  </span><span class="c1"># Kubernetes API version for Deployments 🌐</span>
@@ -2091,7 +2109,7 @@ kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span cla
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w">  </span><span class="c1"># Protocol used for the port 🔌</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># Port exposed by the Service 🌐</span>
 <span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000</span><span class="w">  </span><span class="c1"># Target port on Pods 🎯</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w">  </span><span class="c1"># Type of Service: NodePort for external access 🏃‍♂️🏢</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span><span class="w">  </span><span class="c1"># Type of Service: LoadBalancer link for external access 🏃‍♂️🏢</span>
 </code></pre></div></p>
 <p>In this example, we're deploying Grafana using declarative YAML files, allowing for a well-defined and repeatable process.</p>
 <h2 id="website-deployment">Website Deployment<a class="headerlink" href="#website-deployment" title="Permanent link">&para;</a></h2>
