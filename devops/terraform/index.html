@@ -1795,9 +1795,10 @@
 <p><strong>IAM User</strong>: Create an AWS IAM user with programmatic access and necessary permissions (e.g., Ec2 Full Access, S3 Full Access). Note down the user's access key ID and secret access key. <a href="https://app.tango.us/app/workflow/Access-keys-3fcc9106131b4a74b77101368d548cbe">Reference Document Link</a></p>
 </li>
 </ol>
-<p>!!! "warning" </p>
-<div class="highlight"><pre><span></span><code>Utilize Role-Based Authentication when working with Terraform on AWS Instances or Services, as it offers a higher level of security compared to using access keys.
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Utilize Role-Based Authentication when working with Terraform on AWS Instances or Services, as it offers a higher level of security compared to using access keys.</p>
+</div>
 <h2 id="terraform-sample-scripts">Terraform Sample Scripts<a class="headerlink" href="#terraform-sample-scripts" title="Permanent link">&para;</a></h2>
 <p>Provisioning an AWS EC2 Instance </p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Utilizing an existing key and security group</label><label for="__tabbed_2_2">Provisioning with New Key and Security Group</label></div>

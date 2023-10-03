@@ -902,6 +902,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scp-commands" class="md-nav__link">
     SCP Commands 🛡️
   </a>
@@ -1701,6 +1708,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scp-commands" class="md-nav__link">
     SCP Commands 🛡️
   </a>
@@ -1818,6 +1832,23 @@
 </code></pre></div></p>
 </div>
 </div>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before you begin, ensure you have the following prerequisites in place:</p>
+<ol>
+<li>
+<p><strong>AWS Account</strong>: You need an active AWS account with necessary permissions to create resources like Ec2 Instances, IAM roles, VPC, etc.</p>
+</li>
+<li>
+<p><strong>AWS CLI</strong>: Install and configure the AWS Command Line Interface (CLI) on your local machine. You can download it from the <a href="https://aws.amazon.com/cli/">AWS CLI Documentation</a>.</p>
+</li>
+<li>
+<p><strong>IAM User</strong>: Create an AWS IAM user with programmatic access and necessary permissions (e.g., Ec2 Full Access, S3 Full Access). Note down the user's access key ID and secret access key. <a href="https://app.tango.us/app/workflow/Access-keys-3fcc9106131b4a74b77101368d548cbe">Reference Document Link</a></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Utilize Role-Based Authentication when working with Terraform on AWS Instances or Services, as it offers a higher level of security compared to using access keys.</p>
 </div>
 <h2 id="scp-commands">SCP Commands 🛡️<a class="headerlink" href="#scp-commands" title="Permanent link">&para;</a></h2>
 <p>To Copy files From Localmachine to Remote machine
