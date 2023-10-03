@@ -1727,20 +1727,11 @@
 <p>Here's an example of how these fields come together in a Kubernetes YAML file for creating a Pod:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes YAML file for a basic Pod</span>
 
-
+<span class="c1">#The &#39;apiVersion&#39; field specifies the Kubernetes API version. </span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"> </span><span class="c1"># (1)</span>
 
 <span class="c1"># The &#39;kind&#39; field defines the type of Kubernetes resource.</span>
-<span class="c1"># In this case, we are creating a Pod, but other common resource types include:</span>
-<span class="c1"># - Deployment</span>
-<span class="c1"># - Service</span>
-<span class="c1"># - ConfigMap</span>
-<span class="c1"># - Secret</span>
-<span class="c1"># - PersistentVolume</span>
-<span class="c1"># - PersistentVolumeClaim</span>
-<span class="c1"># - StatefulSet</span>
-<span class="c1"># - Namespace</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w"> </span><span class="c1"># (2)</span>
 
 <span class="c1"># Metadata section provides information about the resource.</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1750,7 +1741,7 @@
 <span class="w">  </span><span class="c1"># &#39;labels&#39; are key-value pairs used to organize and select resources.</span>
 <span class="w">  </span><span class="c1"># Here, we label the Pod as &#39;app: my-app.&#39;</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app</span><span class="w"> </span>
 
 <span class="c1"># The &#39;spec&#39; section describes the desired state of the resource.</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -1769,7 +1760,7 @@
 </code></pre></div>
 <ol>
 <li>
-<p>The 'apiVersion' field specifies the Kubernetes API version. Common API versions include:</p>
+<p>Common API versions include:</p>
 <ul>
 <li>
 <p>v1: Core resources like Pods, Services, ConfigMaps, and more.</p>
@@ -1782,6 +1773,35 @@
 </li>
 <li>
 <p>networking.k8s.io/v1: Resources like NetworkPolicies.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In this case, we are creating a Pod, but other common resource types include:</p>
+<ul>
+<li>
+<p>Deployment</p>
+</li>
+<li>
+<p>Service</p>
+</li>
+<li>
+<p>ConfigMap</p>
+</li>
+<li>
+<p>Secret</p>
+</li>
+<li>
+<p>PersistentVolume</p>
+</li>
+<li>
+<p>PersistentVolumeClaim</p>
+</li>
+<li>
+<p>StatefulSet</p>
+</li>
+<li>
+<p>Namespace</p>
 </li>
 </ul>
 </li>
