@@ -1787,14 +1787,17 @@
 </div>
 <p>Imperative commands directly manipulate Kubernetes resources in real-time. They are ideal for quick, one-off tasks. Let's explore some imperative examples:</p>
 <p><strong>1. Create a Namespace:</strong>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>my-namespace
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>my-namespace<span class="w"> </span>
 </code></pre></div></p>
 <p><strong>2. Run a Pod:</strong>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>run<span class="w"> </span>my-pod<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--port<span class="o">=</span><span class="m">80</span>
 </code></pre></div></p>
 <p><strong>3. Scale a Deployment:</strong>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>my-deployment<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>my-deployment<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="c1"># (1)</span>
 </code></pre></div></p>
+<ol>
+<li><img alt="🙋‍♂️" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f64b-200d-2642-fe0f.svg" title=":man_raising_hand:" /> set no of replicas</li>
+</ol>
 <h3 id="real-time-use-case">Real-time Use Case:<a class="headerlink" href="#real-time-use-case" title="Permanent link">&para;</a></h3>
 <p>Suppose you have a sudden spike in traffic to your website, and you need to quickly scale up your application. Imperative commands allow you to react swiftly without worrying about YAML configuration files.</p>
 <h2 id="declarative-method">Declarative Method:<a class="headerlink" href="#declarative-method" title="Permanent link">&para;</a></h2>
