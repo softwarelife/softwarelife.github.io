@@ -1743,76 +1743,76 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">If Condition</label><label for="__tabbed_1_2">If Else Condition</label><label for="__tabbed_1_3">Elif Condition</label><label for="__tabbed_1_4">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-
-<span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
-
-<span class="n">then</span>
-
-<span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
-<span class="n">fi</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">then</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">fi</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-
-<span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
-
-<span class="n">then</span>
-
-<span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
-
-<span class="k">else</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
-
-<span class="n">fi</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">then</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">else</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">fi</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-
-<span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
-
-<span class="n">then</span>
-
-<span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
-
-<span class="n">elif</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
-<span class="n">then</span>
-
-<span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
-
-<span class="k">else</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
-
-<span class="n">fi</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">then</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">elif</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">then</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="k">else</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Commands</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Execute</span><span class="o">&gt;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">print</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">echo</span><span class="o">&gt;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="n">fi</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-
-<span class="n">apt</span><span class="w"> </span><span class="o">--</span><span class="n">help</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">$</span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="n">eq</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">]</span>
-
-<span class="n">then</span>
-<span class="w">     </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot; This is Ubuntu Operating System&quot;</span>
-<span class="k">else</span>
-<span class="w">     </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot; This is CentOS Operating System&quot;</span>
-<span class="n">fi</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">apt</span><span class="w"> </span><span class="o">--</span><span class="n">help</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">$</span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="n">eq</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">then</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">     </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot; This is Ubuntu Operating System&quot;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">else</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">     </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot; This is CentOS Operating System&quot;</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">fi</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1825,27 +1825,27 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">For Loop</label><label for="__tabbed_2_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-
-<span class="k">for</span><span class="w"> </span><span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">list</span><span class="o">&gt;</span>
-<span class="k">do</span>
-<span class="w">   </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
-<span class="n">done</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">for</span><span class="w"> </span><span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">list</span><span class="o">&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">do</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">   </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">done</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#For loop example for Creating Files with name alpha beta gamma</span>
-
-<span class="cp">#!/bin/bash</span>
-
-<span class="k">for</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="n">gamma</span><span class="w"> </span>
-<span class="k">do</span>
-<span class="w">   </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Creating file $FILE in system&quot;</span>
-
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="n">$FILE</span>
-
-<span class="n">done</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">#For loop example for Creating Files with name alpha beta gamma</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">for</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="n">gamma</span><span class="w"> </span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">do</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">   </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Creating file $FILE in system&quot;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="n">$FILE</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">done</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1853,29 +1853,29 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">While Loop</label><label for="__tabbed_3_2">While Loop Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-<span class="k">while</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
-<span class="k">do</span>
-<span class="w">   </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
-<span class="n">done</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">while</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">do</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">   </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">done</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-<span class="cp">#Here variable &quot;a&quot; is speed</span>
-
-<span class="n">a</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">echo</span><span class="w"> </span><span class="s">&quot;Starting the Engine&quot;</span>
-
-<span class="k">while</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">$a</span><span class="w"> </span><span class="o">-</span><span class="n">le</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">]</span>
-<span class="k">do</span>
-<span class="w">    </span><span class="n">sleep</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Current Speed $a&quot;</span>
-
-<span class="w">    </span><span class="n">a</span><span class="o">=</span><span class="n">$</span><span class="p">((</span><span class="n">$a</span><span class="o">+</span><span class="mi">10</span><span class="p">))</span>
-
-<span class="n">done</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="cp">#Here variable &quot;a&quot; is speed</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Starting the Engine&quot;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">while</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">$a</span><span class="w"> </span><span class="o">-</span><span class="n">le</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">do</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="n">sleep</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Current Speed $a&quot;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="n">a</span><span class="o">=</span><span class="n">$</span><span class="p">((</span><span class="n">$a</span><span class="o">+</span><span class="mi">10</span><span class="p">))</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">done</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1884,24 +1884,24 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Certainly! Here's an example of how you can create a Bash script with a main function to call the <code>check_empty_string</code> function:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-check_empty_string<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: Input string is empty!&quot;</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Input string is not empty.&quot;</span>
-<span class="w">    </span><span class="k">fi</span>
-<span class="o">}</span>
-
-main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">input</span><span class="o">=</span><span class="s2">&quot;example&quot;</span>
-<span class="w">    </span>check_empty_string<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="c1"># Call the main function</span>
-main
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>check_empty_string<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: Input string is empty!&quot;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Input string is not empty.&quot;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="o">}</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="nv">input</span><span class="o">=</span><span class="s2">&quot;example&quot;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span>check_empty_string<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="o">}</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="c1"># Call the main function</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>main
+</span></code></pre></div>
 <p>In this script, the <code>main</code> function is defined to call the <code>check_empty_string</code> function with the <code>input</code> variable. You can replace <code>"example"</code> with any input string you want to test. When you run the script, it will execute the <code>main</code> function, which in turn calls the <code>check_empty_string</code> function.</p>
 </div>
 </div>
@@ -1911,63 +1911,63 @@ main
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Use Case: A function to greet a person.</p>
-<div class="highlight"><pre><span></span><code>greet<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, </span><span class="nv">$1</span><span class="s2">!&quot;</span>
-<span class="o">}</span>
-
-<span class="c1"># Example usage</span>
-greet<span class="w"> </span><span class="s2">&quot;Alice&quot;</span>
-greet<span class="w"> </span><span class="s2">&quot;Bob&quot;</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>greet<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, </span><span class="nv">$1</span><span class="s2">!&quot;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="o">}</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Example usage</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>greet<span class="w"> </span><span class="s2">&quot;Alice&quot;</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>greet<span class="w"> </span><span class="s2">&quot;Bob&quot;</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Use Case: A function to check if a number is even.</p>
-<div class="highlight"><pre><span></span><code>is_even<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span>%<span class="w"> </span><span class="nv">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Even&quot;</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Odd&quot;</span>
-<span class="w">    </span><span class="k">fi</span>
-<span class="o">}</span>
-
-<span class="c1"># Example usage</span>
-is_even<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># Output: Even</span>
-is_even<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="c1"># Output: Odd</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>is_even<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span>%<span class="w"> </span><span class="nv">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Even&quot;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Odd&quot;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="o">}</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Example usage</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>is_even<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># Output: Even</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>is_even<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="c1"># Output: Odd</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Use Case: A function to display information about a file.</p>
-<div class="highlight"><pre><span></span><code>file_info<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;File: </span><span class="nv">$1</span><span class="s2">&quot;</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Size: </span><span class="k">$(</span>du<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span><span class="s2">&quot;</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Owner: </span><span class="k">$(</span>stat<span class="w"> </span>-c<span class="w"> </span>%U<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="c1"># Example usage</span>
-file_info<span class="w"> </span><span class="s2">&quot;/path/to/somefile.txt&quot;</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>file_info<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;File: </span><span class="nv">$1</span><span class="s2">&quot;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Size: </span><span class="k">$(</span>du<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Owner: </span><span class="k">$(</span>stat<span class="w"> </span>-c<span class="w"> </span>%U<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="o">}</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Example usage</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>file_info<span class="w"> </span><span class="s2">&quot;/path/to/somefile.txt&quot;</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Use Case: A function to calculate the sum of two numbers.</p>
-<div class="highlight"><pre><span></span><code>sum<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$((</span><span class="nv">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">$2</span><span class="k">))</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="c1"># Example usage</span>
-<span class="nv">result</span><span class="o">=</span><span class="k">$(</span>sum<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sum: </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Output: Sum: 8</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sum<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$((</span><span class="nv">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">$2</span><span class="k">))</span><span class="s2">&quot;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="o">}</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Example usage</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">result</span><span class="o">=</span><span class="k">$(</span>sum<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="k">)</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sum: </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Output: Sum: 8</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Use Case: A function to reverse a string.</p>
-<div class="highlight"><pre><span></span><code>reverse<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>rev
-<span class="o">}</span>
-
-<span class="c1"># Example usage</span>
-<span class="nv">reversed</span><span class="o">=</span><span class="k">$(</span>reverse<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Reversed: </span><span class="nv">$reversed</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Output: Reversed: olleh</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>reverse<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>rev
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="o">}</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># Example usage</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">reversed</span><span class="o">=</span><span class="k">$(</span>reverse<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="k">)</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Reversed: </span><span class="nv">$reversed</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Output: Reversed: olleh</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1975,113 +1975,113 @@ file_info<span class="w"> </span><span class="s2">&quot;/path/to/somefile.txt&qu
 <div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Ubuntu</label><label for="__tabbed_6_2">Centos</label><label for="__tabbed_6_3">Using Variables</label><label for="__tabbed_6_4">Using If Else Condition</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">net</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">figlet</span><span class="w"> </span><span class="n">apache2</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">apache2</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">apache2</span>
-<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="mi">2118</span><span class="n">_chilling_cafe</span><span class="p">.</span><span class="n">zip</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
-<span class="cm">sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
-<span class="cm">cd ..</span>
-<span class="cm">sudo rm -rf webfiles</span>
-<span class="cm">sudo systemctl restart apache2</span>
-<span class="cm">figlet done</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">net</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">figlet</span><span class="w"> </span><span class="n">apache2</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">apache2</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">apache2</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="mi">2118</span><span class="n">_chilling_cafe</span><span class="p">.</span><span class="n">zip</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="cm">sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="cm">cd ..</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="cm">sudo rm -rf webfiles</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="cm">sudo systemctl restart apache2</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="cm">figlet done</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">net</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">httpd</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">httpd</span>
-<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="mi">2118</span><span class="n">_chilling_cafe</span><span class="p">.</span><span class="n">zip</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
-<span class="cm">sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
-<span class="cm">cd ..</span>
-<span class="cm">sudo rm -rf webfiles</span>
-<span class="cm">sudo systemctl restart httpd</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">sudo</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">net</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">httpd</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">httpd</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="mi">2118</span><span class="n">_chilling_cafe</span><span class="p">.</span><span class="n">zip</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="cm">sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="cm">cd ..</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="cm">sudo rm -rf webfiles</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="cm">sudo systemctl restart httpd</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-<span class="cp">#Website setup</span>
-<span class="cp">#Adding variables :-)</span>
-<span class="n">URL</span><span class="o">=</span><span class="n">https</span><span class="o">:</span><span class="c1">//templatemo.com/tm-zip-files-2020/templatemo_520_highway.zip</span>
-<span class="n">SRV</span><span class="o">=</span><span class="n">httpd</span>
-<span class="n">PKG</span><span class="o">=</span><span class="n">yum</span>
-<span class="kt">FILE</span><span class="o">=</span><span class="n">templatemo_520_highway</span>
-<span class="n">echo</span><span class="w"> </span><span class="s">&quot;  Installing the Services &amp; Extractors&quot;</span>
-<span class="n">echo</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">$PKG</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">$SRV</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
-<span class="n">echo</span><span class="w"> </span><span class="s">&quot;Start &amp; Enabling the Services&quot;</span>
-<span class="n">echo</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">$SRV</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">$SRV</span>
-<span class="n">echo</span><span class="w"> </span><span class="s">&quot;Downloading the zip file from tooplate.com&quot;</span>
-<span class="n">echo</span>
-<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="n">echo</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">$URL</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
-<span class="n">echo</span><span class="w"> </span><span class="s">&quot;extracting the files &quot;</span>
-<span class="n">echo</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">$FILE</span><span class="p">.</span><span class="n">zip</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
-<span class="n">echo</span><span class="w"> </span><span class="s">&quot;copying the extracted file into html&quot;</span>
-<span class="n">echo</span>
-<span class="n">echo</span><span class="w"> </span><span class="s">&quot;Cleaning files in html Directory&quot;</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
-<span class="cm">echo</span>
-<span class="cm">sudo cp -r $FILE/* /var/www/html &amp;&gt;&gt; /dev/null</span>
-<span class="cm">echo &quot;Restarting the Services&quot;</span>
-<span class="cm">sudo systemctl restart $SRV</span>
-<span class="cm">cd ..</span>
-<span class="cm">sudo rm -rf webfiles</span>
-<span class="cm">sudo systemctl status $SRV | grep Active</span>
-<span class="cm">date</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="cp">#Website setup</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="cp">#Adding variables :-)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">URL</span><span class="o">=</span><span class="n">https</span><span class="o">:</span><span class="c1">//templatemo.com/tm-zip-files-2020/templatemo_520_highway.zip</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">SRV</span><span class="o">=</span><span class="n">httpd</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">PKG</span><span class="o">=</span><span class="n">yum</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="kt">FILE</span><span class="o">=</span><span class="n">templatemo_520_highway</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">echo</span><span class="w"> </span><span class="s">&quot;  Installing the Services &amp; Extractors&quot;</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">echo</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">sudo</span><span class="w"> </span><span class="n">$PKG</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">$SRV</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Start &amp; Enabling the Services&quot;</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">echo</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">$SRV</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">$SRV</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Downloading the zip file from tooplate.com&quot;</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="n">echo</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="n">echo</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">$URL</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="n">echo</span><span class="w"> </span><span class="s">&quot;extracting the files &quot;</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="n">echo</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">$FILE</span><span class="p">.</span><span class="n">zip</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="n">echo</span><span class="w"> </span><span class="s">&quot;copying the extracted file into html&quot;</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="n">echo</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Cleaning files in html Directory&quot;</span>
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="cm">echo</span>
+</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="cm">sudo cp -r $FILE/* /var/www/html &amp;&gt;&gt; /dev/null</span>
+</span><span id="__span-16-30"><a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="cm">echo &quot;Restarting the Services&quot;</span>
+</span><span id="__span-16-31"><a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a><span class="cm">sudo systemctl restart $SRV</span>
+</span><span id="__span-16-32"><a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a><span class="cm">cd ..</span>
+</span><span id="__span-16-33"><a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a><span class="cm">sudo rm -rf webfiles</span>
+</span><span id="__span-16-34"><a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a><span class="cm">sudo systemctl status $SRV | grep Active</span>
+</span><span id="__span-16-35"><a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a><span class="cm">date</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#!/bin/bash</span>
-<span class="n">apt</span><span class="w"> </span><span class="o">--</span><span class="n">help</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
-<span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">$</span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="n">eq</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">]</span>
-<span class="n">then</span><span class="w"> </span>
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">figlet</span><span class="w"> </span><span class="n">net</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">apache2</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">apache2</span>
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">apache2</span>
-<span class="w">   </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="w">   </span><span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="mi">2118</span><span class="n">_chilling_cafe</span><span class="p">.</span><span class="n">zip</span>
-<span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
-<span class="cm">   sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
-<span class="cm">   cd ..</span>
-<span class="cm">   sudo rm -rf webfiles</span>
-<span class="cm">   sudo systemctl restart apache2</span>
-<span class="cm">   sudo systemctl status apache2 | grep Active</span>
-<span class="cm">   figlet done</span>
-<span class="cm">else</span>
-<span class="cm">    sudo yum install wget net-tools unzip httpd -y</span>
-<span class="cm">    sudo systemctl start httpd</span>
-<span class="cm">    sudo systemctl enable httpd</span>
-<span class="cm">    sudo mkdir -p webfiles</span>
-<span class="cm">    cd webfiles</span>
-<span class="cm">    sudo wget https://www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
-<span class="cm">    sudo unzip -o 2118_chilling_cafe.zip</span>
-<span class="cm">    sudo rm -rf /var/www/html/*</span>
-<span class="cm">    sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
-<span class="cm">    cd ..    </span>
-<span class="cm">    sudo rm -rf webfiles</span>
-<span class="cm">    sudo systemctl restart httpd</span>
-<span class="cm">    sudo systemctl status httpd | grep Active</span>
-<span class="cm">fi</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">apt</span><span class="w"> </span><span class="o">--</span><span class="n">help</span><span class="w"> </span><span class="o">&amp;&gt;&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">$</span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="n">eq</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">then</span><span class="w"> </span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">figlet</span><span class="w"> </span><span class="n">net</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">apache2</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">apache2</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">apache2</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">   </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">   </span><span class="n">cd</span><span class="w"> </span><span class="n">webfiles</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="mi">2118</span><span class="n">_chilling_cafe</span><span class="p">.</span><span class="n">zip</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">   </span><span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="cm">/*</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="cm">   sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="cm">   cd ..</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="cm">   sudo rm -rf webfiles</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="cm">   sudo systemctl restart apache2</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="cm">   sudo systemctl status apache2 | grep Active</span>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="cm">   figlet done</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="cm">else</span>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="cm">    sudo yum install wget net-tools unzip httpd -y</span>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="cm">    sudo systemctl start httpd</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="cm">    sudo systemctl enable httpd</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="cm">    sudo mkdir -p webfiles</span>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="cm">    cd webfiles</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="cm">    sudo wget https://www.tooplate.com/zip-templates/2118_chilling_cafe.zip</span>
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="cm">    sudo unzip -o 2118_chilling_cafe.zip</span>
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="cm">    sudo rm -rf /var/www/html/*</span>
+</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="cm">    sudo cp -r 2118_chilling_cafe/* /var/www/html/</span>
+</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a><span class="cm">    cd ..    </span>
+</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="cm">    sudo rm -rf webfiles</span>
+</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="cm">    sudo systemctl restart httpd</span>
+</span><span id="__span-17-33"><a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a><span class="cm">    sudo systemctl status httpd | grep Active</span>
+</span><span id="__span-17-34"><a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a><span class="cm">fi</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>

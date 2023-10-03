@@ -1733,60 +1733,60 @@
 </div>
 </div>
 <p>To streamline the installation process, you can use the following script to install Docker Engine and Docker Compose on both Ubuntu and CentOS:
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>docker_setup.sh
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-apt<span class="w"> </span>--help<span class="w"> </span>&gt;&gt;/dev/null
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span>
-<span class="w">   </span><span class="k">then</span><span class="w"> </span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; INSTALLING DOCKER IN UBUNTU&quot;</span>
-<span class="nb">echo</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
-sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span>docker<span class="w"> </span>docker-engine<span class="w"> </span>docker.io<span class="w"> </span>containerd<span class="w"> </span>runc
-sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>apt-transport-https<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>lsb-release
-curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg
-<span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \</span>
-<span class="s2">  </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
-sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>-y<span class="w">  </span>
-sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
-<span class="w">    </span><span class="k">else</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; INSTALLING DOCKER IN CENTOS&quot;</span>
-<span class="nb">echo</span>
-sudo<span class="w"> </span>yum<span class="w"> </span>remove<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-client<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-client-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-common<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-latest-logrotate<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-logrotate<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-engine
-sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>yum-utils
-sudo<span class="w"> </span>yum-config-manager<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--add-repo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>https://download.docker.com/linux/centos/docker-ce.repo
-sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>-y<span class="w">   </span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
-sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
-<span class="k">fi</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Installing Docker Compose&quot;</span>
-sudo<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>/usr/local/bin/docker-compose
-sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/docker-compose
-docker-compose<span class="w"> </span>--version
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vim<span class="w"> </span>docker_setup.sh
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>apt<span class="w"> </span>--help<span class="w"> </span>&gt;&gt;/dev/null
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">   </span><span class="k">then</span><span class="w"> </span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; INSTALLING DOCKER IN UBUNTU&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">echo</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span>docker<span class="w"> </span>docker-engine<span class="w"> </span>docker.io<span class="w"> </span>containerd<span class="w"> </span>runc
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>apt-transport-https<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span>lsb-release
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="s2">&quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s2">  </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>-y<span class="w">  </span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; INSTALLING DOCKER IN CENTOS&quot;</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="nb">echo</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>sudo<span class="w"> </span>yum<span class="w"> </span>remove<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">                  </span>docker-client<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">                  </span>docker-client-latest<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">                  </span>docker-common<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">                  </span>docker-latest<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">                  </span>docker-latest-logrotate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">                  </span>docker-logrotate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">                  </span>docker-engine
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>yum-utils
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>sudo<span class="w"> </span>yum-config-manager<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span>--add-repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">    </span>https://download.docker.com/linux/centos/docker-ce.repo
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>-y<span class="w">   </span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="k">fi</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Installing Docker Compose&quot;</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>sudo<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>/usr/local/bin/docker-compose
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/docker-compose
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>docker-compose<span class="w"> </span>--version
+</span></code></pre></div>
 Now, grant execute permission to the script:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>docker_setup.sh
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>docker_setup.sh
+</span></code></pre></div>
 Finally, run the script to install Docker and Docker Compose:
-<div class="highlight"><pre><span></span><code>./docker_setup.sh
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./docker_setup.sh
+</span></code></pre></div></p>
 <h2 id="docker-commands">Docker Commands 🚀<a class="headerlink" href="#docker-commands" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Docker Images 🖼️</label><label for="__tabbed_2_2">Containers 📦</label><label for="__tabbed_2_3">Share 🔄</label></div>
 <div class="tabbed-content">
@@ -1794,81 +1794,81 @@ Finally, run the script to install Docker and Docker Compose:
 <p>List All Images 📋</p>
 <blockquote>
 <p>To display all locally stored Docker images, use the following command:
-  <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>image<span class="w"> </span>ls
-</code></pre></div></p>
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>image<span class="w"> </span>ls
+</span></code></pre></div></p>
 </blockquote>
 <p>Build an Image 🛠️</p>
 <blockquote>
 <p>To create an image from a Dockerfile in the current directory and assign a tag, utilize this command:
- <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;<span class="w"> </span>
-</code></pre></div></p>
+ <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;<span class="w"> </span>
+</span></code></pre></div></p>
 </blockquote>
 <p>Delete an Image 🗑️</p>
 <blockquote>
 <p>Remove an image from the local image store using the following command:
- <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>image<span class="w"> </span>rm<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
-</code></pre></div></p>
+ <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>image<span class="w"> </span>rm<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
+</span></code></pre></div></p>
 </blockquote>
 </div>
 <div class="tabbed-block">
 <p>Run a container in an interactive mode: 
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
+</span></code></pre></div></p>
 <p>Run a container from the Image nginx:latest, name it "web," and expose port 5000 externally, mapped to port 80 inside the container in detached mode: ▶️
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:80<span class="w"> </span>nginx:latest
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:80<span class="w"> </span>nginx:latest
+</span></code></pre></div></p>
 <p>Run a detached container in a previously created container network: 🌐
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>&lt;mynetwork&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>--net<span class="w"> </span>mynetwork<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:80<span class="w"> </span>nginx:latest
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>&lt;mynetwork&gt;
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>--net<span class="w"> </span>mynetwork<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:80<span class="w"> </span>nginx:latest
+</span></code></pre></div></p>
 <p>Follow the logs of a specific container:
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
+</span></code></pre></div></p>
 <p>List only active containers 🟢
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span>ps
+</span></code></pre></div></p>
 <p>List all containers 🟢🔴
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span>-a
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>docker<span class="w"> </span>ps<span class="w"> </span>-a
+</span></code></pre></div></p>
 <p>Stop a container ⏹️
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>docker<span class="w"> </span>stop<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
+</span></code></pre></div></p>
 <p>Stop a container (timeout = 1 second) 
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>-t1
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>docker<span class="w"> </span>stop<span class="w"> </span>-t1
+</span></code></pre></div></p>
 <p>Remove a stopped container 🗑️
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>docker<span class="w"> </span>rm<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
+</span></code></pre></div></p>
 <p>Force stop and remove a container
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
+</span></code></pre></div></p>
 <p>Remove all containers 
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps-aq<span class="k">)</span>
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps-aq<span class="k">)</span>
+</span></code></pre></div></p>
 <p>Remove all stopped containers
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-q<span class="w"> </span>-f<span class="w"> </span>“status<span class="o">=</span>exited”<span class="k">)</span>
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>docker<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-q<span class="w"> </span>-f<span class="w"> </span>“status<span class="o">=</span>exited”<span class="k">)</span>
+</span></code></pre></div></p>
 <p>Execute a new process in an existing container: Execute and access bash inside a container
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container-id&gt;<span class="w"> </span>bash
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container-id&gt;<span class="w"> </span>bash
+</span></code></pre></div>
 To inspect the container
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;container<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>container<span class="w"> </span>container-id&gt;
+</span></code></pre></div></p>
 </div>
 <div class="tabbed-block">
 <p>To Establish Connections from Local to Remote. log in with your Dockerhub Credentials.
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>docker<span class="w"> </span>login
+</span></code></pre></div>
 Pull an image from a registry</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>&lt;imagename&gt;:&lt;tag&gt;
+</span></code></pre></div>
 <p>Retag a local image with a new image name and tag
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>tag<span class="w"> </span>myimage:1.0<span class="w"> </span>myrepo/myimage:2.0
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>docker<span class="w"> </span>tag<span class="w"> </span>myimage:1.0<span class="w"> </span>myrepo/myimage:2.0
+</span></code></pre></div></p>
 <p>Push an image to a registry.
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>push<span class="w"> </span>myrepo/myimage:2.0
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>docker<span class="w"> </span>push<span class="w"> </span>myrepo/myimage:2.0
+</span></code></pre></div></p>
 </div>
 </div>
 </div>
@@ -1877,290 +1877,290 @@ Pull an image from a registry</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Sample Dockerfile for Deploying a Static website.</p>
-<p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Dockerfile
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp"># Use the CentOS 7 base image</span>
-<span class="n">FROM</span><span class="w"> </span><span class="n">centos</span><span class="o">:</span><span class="mi">7</span>
-
-<span class="cp"># Set metadata labels</span>
-<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Author&quot;</span><span class="o">=</span><span class="s">&quot;saiteja Irrinki&quot;</span>
-<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;Wave&quot;</span>
-
-<span class="cp"># Install necessary packages - Apache, wget, and unzip</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
-
-<span class="cp"># Download the website template</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2121_wave_cafe.zip</span>
-
-<span class="cp"># Unzip the downloaded template</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="mi">2121</span><span class="n">_wave_cafe</span><span class="p">.</span><span class="n">zip</span>
-
-<span class="cp"># Copy the contents of the unzipped template to the web server directory</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="mi">2121</span><span class="n">_wave_cafe</span><span class="cm">/* /var/www/html/</span>
-
-<span class="cm"># Start the Apache web server in the foreground</span>
-<span class="cm">CMD [&quot;/usr/sbin/httpd&quot;, &quot;-D&quot;, &quot;FOREGROUND&quot;]</span>
-
-<span class="cm"># Expose port 80 for web traffic</span>
-<span class="cm">EXPOSE 80</span>
-
-<span class="cm"># Set the working directory to the web server directory</span>
-<span class="cm">WORKDIR /var/www/html</span>
-
-<span class="cm"># Create a volume for Apache&#39;s log files</span>
-<span class="cm">VOLUME /var/log/httpd</span>
-</code></pre></div></p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>vim<span class="w"> </span>Dockerfile
+</span></code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="cp"># Use the CentOS 7 base image</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">FROM</span><span class="w"> </span><span class="n">centos</span><span class="o">:</span><span class="mi">7</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="cp"># Set metadata labels</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Author&quot;</span><span class="o">=</span><span class="s">&quot;saiteja Irrinki&quot;</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;Wave&quot;</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="cp"># Install necessary packages - Apache, wget, and unzip</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="n">RUN</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="cp"># Download the website template</span>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="n">RUN</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2121_wave_cafe.zip</span>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="cp"># Unzip the downloaded template</span>
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="n">RUN</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="mi">2121</span><span class="n">_wave_cafe</span><span class="p">.</span><span class="n">zip</span>
+</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="cp"># Copy the contents of the unzipped template to the web server directory</span>
+</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="n">RUN</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="mi">2121</span><span class="n">_wave_cafe</span><span class="cm">/* /var/www/html/</span>
+</span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>
+</span><span id="__span-27-20"><a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="cm"># Start the Apache web server in the foreground</span>
+</span><span id="__span-27-21"><a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="cm">CMD [&quot;/usr/sbin/httpd&quot;, &quot;-D&quot;, &quot;FOREGROUND&quot;]</span>
+</span><span id="__span-27-22"><a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>
+</span><span id="__span-27-23"><a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="cm"># Expose port 80 for web traffic</span>
+</span><span id="__span-27-24"><a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="cm">EXPOSE 80</span>
+</span><span id="__span-27-25"><a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>
+</span><span id="__span-27-26"><a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="cm"># Set the working directory to the web server directory</span>
+</span><span id="__span-27-27"><a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="cm">WORKDIR /var/www/html</span>
+</span><span id="__span-27-28"><a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>
+</span><span id="__span-27-29"><a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a><span class="cm"># Create a volume for Apache&#39;s log files</span>
+</span><span id="__span-27-30"><a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="cm">VOLUME /var/log/httpd</span>
+</span></code></pre></div></p>
 </div>
 <div class="tabbed-block">
 <p>Using Variables in Dockerfile for Deploying a Static website.</p>
-<p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Dockerfile
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp"># Define variables</span>
-<span class="n">ARG</span><span class="w"> </span><span class="n">AUTHOR</span><span class="o">=</span><span class="s">&quot;saiteja Irrinki&quot;</span>
-<span class="n">ARG</span><span class="w"> </span><span class="n">PROJECT</span><span class="o">=</span><span class="s">&quot;Highway&quot;</span>
-<span class="n">ARG</span><span class="w"> </span><span class="n">DOWNLOAD_URL</span><span class="o">=</span><span class="s">&quot;https://templatemo.com/tm-zip-files-2020/templatemo_520_highway.zip&quot;</span>
-<span class="n">ARG</span><span class="w"> </span><span class="kt">FILE</span><span class="o">=</span><span class="s">&quot;templatemo_520_highway&quot;</span>
-<span class="cp"># Use the variables</span>
-<span class="n">FROM</span><span class="w"> </span><span class="n">centos</span><span class="o">:</span><span class="mi">7</span>
-<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Author&quot;</span><span class="o">=</span><span class="s">&quot;$AUTHOR&quot;</span>
-<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;$PROJECT&quot;</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
-
-<span class="cp"># Use --no-check-certificate flag to bypass SSL certificate checks</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span><span class="w"> </span><span class="s">&quot;$DOWNLOAD_URL&quot;</span>
-
-<span class="n">RUN</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="s">&quot;$FILE&quot;</span><span class="p">.</span><span class="n">zip</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="s">&quot;$FILE&quot;</span><span class="cm">/* /var/www/html/</span>
-<span class="cm">CMD [&quot;/usr/sbin/httpd&quot;, &quot;-D&quot;, &quot;FOREGROUND&quot;]</span>
-<span class="cm">EXPOSE 80</span>
-<span class="cm">WORKDIR /var/www/html</span>
-<span class="cm">VOLUME /var/log/httpd</span>
-
-<span class="cm"># Set the image name and optionally a tag</span>
-<span class="cm">LABEL &quot;name&quot;=&quot;$PROJECT&quot;</span>
-</code></pre></div></p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>vim<span class="w"> </span>Dockerfile
+</span></code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="cp"># Define variables</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">ARG</span><span class="w"> </span><span class="n">AUTHOR</span><span class="o">=</span><span class="s">&quot;saiteja Irrinki&quot;</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">ARG</span><span class="w"> </span><span class="n">PROJECT</span><span class="o">=</span><span class="s">&quot;Highway&quot;</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">ARG</span><span class="w"> </span><span class="n">DOWNLOAD_URL</span><span class="o">=</span><span class="s">&quot;https://templatemo.com/tm-zip-files-2020/templatemo_520_highway.zip&quot;</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="n">ARG</span><span class="w"> </span><span class="kt">FILE</span><span class="o">=</span><span class="s">&quot;templatemo_520_highway&quot;</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="cp"># Use the variables</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="n">FROM</span><span class="w"> </span><span class="n">centos</span><span class="o">:</span><span class="mi">7</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Author&quot;</span><span class="o">=</span><span class="s">&quot;$AUTHOR&quot;</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;$PROJECT&quot;</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="n">RUN</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="cp"># Use --no-check-certificate flag to bypass SSL certificate checks</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="n">RUN</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span><span class="w"> </span><span class="s">&quot;$DOWNLOAD_URL&quot;</span>
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="n">RUN</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="s">&quot;$FILE&quot;</span><span class="p">.</span><span class="n">zip</span>
+</span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="n">RUN</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="s">&quot;$FILE&quot;</span><span class="cm">/* /var/www/html/</span>
+</span><span id="__span-29-17"><a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="cm">CMD [&quot;/usr/sbin/httpd&quot;, &quot;-D&quot;, &quot;FOREGROUND&quot;]</span>
+</span><span id="__span-29-18"><a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="cm">EXPOSE 80</span>
+</span><span id="__span-29-19"><a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="cm">WORKDIR /var/www/html</span>
+</span><span id="__span-29-20"><a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="cm">VOLUME /var/log/httpd</span>
+</span><span id="__span-29-21"><a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>
+</span><span id="__span-29-22"><a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="cm"># Set the image name and optionally a tag</span>
+</span><span id="__span-29-23"><a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="cm">LABEL &quot;name&quot;=&quot;$PROJECT&quot;</span>
+</span></code></pre></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Dockerfile
-</code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>vim<span class="w"> </span>Dockerfile
+</span></code></pre></div>
 Adding Existing zip/tar files in Dockerfile</p>
 <blockquote>
 <p>Docker expects the wave.tar.gz file to exist in the same directory where you are executing the docker build command. Docker will then copy the contents of that file into the /var/www/html/ directory within the Docker image being built. </p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="cp"># Use the latest Ubuntu base image</span>
-<span class="n">FROM</span><span class="w"> </span><span class="n">ubuntu</span><span class="o">:</span><span class="n">latest</span>
-
-<span class="cp"># Set metadata labels for author and project</span>
-<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Author&quot;</span><span class="o">=</span><span class="s">&quot;Saiteja Irrinki&quot;</span>
-<span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;Wave&quot;</span>
-
-<span class="cp"># Set environment variable to make the installation non-interactive</span>
-<span class="n">ENV</span><span class="w"> </span><span class="n">DEBIAN_FRONTEND</span><span class="o">=</span><span class="n">noninteractive</span>
-
-<span class="cp"># Update package list and install Apache2 and Git</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">apache2</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
-
-<span class="cp"># Add the contents of &#39;wave.tar.gz&#39; to the Apache web server</span>
-<span class="cp"># You can use either &#39;COPY&#39; or &#39;ADD&#39;. Here, we&#39;re using &#39;ADD&#39;.</span>
-<span class="n">ADD</span><span class="w"> </span><span class="n">wave</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
-
-<span class="cp"># Start the Apache2 web server in the foreground</span>
-<span class="n">CMD</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;/usr/sbin/apache2ctl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOREGROUND&quot;</span><span class="p">]</span>
-
-<span class="cp"># Expose port 80 for web traffic</span>
-<span class="n">EXPOSE</span><span class="w"> </span><span class="mi">80</span>
-
-<span class="cp"># Set the working directory to the Apache web server&#39;s document root</span>
-<span class="n">WORKDIR</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
-
-<span class="cp"># Create a volume for Apache2 log files</span>
-<span class="n">VOLUME</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">apache2</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="cp"># Use the latest Ubuntu base image</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">FROM</span><span class="w"> </span><span class="n">ubuntu</span><span class="o">:</span><span class="n">latest</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="cp"># Set metadata labels for author and project</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Author&quot;</span><span class="o">=</span><span class="s">&quot;Saiteja Irrinki&quot;</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;Wave&quot;</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="cp"># Set environment variable to make the installation non-interactive</span>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="n">ENV</span><span class="w"> </span><span class="n">DEBIAN_FRONTEND</span><span class="o">=</span><span class="n">noninteractive</span>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="cp"># Update package list and install Apache2 and Git</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="n">RUN</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">apache2</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="cp"># Add the contents of &#39;wave.tar.gz&#39; to the Apache web server</span>
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="cp"># You can use either &#39;COPY&#39; or &#39;ADD&#39;. Here, we&#39;re using &#39;ADD&#39;.</span>
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="n">ADD</span><span class="w"> </span><span class="n">wave</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="cp"># Start the Apache2 web server in the foreground</span>
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="n">CMD</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;/usr/sbin/apache2ctl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOREGROUND&quot;</span><span class="p">]</span>
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a>
+</span><span id="__span-31-21"><a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a><span class="cp"># Expose port 80 for web traffic</span>
+</span><span id="__span-31-22"><a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="n">EXPOSE</span><span class="w"> </span><span class="mi">80</span>
+</span><span id="__span-31-23"><a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a>
+</span><span id="__span-31-24"><a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a><span class="cp"># Set the working directory to the Apache web server&#39;s document root</span>
+</span><span id="__span-31-25"><a id="__codelineno-31-25" name="__codelineno-31-25" href="#__codelineno-31-25"></a><span class="n">WORKDIR</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
+</span><span id="__span-31-26"><a id="__codelineno-31-26" name="__codelineno-31-26" href="#__codelineno-31-26"></a>
+</span><span id="__span-31-27"><a id="__codelineno-31-27" name="__codelineno-31-27" href="#__codelineno-31-27"></a><span class="cp"># Create a volume for Apache2 log files</span>
+</span><span id="__span-31-28"><a id="__codelineno-31-28" name="__codelineno-31-28" href="#__codelineno-31-28"></a><span class="n">VOLUME</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">apache2</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
 <p>Build the image from the Docker file 🖼️</p>
 <blockquote>
 <p>Replace saitejairrinki/wavecafe:v1 with your preferred image name and tag. 
-   <div class="highlight"><pre><span></span><code><span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>saitejairrinki/wavecafe:v1<span class="w"> </span>.<span class="w"> </span>
-</code></pre></div></p>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>saitejairrinki/wavecafe:v1<span class="w"> </span>.<span class="w"> </span>
+</span></code></pre></div></p>
 </blockquote>
 <p>Run Container From the Image 📦
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>wavecafe<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9699</span>:80<span class="w"> </span>saitejairrinki/wavecafe:v1
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>wavecafe<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9699</span>:80<span class="w"> </span>saitejairrinki/wavecafe:v1
+</span></code></pre></div>
 Access it from your browser, ensuring that you have allowed port 9699 (or your chosen port) in your security group if you are using a cloud VM. 🌐
-<div class="highlight"><pre><span></span><code>Public-IPaddress:9699
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Public-IPaddress:9699
+</span></code></pre></div></p>
 <div class="admonition tip">
 <p class="admonition-title">Docker Image</p>
 <p>You can pull my image and start a container from it without needing to create a Dockerfile.</p>
 </div>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>saitejairrinki/wavecafe:v1
-</code></pre></div>
-<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>wavecafe<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9999</span>:80<span class="w"> </span>saitejairrinki/wavecafe:v1
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>saitejairrinki/wavecafe:v1
+</span></code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>wavecafe<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9999</span>:80<span class="w"> </span>saitejairrinki/wavecafe:v1
+</span></code></pre></div>
 Now Access From the Browser, Make sure you have to allow the port number in my case 9999 in your security group if you are using cloud VM.
-<div class="highlight"><pre><span></span><code>Public-IPaddress:9999
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>Public-IPaddress:9999
+</span></code></pre></div></p>
 <h2 id="docker-compose">Docker Compose 📟<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Single Docker File 📄</label><label for="__tabbed_4_2">Multi Docker File 📑</label><label for="__tabbed_4_3">Multiple Dockerfiles in Same Directory 📂</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Creating Docker Compose for a single local Docker File</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span>
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">Wavecafe</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/Dockerfile_path/</span>
-<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5555:80&quot;</span>
-<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavecafe</span>
-</code></pre></div>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nt">services</span><span class="p">:</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">    </span><span class="nt">Wavecafe</span><span class="p">:</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">        </span><span class="nt">build</span><span class="p">:</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">            </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/Dockerfile_path/</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5555:80&quot;</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavecafe</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Creating Docker Compose for a Multi local Docker File</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
-
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">website1</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home</span><span class="w">   </span><span class="c1"># Path to the first Dockerfile directory</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8081:80&quot;</span><span class="w">      </span><span class="c1"># Map port 8081 on the host to port 80 in the container</span>
-
-<span class="w">  </span><span class="nt">website2</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span><span class="w">    </span><span class="c1"># Path to the second Dockerfile directory</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8082:80&quot;</span><span class="w">      </span><span class="c1"># Map port 8082 on the host to port 80 in the container</span>
-</code></pre></div>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="nt">services</span><span class="p">:</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span><span class="nt">website1</span><span class="p">:</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home</span><span class="w">   </span><span class="c1"># Path to the first Dockerfile directory</span>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8081:80&quot;</span><span class="w">      </span><span class="c1"># Map port 8081 on the host to port 80 in the container</span>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">  </span><span class="nt">website2</span><span class="p">:</span>
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span><span class="w">    </span><span class="c1"># Path to the second Dockerfile directory</span>
+</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-39-14"><a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8082:80&quot;</span><span class="w">      </span><span class="c1"># Map port 8082 on the host to port 80 in the container</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>If you have multiple Dockerfiles in the same build context directory, you can use the dockerfile option to specify a different Dockerfile name.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
-
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">website1</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./website1</span>
-<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile1</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8080:80&quot;</span><span class="w">  </span><span class="c1"># Map host port 8080 to container port 80</span>
-
-<span class="w">  </span><span class="nt">website2</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./website2</span>
-<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile2</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8081:80&quot;</span><span class="w">  </span><span class="c1"># Map host port 8081 to container port 80</span>
-</code></pre></div>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="nt">services</span><span class="p">:</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">  </span><span class="nt">website1</span><span class="p">:</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./website1</span>
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile1</span>
+</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8080:80&quot;</span><span class="w">  </span><span class="c1"># Map host port 8080 to container port 80</span>
+</span><span id="__span-40-10"><a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>
+</span><span id="__span-40-11"><a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a><span class="w">  </span><span class="nt">website2</span><span class="p">:</span>
+</span><span id="__span-40-12"><a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+</span><span id="__span-40-13"><a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./website2</span>
+</span><span id="__span-40-14"><a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a><span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile2</span>
+</span><span id="__span-40-15"><a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-40-16"><a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8081:80&quot;</span><span class="w">  </span><span class="c1"># Map host port 8081 to container port 80</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
 <p>Creating Docker Compose for DockerHub Images
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">website</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe:v1</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8085:80&quot;</span>
-</code></pre></div></p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="nt">services</span><span class="p">:</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="w">  </span><span class="nt">website</span><span class="p">:</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe:v1</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8085:80&quot;</span>
+</span></code></pre></div></p>
 <p>Start all containers defined in the docker-compose.yml file
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>docker-compose<span class="w"> </span>up
+</span></code></pre></div></p>
 <p>Start containers in the background (detached mode)
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div></p>
 <p>Stop and remove all containers defined in the docker-compose.yml file
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>docker-compose<span class="w"> </span>down
+</span></code></pre></div>
 Stop, remove containers, and remove volumes
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>-v
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>docker-compose<span class="w"> </span>down<span class="w"> </span>-v
+</span></code></pre></div></p>
 <p>List containers and their current status
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>ps
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>docker-compose<span class="w"> </span>ps
+</span></code></pre></div></p>
 <p>View logs of all containers defined in the docker-compose.yml file
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>logs
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>docker-compose<span class="w"> </span>logs
+</span></code></pre></div>
 Follow logs in real-time
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>logs<span class="w"> </span>-f
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>docker-compose<span class="w"> </span>logs<span class="w"> </span>-f
+</span></code></pre></div></p>
 <p>Build or rebuild Docker images for all services
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>build
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>docker-compose<span class="w"> </span>build
+</span></code></pre></div></p>
 <p>Pull the latest images for all services
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>pull
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>docker-compose<span class="w"> </span>pull
+</span></code></pre></div></p>
 <p>Restart all containers
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>restart
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>docker-compose<span class="w"> </span>restart
+</span></code></pre></div></p>
 <p>Execute a command in a running container
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;service-name&gt;<span class="w"> </span>&lt;command&gt;
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;service-name&gt;<span class="w"> </span>&lt;command&gt;
+</span></code></pre></div></p>
 <p>Stop all containers without removing them
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>stop
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>docker-compose<span class="w"> </span>stop
+</span></code></pre></div></p>
 <p>Start stopped containers
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>start
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>docker-compose<span class="w"> </span>start
+</span></code></pre></div></p>
 <p>Stop and remove containers, networks, volumes, and associated Docker images
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>--rmi<span class="w"> </span>all
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>docker-compose<span class="w"> </span>down<span class="w"> </span>--rmi<span class="w"> </span>all
+</span></code></pre></div></p>
 <p>Remove containers for services not defined in the docker-compose.yml file
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>--remove-orphans
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>docker-compose<span class="w"> </span>down<span class="w"> </span>--remove-orphans
+</span></code></pre></div></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Docker Volume 💽</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
 <p>Creating a Separate Directory to Store Container data</p>
-<p><div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>mountbind
-</code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>mkdir<span class="w"> </span>mountbind
+</span></code></pre></div>
 Now link your Directory while running the container
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db01<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>secret123<span class="w"> </span>-p<span class="w"> </span><span class="m">3300</span>:3306<span class="w"> </span>-v<span class="w"> </span>/root/mountbind:/var/lib/mysql<span class="w"> </span>-d<span class="w"> </span>mysql:5.7
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db01<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>secret123<span class="w"> </span>-p<span class="w"> </span><span class="m">3300</span>:3306<span class="w"> </span>-v<span class="w"> </span>/root/mountbind:/var/lib/mysql<span class="w"> </span>-d<span class="w"> </span>mysql:5.7
+</span></code></pre></div>
 Now do ls to the Directory there you can see the containers data
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>mountbind
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>ls<span class="w"> </span>mountbind
+</span></code></pre></div>
 Creating docker Volume, use the below command to see all the available options of docker volume
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>--help
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>docker<span class="w"> </span>volume<span class="w"> </span>--help
+</span></code></pre></div>
 Creating a new docker volume with name <mark>datadb</mark>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>datadb
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>datadb
+</span></code></pre></div>
 Command removes all Docker volumes that are present on your system.
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span>-q<span class="k">)</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span>-q<span class="k">)</span>
+</span></code></pre></div>
 Now run your container with that volume
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db02<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>secret123<span class="w"> </span>-p<span class="w"> </span><span class="m">3301</span>:3306<span class="w"> </span>-v<span class="w"> </span>datadb:/var/lib/mysql<span class="w"> </span>-d<span class="w"> </span>mysql:5.7
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db02<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>secret123<span class="w"> </span>-p<span class="w"> </span><span class="m">3301</span>:3306<span class="w"> </span>-v<span class="w"> </span>datadb:/var/lib/mysql<span class="w"> </span>-d<span class="w"> </span>mysql:5.7
+</span></code></pre></div>
 Now check 
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/var/lib/docker/volumes/datadb/_data/
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>ls<span class="w"> </span>/var/lib/docker/volumes/datadb/_data/
+</span></code></pre></div>
 Now for testing Create any file with any name of your choice, here I'm creating a file with the name Milkyway
-<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>/var/lib/docker/volumes/datadb/_data/milkyway
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>touch<span class="w"> </span>/var/lib/docker/volumes/datadb/_data/milkyway
+</span></code></pre></div>
 Now log in into the container and Verify your file.
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>db02<span class="w"> </span>/bin/bash
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/var/lib/mysql/
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>db02<span class="w"> </span>/bin/bash
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>ls<span class="w"> </span>/var/lib/mysql/
+</span></code></pre></div>
 Now exit from the container
-<div class="highlight"><pre><span></span><code>exit
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>exit
+</span></code></pre></div>
 If you want to access the MySQL database with a MySQL client then follow the below steps</p>
-<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mysql-client
-</code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mysql-client
+</span></code></pre></div>
 Now fetch the container IP by doing Docker Inspect
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>inspect<span class="w"> </span>db02<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-i<span class="w"> </span>ipaddress
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>db02<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-i<span class="w"> </span>ipaddress
+</span></code></pre></div>
 Now Connect with that IP
-<div class="highlight"><pre><span></span><code>mysql<span class="w"> </span>-h<span class="w"> </span><span class="m">172</span>.17.0.4<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-psecret123
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>mysql<span class="w"> </span>-h<span class="w"> </span><span class="m">172</span>.17.0.4<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-psecret123
+</span></code></pre></div></p>
 
 
 

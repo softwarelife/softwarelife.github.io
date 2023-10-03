@@ -1652,139 +1652,139 @@
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-cp<span class="w"> </span>/etc/sysctl.conf<span class="w"> </span>/root/sysctl.conf_backup
-cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/sysctl.conf</span>
-<span class="s">vm.max_map_count=262144</span>
-<span class="s">fs.file-max=65536</span>
-<span class="s">ulimit -n 65536</span>
-<span class="s">ulimit -u 4096</span>
-<span class="s">EOT</span>
-cp<span class="w"> </span>/etc/security/limits.conf<span class="w"> </span>/root/sec_limit.conf_backup
-cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/security/limits.conf</span>
-<span class="s">sonarqube   -   nofile   65536</span>
-<span class="s">sonarqube   -   nproc    409</span>
-<span class="s">EOT</span>
-
-sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>openjdk-11-jdk<span class="w"> </span>-y
-sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--config<span class="w"> </span>java
-java<span class="w"> </span>-version
-
-sudo<span class="w"> </span>apt<span class="w"> </span>update
-wget<span class="w"> </span>-q<span class="w"> </span>https://www.postgresql.org/media/keys/ACCC4CF8.asc<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
-
-sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main&quot; &gt;&gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-contrib<span class="w"> </span>-y
-<span class="c1">#sudo -u postgres psql -c &quot;SELECT version();&quot;</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>postgresql.service
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w">  </span>postgresql.service
-sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;postgres:admin123&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>chpasswd
-runuser<span class="w"> </span>-l<span class="w"> </span>postgres<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;createuser sonar&quot;</span>
-sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ALTER USER sonar WITH ENCRYPTED PASSWORD &#39;admin123&#39;;&quot;</span>
-sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE DATABASE sonarqube OWNER sonar;&quot;</span>
-sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;GRANT ALL PRIVILEGES ON DATABASE sonarqube to sonar;&quot;</span>
-systemctl<span class="w"> </span>restart<span class="w">  </span>postgresql
-<span class="c1">#systemctl status -l   postgresql</span>
-netstat<span class="w"> </span>-tulpena<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>postgres
-sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/sonarqube/
-<span class="nb">cd</span><span class="w"> </span>/sonarqube/
-sudo<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.3.0.34182.zip
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>zip<span class="w"> </span>-y
-sudo<span class="w"> </span>unzip<span class="w"> </span>-o<span class="w"> </span>sonarqube-8.3.0.34182.zip<span class="w"> </span>-d<span class="w"> </span>/opt/
-sudo<span class="w"> </span>mv<span class="w"> </span>/opt/sonarqube-8.3.0.34182/<span class="w"> </span>/opt/sonarqube
-sudo<span class="w"> </span>groupadd<span class="w"> </span>sonar
-sudo<span class="w"> </span>useradd<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SonarQube - User&quot;</span><span class="w"> </span>-d<span class="w"> </span>/opt/sonarqube/<span class="w"> </span>-g<span class="w"> </span>sonar<span class="w"> </span>sonar
-sudo<span class="w"> </span>chown<span class="w"> </span>sonar:sonar<span class="w"> </span>/opt/sonarqube/<span class="w"> </span>-R
-cp<span class="w"> </span>/opt/sonarqube/conf/sonar.properties<span class="w"> </span>/root/sonar.properties_backup
-cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /opt/sonarqube/conf/sonar.properties</span>
-<span class="s">sonar.jdbc.username=sonar</span>
-<span class="s">sonar.jdbc.password=admin123</span>
-<span class="s">sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube</span>
-<span class="s">sonar.web.host=0.0.0.0</span>
-<span class="s">sonar.web.port=9000</span>
-<span class="s">sonar.web.javaAdditionalOpts=-server</span>
-<span class="s">sonar.search.javaOpts=-Xmx512m -Xms512m -XX:+HeapDumpOnOutOfMemoryError</span>
-<span class="s">sonar.log.level=INFO</span>
-<span class="s">sonar.path.logs=logs</span>
-<span class="s">EOT</span>
-
-cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/systemd/system/sonarqube.service</span>
-<span class="s">[Unit]</span>
-<span class="s">Description=SonarQube service</span>
-<span class="s">After=syslog.target network.target</span>
-
-<span class="s">[Service]</span>
-<span class="s">Type=forking</span>
-
-<span class="s">ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start</span>
-<span class="s">ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop</span>
-
-<span class="s">User=sonar</span>
-<span class="s">Group=sonar</span>
-<span class="s">Restart=always</span>
-
-<span class="s">LimitNOFILE=65536</span>
-<span class="s">LimitNPROC=4096</span>
-
-
-<span class="s">[Install]</span>
-<span class="s">WantedBy=multi-user.target</span>
-<span class="s">EOT</span>
-
-systemctl<span class="w"> </span>daemon-reload
-systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>sonarqube.service
-<span class="c1">#systemctl start sonarqube.service</span>
-<span class="c1">#systemctl status -l sonarqube.service</span>
-apt-get<span class="w"> </span>install<span class="w"> </span>nginx<span class="w"> </span>-y
-rm<span class="w"> </span>-rf<span class="w"> </span>/etc/nginx/sites-enabled/default
-rm<span class="w"> </span>-rf<span class="w"> </span>/etc/nginx/sites-available/default
-cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/nginx/sites-available/sonarqube</span>
-<span class="s">server{</span>
-<span class="s">    listen      80;</span>
-<span class="s">    server_name sonarqube.groophy.in;</span>
-
-<span class="s">    access_log  /var/log/nginx/sonar.access.log;</span>
-<span class="s">    error_log   /var/log/nginx/sonar.error.log;</span>
-
-<span class="s">    proxy_buffers 16 64k;</span>
-<span class="s">    proxy_buffer_size 128k;</span>
-
-<span class="s">    location / {</span>
-<span class="s">        proxy_pass  http://127.0.0.1:9000;</span>
-<span class="s">        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;</span>
-<span class="s">        proxy_redirect off;</span>
-
-<span class="s">        proxy_set_header    Host            \$host;</span>
-<span class="s">        proxy_set_header    X-Real-IP       \$remote_addr;</span>
-<span class="s">        proxy_set_header    X-Forwarded-For \$proxy_add_x_forwarded_for;</span>
-<span class="s">        proxy_set_header    X-Forwarded-Proto http;</span>
-<span class="s">    }</span>
-<span class="s">}</span>
-<span class="s">EOT</span>
-ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/sonarqube<span class="w"> </span>/etc/nginx/sites-enabled/sonarqube
-systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx.service
-<span class="c1">#systemctl restart nginx.service</span>
-sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>,9000,9001/tcp
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;System reboot in 30 sec&quot;</span>
-sleep<span class="w"> </span><span class="m">30</span>
-reboot
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cp<span class="w"> </span>/etc/sysctl.conf<span class="w"> </span>/root/sysctl.conf_backup
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/sysctl.conf</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s">vm.max_map_count=262144</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s">fs.file-max=65536</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s">ulimit -n 65536</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s">ulimit -u 4096</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s">EOT</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>cp<span class="w"> </span>/etc/security/limits.conf<span class="w"> </span>/root/sec_limit.conf_backup
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/security/limits.conf</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s">sonarqube   -   nofile   65536</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s">sonarqube   -   nproc    409</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s">EOT</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>openjdk-11-jdk<span class="w"> </span>-y
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--config<span class="w"> </span>java
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>java<span class="w"> </span>-version
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>wget<span class="w"> </span>-q<span class="w"> </span>https://www.postgresql.org/media/keys/ACCC4CF8.asc<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main&quot; &gt;&gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-contrib<span class="w"> </span>-y
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1">#sudo -u postgres psql -c &quot;SELECT version();&quot;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>postgresql.service
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w">  </span>postgresql.service
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;postgres:admin123&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>chpasswd
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>runuser<span class="w"> </span>-l<span class="w"> </span>postgres<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;createuser sonar&quot;</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ALTER USER sonar WITH ENCRYPTED PASSWORD &#39;admin123&#39;;&quot;</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE DATABASE sonarqube OWNER sonar;&quot;</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;GRANT ALL PRIVILEGES ON DATABASE sonarqube to sonar;&quot;</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>systemctl<span class="w"> </span>restart<span class="w">  </span>postgresql
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="c1">#systemctl status -l   postgresql</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>netstat<span class="w"> </span>-tulpena<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>postgres
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/sonarqube/
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="nb">cd</span><span class="w"> </span>/sonarqube/
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>sudo<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.3.0.34182.zip
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>zip<span class="w"> </span>-y
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>sudo<span class="w"> </span>unzip<span class="w"> </span>-o<span class="w"> </span>sonarqube-8.3.0.34182.zip<span class="w"> </span>-d<span class="w"> </span>/opt/
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/opt/sonarqube-8.3.0.34182/<span class="w"> </span>/opt/sonarqube
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>sudo<span class="w"> </span>groupadd<span class="w"> </span>sonar
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SonarQube - User&quot;</span><span class="w"> </span>-d<span class="w"> </span>/opt/sonarqube/<span class="w"> </span>-g<span class="w"> </span>sonar<span class="w"> </span>sonar
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>sudo<span class="w"> </span>chown<span class="w"> </span>sonar:sonar<span class="w"> </span>/opt/sonarqube/<span class="w"> </span>-R
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>cp<span class="w"> </span>/opt/sonarqube/conf/sonar.properties<span class="w"> </span>/root/sonar.properties_backup
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /opt/sonarqube/conf/sonar.properties</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="s">sonar.jdbc.username=sonar</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="s">sonar.jdbc.password=admin123</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="s">sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="s">sonar.web.host=0.0.0.0</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="s">sonar.web.port=9000</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="s">sonar.web.javaAdditionalOpts=-server</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="s">sonar.search.javaOpts=-Xmx512m -Xms512m -XX:+HeapDumpOnOutOfMemoryError</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="s">sonar.log.level=INFO</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="s">sonar.path.logs=logs</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="s">EOT</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/systemd/system/sonarqube.service</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="s">[Unit]</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="s">Description=SonarQube service</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="s">After=syslog.target network.target</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="s">[Service]</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="s">Type=forking</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="s">ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="s">ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="s">User=sonar</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="s">Group=sonar</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="s">Restart=always</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="s">LimitNOFILE=65536</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="s">LimitNPROC=4096</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="s">[Install]</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="s">WantedBy=multi-user.target</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="s">EOT</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>sonarqube.service
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="c1">#systemctl start sonarqube.service</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="c1">#systemctl status -l sonarqube.service</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>apt-get<span class="w"> </span>install<span class="w"> </span>nginx<span class="w"> </span>-y
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/etc/nginx/sites-enabled/default
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/etc/nginx/sites-available/default
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt; /etc/nginx/sites-available/sonarqube</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="s">server{</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="s">    listen      80;</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="s">    server_name sonarqube.groophy.in;</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="s">    access_log  /var/log/nginx/sonar.access.log;</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="s">    error_log   /var/log/nginx/sonar.error.log;</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>
+</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="s">    proxy_buffers 16 64k;</span>
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="s">    proxy_buffer_size 128k;</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="s">    location / {</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="s">        proxy_pass  http://127.0.0.1:9000;</span>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="s">        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="s">        proxy_redirect off;</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>
+</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="s">        proxy_set_header    Host            \$host;</span>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="s">        proxy_set_header    X-Real-IP       \$remote_addr;</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="s">        proxy_set_header    X-Forwarded-For \$proxy_add_x_forwarded_for;</span>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="s">        proxy_set_header    X-Forwarded-Proto http;</span>
+</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="s">    }</span>
+</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="s">}</span>
+</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="s">EOT</span>
+</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/sonarqube<span class="w"> </span>/etc/nginx/sites-enabled/sonarqube
+</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx.service
+</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="c1">#systemctl restart nginx.service</span>
+</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>,9000,9001/tcp
+</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>
+</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;System reboot in 30 sec&quot;</span>
+</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>sleep<span class="w"> </span><span class="m">30</span>
+</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>reboot
+</span></code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">SonarQube-Analysis-Properties</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="n">sonar</span><span class="p">.</span><span class="n">projectKey</span><span class="o">=</span><span class="n">vprofile</span>
-<span class="n">sonar</span><span class="p">.</span><span class="n">projectName</span><span class="o">=</span><span class="n">vprofile</span><span class="o">-</span><span class="n">repo</span>
-<span class="n">sonar</span><span class="p">.</span><span class="n">projectVersion</span><span class="o">=</span><span class="mf">1.0</span>
-<span class="n">sonar</span><span class="p">.</span><span class="n">sources</span><span class="o">=</span><span class="n">src</span><span class="o">/</span>
-<span class="n">sonar</span><span class="p">.</span><span class="n">java</span><span class="p">.</span><span class="n">binaries</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="n">classes</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">visualpathit</span><span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">controllerTest</span><span class="o">/</span>
-<span class="n">sonar</span><span class="p">.</span><span class="n">junit</span><span class="p">.</span><span class="n">reportsPath</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">surefire</span><span class="o">-</span><span class="n">reports</span><span class="o">/</span>
-<span class="n">sonar</span><span class="p">.</span><span class="n">jacoco</span><span class="p">.</span><span class="n">reportsPath</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">jacoco</span><span class="p">.</span><span class="n">exec</span>
-<span class="n">sonar</span><span class="p">.</span><span class="n">java</span><span class="p">.</span><span class="n">checkstyle</span><span class="p">.</span><span class="n">reportPaths</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">checkstyle</span><span class="o">-</span><span class="n">result</span><span class="p">.</span><span class="n">xml</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">sonar</span><span class="p">.</span><span class="n">projectKey</span><span class="o">=</span><span class="n">vprofile</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">sonar</span><span class="p">.</span><span class="n">projectName</span><span class="o">=</span><span class="n">vprofile</span><span class="o">-</span><span class="n">repo</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">sonar</span><span class="p">.</span><span class="n">projectVersion</span><span class="o">=</span><span class="mf">1.0</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">sonar</span><span class="p">.</span><span class="n">sources</span><span class="o">=</span><span class="n">src</span><span class="o">/</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">sonar</span><span class="p">.</span><span class="n">java</span><span class="p">.</span><span class="n">binaries</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="n">classes</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">visualpathit</span><span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">controllerTest</span><span class="o">/</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">sonar</span><span class="p">.</span><span class="n">junit</span><span class="p">.</span><span class="n">reportsPath</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">surefire</span><span class="o">-</span><span class="n">reports</span><span class="o">/</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">sonar</span><span class="p">.</span><span class="n">jacoco</span><span class="p">.</span><span class="n">reportsPath</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">jacoco</span><span class="p">.</span><span class="n">exec</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">sonar</span><span class="p">.</span><span class="n">java</span><span class="p">.</span><span class="n">checkstyle</span><span class="p">.</span><span class="n">reportPaths</span><span class="o">=</span><span class="n">target</span><span class="o">/</span><span class="n">checkstyle</span><span class="o">-</span><span class="n">result</span><span class="p">.</span><span class="n">xml</span>
+</span></code></pre></div>
 
 
 

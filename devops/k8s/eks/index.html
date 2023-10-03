@@ -1845,43 +1845,43 @@
 </ol>
 <h2 id="steps-to-create-an-eks-cluster">Steps to Create an EKS Cluster<a class="headerlink" href="#steps-to-create-an-eks-cluster" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key">Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:<a class="headerlink" href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>aws configure
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws configure
+</span></code></pre></div>
 <h3 id="step-2-create-an-eks-cluster">Step 2: Create an EKS Cluster<a class="headerlink" href="#step-2-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
 <p>Of course, here are all the commands following the format you've provided:</p>
 <h3 id="command-1-create-an-eks-cluster">Command 1: Create an EKS Cluster<a class="headerlink" href="#command-1-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--version<span class="w"> </span>&lt;k8s-version&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--nodegroup-name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--node-type<span class="w"> </span>&lt;node-type&gt;<span class="w"> </span>--nodes<span class="w"> </span>&lt;node-count&gt;<span class="w"> </span>--nodes-min<span class="w"> </span>&lt;min-nodes&gt;<span class="w"> </span>--nodes-max<span class="w"> </span>&lt;max-nodes&gt;
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--version<span class="w"> </span>&lt;k8s-version&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--nodegroup-name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--node-type<span class="w"> </span>&lt;node-type&gt;<span class="w"> </span>--nodes<span class="w"> </span>&lt;node-count&gt;<span class="w"> </span>--nodes-min<span class="w"> </span>&lt;min-nodes&gt;<span class="w"> </span>--nodes-max<span class="w"> </span>&lt;max-nodes&gt;
+</span></code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.22<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--nodegroup-name<span class="w"> </span>kube-app<span class="w"> </span>--node-type<span class="w"> </span>t2.micro<span class="w"> </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes-max<span class="w"> </span><span class="m">3</span>
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.22<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--nodegroup-name<span class="w"> </span>kube-app<span class="w"> </span>--node-type<span class="w"> </span>t2.micro<span class="w"> </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes-max<span class="w"> </span><span class="m">3</span>
+</span></code></pre></div>
 <h3 id="command-2-get-information-about-nodes">Command 2: Get Information About Nodes<a class="headerlink" href="#command-2-get-information-about-nodes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>nodes
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes
+</span></code></pre></div>
 <h3 id="command-3-update-node-group-maximum-nodes-and-minimum-nodes">Command 3: Update Node Group Maximum Nodes and Minimum Nodes<a class="headerlink" href="#command-3-update-node-group-maximum-nodes-and-minimum-nodes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>update<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="o">=</span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="o">=</span>&lt;region&gt;<span class="w"> </span>--name<span class="o">=</span>&lt;nodegroup-name&gt;<span class="w"> </span>--nodes-min<span class="o">=</span>&lt;min-nodes&gt;<span class="w"> </span>--nodes-max<span class="o">=</span>&lt;max-nodes&gt;
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>eksctl<span class="w"> </span>update<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="o">=</span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="o">=</span>&lt;region&gt;<span class="w"> </span>--name<span class="o">=</span>&lt;nodegroup-name&gt;<span class="w"> </span>--nodes-min<span class="o">=</span>&lt;min-nodes&gt;<span class="w"> </span>--nodes-max<span class="o">=</span>&lt;max-nodes&gt;
+</span></code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>update<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="w"> </span>kube-app<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--nodes-min<span class="o">=</span><span class="m">1</span><span class="w"> </span>--nodes-max<span class="o">=</span><span class="m">2</span>
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>eksctl<span class="w"> </span>update<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="w"> </span>kube-app<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--nodes-min<span class="o">=</span><span class="m">1</span><span class="w"> </span>--nodes-max<span class="o">=</span><span class="m">2</span>
+</span></code></pre></div>
 <h3 id="command-4-scale-node-group">Command 4: Scale Node Group<a class="headerlink" href="#command-4-scale-node-group" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>scale<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--nodes<span class="w"> </span>&lt;desired-nodes&gt;
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>eksctl<span class="w"> </span>scale<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--nodes<span class="w"> </span>&lt;desired-nodes&gt;
+</span></code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>scale<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="w"> </span>kube-app<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--nodes<span class="w"> </span><span class="m">2</span>
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>eksctl<span class="w"> </span>scale<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="w"> </span>kube-app<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--nodes<span class="w"> </span><span class="m">2</span>
+</span></code></pre></div>
 <h3 id="command-5-get-node-group-details">Command 5: Get Node Group Details<a class="headerlink" href="#command-5-get-node-group-details" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>get<span class="w"> </span>nodegroup<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--cluster<span class="w"> </span>&lt;cluster-name&gt;
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>eksctl<span class="w"> </span>get<span class="w"> </span>nodegroup<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--cluster<span class="w"> </span>&lt;cluster-name&gt;
+</span></code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>get<span class="w"> </span>nodegroup<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--cluster<span class="w"> </span>kube-app
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>eksctl<span class="w"> </span>get<span class="w"> </span>nodegroup<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--cluster<span class="w"> </span>kube-app
+</span></code></pre></div>
 <h3 id="command-6-delete-eks-cluster">Command 6: Delete EKS Cluster<a class="headerlink" href="#command-6-delete-eks-cluster" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
+</span></code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--region<span class="w"> </span>eu-central-1
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--region<span class="w"> </span>eu-central-1
+</span></code></pre></div>
 
 
 

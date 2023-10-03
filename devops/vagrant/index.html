@@ -1736,15 +1736,15 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Download link
-<div class="highlight"><pre><span></span><code><span class="nl">https</span><span class="p">:</span><span class="c1">//download.virtualbox.org/virtualbox/6.1.30/VirtualBox-6.1.30-148432-Win.exe</span>
-</code></pre></div></p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nl">https</span><span class="p">:</span><span class="c1">//download.virtualbox.org/virtualbox/6.1.30/VirtualBox-6.1.30-148432-Win.exe</span>
+</span></code></pre></div></p>
 </div>
 <div class="tabbed-block">
 <p>Through Command line 
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>virtualbox
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>virtualbox
+</span></code></pre></div></p>
 </div>
 </div>
 </div>
@@ -1753,22 +1753,22 @@
 <p>To Run Virtual Machine You should need to Disable the Secure-Boot in BIOS Options of your Machine 🚫</p>
 </details>
 <p>To Verify that your Virtual Box is Working fine or not in Linux, Please hit the below command.
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>virtualbox.service
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>virtualbox.service
+</span></code></pre></div></p>
 <h2 id="installing-vagrant-in-the-host-machine">Installing Vagrant in the Host Machine<a class="headerlink" href="#installing-vagrant-in-the-host-machine" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">Ubuntu Desktop</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Download link
-<div class="highlight"><pre><span></span><code><span class="nl">https</span><span class="p">:</span><span class="c1">//releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_i686.msi</span>
-</code></pre></div></p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nl">https</span><span class="p">:</span><span class="c1">//releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_i686.msi</span>
+</span></code></pre></div></p>
 </div>
 <div class="tabbed-block">
 <p>Through Command line 
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>vagrant
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>vagrant
+</span></code></pre></div></p>
 </div>
 </div>
 </div>
@@ -1778,48 +1778,48 @@
 </details>
 <h2 id="creating-a-common-directory-for-all-vms">Creating a Common Directory for all VMs<a class="headerlink" href="#creating-a-common-directory-for-all-vms" title="Permanent link">&para;</a></h2>
 <p>Create a Directory with name <mark>vagrantvms</mark> 📂
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>vagrantvms
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdir<span class="w"> </span>vagrantvms
+</span></code></pre></div>
 Change Directory to <mark>vagrantvms</mark>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>vagrantvms
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>vagrantvms
+</span></code></pre></div></p>
 <h2 id="to-bring-up-vm">To Bring up VM 🚀<a class="headerlink" href="#to-bring-up-vm" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ubuntu 🐧</label><label for="__tabbed_3_2">CentOS 🐧</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Create a Directory name <mark>ubuntu</mark>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>ubuntu<span class="w"> </span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>mkdir<span class="w"> </span>ubuntu<span class="w"> </span>
+</span></code></pre></div>
 Change Directory to <mark>ubuntu</mark>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>ubuntu
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>ubuntu
+</span></code></pre></div>
 Initialize Ubuntu VM
-<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>init<span class="w"> </span>ubuntu/bionic64<span class="w"> </span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>vagrant<span class="w"> </span>init<span class="w"> </span>ubuntu/bionic64<span class="w"> </span>
+</span></code></pre></div>
 Now Bring up your Ubuntu VM 
-<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>up
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>vagrant<span class="w"> </span>up
+</span></code></pre></div>
 Once your VM is up then login to your vm 
-<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>ssh
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>vagrant<span class="w"> </span>ssh
+</span></code></pre></div>
 Now you can see the prompt of the ubuntu machine, If you wanna exit type <mark>exit</mark></p>
 </div>
 <div class="tabbed-block">
 <p>Create a Directory name <mark>centos</mark>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>centos<span class="w"> </span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>mkdir<span class="w"> </span>centos<span class="w"> </span>
+</span></code></pre></div>
 Change Directory to <mark>centos</mark>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>centos
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>centos
+</span></code></pre></div>
 Initialize centos VM
-<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>init<span class="w"> </span>geerlingguy/centos7<span class="w"> </span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>vagrant<span class="w"> </span>init<span class="w"> </span>geerlingguy/centos7<span class="w"> </span>
+</span></code></pre></div>
 Now Bring up your centos VM 
-<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>up
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>vagrant<span class="w"> </span>up
+</span></code></pre></div>
 Once your VM is up then login to your VM 
-<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>ssh
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>vagrant<span class="w"> </span>ssh
+</span></code></pre></div>
 Now you can see the prompt of the centos machine, If you wanna exit type  👉 exit</p>
 </div>
 </div>
@@ -1829,72 +1829,72 @@ Now you can see the prompt of the centos machine, If you wanna exit type  👉 e
 <p><a href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a></p>
 </details>
 <p>=== "Multi VMS Vagrantfile" 📦</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span><span class="w"> </span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">manage_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
-
-<span class="c1">### Nginx VM ###</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;web01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">web01</span><span class="o">|</span>
-<span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu/bionic64&quot;</span>
-<span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;web01&quot;</span>
-<span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.11&quot;</span>
-<span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
-<span class="w">  </span><span class="k">end</span>
-
-<span class="c1">### tomcat vm ###</span>
-<span class="w">   </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;app01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">app01</span><span class="o">|</span>
-<span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
-<span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;app01&quot;</span>
-<span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.12&quot;</span>
-<span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
-<span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span><span class="w"> </span><span class="s2">&quot;virtualbox&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">vb</span><span class="o">|</span>
-<span class="w">     </span><span class="n">vb</span><span class="o">.</span><span class="n">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1024&quot;</span>
-<span class="w">     </span><span class="k">end</span>
-<span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
-<span class="sh">#     yum update -y</span>
-<span class="sh">     yum install epel-release -y</span>
-<span class="dl">   SHELL</span>
-<span class="w">   </span><span class="k">end</span>
-
-<span class="c1">### RabbitMQ vm  ####</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;rmq01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">rmq01</span><span class="o">|</span>
-<span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
-<span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rmq01&quot;</span>
-<span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.16&quot;</span>
-<span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
-<span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
-<span class="sh">   # yum update -y</span>
-<span class="sh">    #yum install epel-release -y</span>
-<span class="sh">    # yum install wget -y</span>
-<span class="dl">    SHELL</span>
-<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">f</span>
-<span class="w">  </span><span class="o">.</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="o">/</span>
-<span class="c1">### Memcache vm  #### </span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;mc01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">mc01</span><span class="o">|</span>
-<span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
-<span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mc01&quot;</span>
-<span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.14&quot;</span>
-<span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
-<span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
-<span class="sh">     yum install epel-release -y</span>
-<span class="dl">    SHELL</span>
-<span class="w">  </span><span class="k">end</span>
-
-<span class="c1">### DB vm  ####</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;db01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">db01</span><span class="o">|</span>
-<span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
-<span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;db01&quot;</span>
-<span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.15&quot;</span>
-<span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
-<span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
-<span class="sh">#   yum update -y</span>
-<span class="sh">    yum install epel-release -y</span>
-<span class="dl">    SHELL</span>
-<span class="w">  </span><span class="k">end</span>
-
-
-<span class="k">end</span>
-</code></pre></div>
+<div class="language-ruby highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span><span class="w"> </span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">manage_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1">### Nginx VM ###</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;web01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">web01</span><span class="o">|</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu/bionic64&quot;</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;web01&quot;</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.11&quot;</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">    </span><span class="n">web01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">  </span><span class="k">end</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="c1">### tomcat vm ###</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">   </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;app01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">app01</span><span class="o">|</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;app01&quot;</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.12&quot;</span>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span><span class="w"> </span><span class="s2">&quot;virtualbox&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">vb</span><span class="o">|</span>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="w">     </span><span class="n">vb</span><span class="o">.</span><span class="n">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1024&quot;</span>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">     </span><span class="k">end</span>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">    </span><span class="n">app01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="sh">#     yum update -y</span>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="sh">     yum install epel-release -y</span>
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="dl">   SHELL</span>
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="w">   </span><span class="k">end</span>
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="c1">### RabbitMQ vm  ####</span>
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;rmq01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">rmq01</span><span class="o">|</span>
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rmq01&quot;</span>
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.16&quot;</span>
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
+</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="w">    </span><span class="n">rmq01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="sh">   # yum update -y</span>
+</span><span id="__span-19-36"><a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="sh">    #yum install epel-release -y</span>
+</span><span id="__span-19-37"><a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="sh">    # yum install wget -y</span>
+</span><span id="__span-19-38"><a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="dl">    SHELL</span>
+</span><span id="__span-19-39"><a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">f</span>
+</span><span id="__span-19-40"><a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a><span class="w">  </span><span class="o">.</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="o">/</span>
+</span><span id="__span-19-41"><a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a><span class="c1">### Memcache vm  #### </span>
+</span><span id="__span-19-42"><a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;mc01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">mc01</span><span class="o">|</span>
+</span><span id="__span-19-43"><a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
+</span><span id="__span-19-44"><a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a><span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mc01&quot;</span>
+</span><span id="__span-19-45"><a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a><span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.14&quot;</span>
+</span><span id="__span-19-46"><a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a><span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
+</span><span id="__span-19-47"><a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a><span class="w">    </span><span class="n">mc01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+</span><span id="__span-19-48"><a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a><span class="sh">     yum install epel-release -y</span>
+</span><span id="__span-19-49"><a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a><span class="dl">    SHELL</span>
+</span><span id="__span-19-50"><a id="__codelineno-19-50" name="__codelineno-19-50" href="#__codelineno-19-50"></a><span class="w">  </span><span class="k">end</span>
+</span><span id="__span-19-51"><a id="__codelineno-19-51" name="__codelineno-19-51" href="#__codelineno-19-51"></a>
+</span><span id="__span-19-52"><a id="__codelineno-19-52" name="__codelineno-19-52" href="#__codelineno-19-52"></a><span class="c1">### DB vm  ####</span>
+</span><span id="__span-19-53"><a id="__codelineno-19-53" name="__codelineno-19-53" href="#__codelineno-19-53"></a><span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span><span class="w"> </span><span class="s2">&quot;db01&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">db01</span><span class="o">|</span>
+</span><span id="__span-19-54"><a id="__codelineno-19-54" name="__codelineno-19-54" href="#__codelineno-19-54"></a><span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;geerlingguy/centos7&quot;</span>
+</span><span id="__span-19-55"><a id="__codelineno-19-55" name="__codelineno-19-55" href="#__codelineno-19-55"></a><span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;db01&quot;</span>
+</span><span id="__span-19-56"><a id="__codelineno-19-56" name="__codelineno-19-56" href="#__codelineno-19-56"></a><span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.15&quot;</span>
+</span><span id="__span-19-57"><a id="__codelineno-19-57" name="__codelineno-19-57" href="#__codelineno-19-57"></a><span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;../vprofile-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/vprofile-vm-data&quot;</span>
+</span><span id="__span-19-58"><a id="__codelineno-19-58" name="__codelineno-19-58" href="#__codelineno-19-58"></a><span class="w">    </span><span class="n">db01</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+</span><span id="__span-19-59"><a id="__codelineno-19-59" name="__codelineno-19-59" href="#__codelineno-19-59"></a><span class="sh">#   yum update -y</span>
+</span><span id="__span-19-60"><a id="__codelineno-19-60" name="__codelineno-19-60" href="#__codelineno-19-60"></a><span class="sh">    yum install epel-release -y</span>
+</span><span id="__span-19-61"><a id="__codelineno-19-61" name="__codelineno-19-61" href="#__codelineno-19-61"></a><span class="dl">    SHELL</span>
+</span><span id="__span-19-62"><a id="__codelineno-19-62" name="__codelineno-19-62" href="#__codelineno-19-62"></a><span class="w">  </span><span class="k">end</span>
+</span><span id="__span-19-63"><a id="__codelineno-19-63" name="__codelineno-19-63" href="#__codelineno-19-63"></a>
+</span><span id="__span-19-64"><a id="__codelineno-19-64" name="__codelineno-19-64" href="#__codelineno-19-64"></a>
+</span><span id="__span-19-65"><a id="__codelineno-19-65" name="__codelineno-19-65" href="#__codelineno-19-65"></a><span class="k">end</span>
+</span></code></pre></div>
 
 
 

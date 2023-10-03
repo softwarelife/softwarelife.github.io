@@ -1635,83 +1635,83 @@
 <h1 id="deploy-the-latest-kubernetes-dashboard">Deploy the latest Kubernetes dashboard<a class="headerlink" href="#deploy-the-latest-kubernetes-dashboard" title="Permanent link">&para;</a></h1>
 <p>Once you’ve set up your Kubernetes cluster or if you already had one running, we can get started.</p>
 <p>The first thing to know about the web UI is that it can only be accessed using the localhost address on the machine it runs on. This means we need to have an SSH tunnel to the server. For most OS, you can create an SSH tunnel using this command. Replace the <user> and <master_public_IP> with the relevant details to your Kubernetes cluster.
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-L<span class="w"> </span>localhost:8001:127.0.0.1:8001<span class="w"> </span>&lt;user&gt;@&lt;master_public_IP&gt;
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span>localhost:8001:127.0.0.1:8001<span class="w"> </span>&lt;user&gt;@&lt;master_public_IP&gt;
+</span></code></pre></div>
 After you’ve logged in, you can deploy the dashboard itself with the following single command.
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+</span></code></pre></div>
 If your cluster is working correctly, you should see an output confirming the creation of a bunch of Kubernetes components like in the example below.</p>
 <details class="success">
 <summary>Output</summary>
-<div class="highlight"><pre><span></span><code><span class="n">namespace</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">serviceaccount</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">service</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">secret</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">certs</span><span class="w"> </span><span class="n">created</span>
-<span class="n">secret</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">csrf</span><span class="w"> </span><span class="n">created</span>
-<span class="n">secret</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">holder</span><span class="w"> </span><span class="n">created</span>
-<span class="n">configmap</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">settings</span><span class="w"> </span><span class="n">created</span>
-<span class="n">role</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">clusterrole</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">rolebinding</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">clusterrolebinding</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">deployment</span><span class="p">.</span><span class="n">apps</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
-<span class="n">service</span><span class="o">/</span><span class="n">dashboard</span><span class="o">-</span><span class="n">metrics</span><span class="o">-</span><span class="n">scraper</span><span class="w"> </span><span class="n">created</span>
-<span class="n">deployment</span><span class="p">.</span><span class="n">apps</span><span class="o">/</span><span class="n">dashboard</span><span class="o">-</span><span class="n">metrics</span><span class="o">-</span><span class="n">scraper</span><span class="w"> </span><span class="n">created</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">namespace</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">serviceaccount</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">service</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">secret</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">certs</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">secret</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">csrf</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">secret</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">holder</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">configmap</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">settings</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">role</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">clusterrole</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">rolebinding</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">clusterrolebinding</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">deployment</span><span class="p">.</span><span class="n">apps</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">service</span><span class="o">/</span><span class="n">dashboard</span><span class="o">-</span><span class="n">metrics</span><span class="o">-</span><span class="n">scraper</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">deployment</span><span class="p">.</span><span class="n">apps</span><span class="o">/</span><span class="n">dashboard</span><span class="o">-</span><span class="n">metrics</span><span class="o">-</span><span class="n">scraper</span><span class="w"> </span><span class="n">created</span>
+</span></code></pre></div>
 </details>
 <p>Afterward, you should have two new pods running on your cluster.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
+</span></code></pre></div>
 <details class="success">
 <summary>Output</summary>
-<div class="highlight"><pre><span></span><code><span class="p">...</span>
-<span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w">   </span><span class="n">dashboard</span><span class="o">-</span><span class="n">metrics</span><span class="o">-</span><span class="n">scraper</span><span class="mi">-78u</span><span class="n">jd94gf7</span><span class="o">-</span><span class="n">ff6h8</span><span class="w">   </span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="w">     </span><span class="n">Running</span><span class="w">   </span><span class="mi">0</span><span class="w">          </span><span class="mi">30</span><span class="n">m</span>
-<span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w">   </span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">g6hujkirf7</span><span class="o">-</span><span class="n">df65g</span><span class="w">        </span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="w">     </span><span class="n">Running</span><span class="w">   </span><span class="mi">0</span><span class="w">          </span><span class="mi">30</span><span class="n">m</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">...</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w">   </span><span class="n">dashboard</span><span class="o">-</span><span class="n">metrics</span><span class="o">-</span><span class="n">scraper</span><span class="mi">-78u</span><span class="n">jd94gf7</span><span class="o">-</span><span class="n">ff6h8</span><span class="w">   </span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="w">     </span><span class="n">Running</span><span class="w">   </span><span class="mi">0</span><span class="w">          </span><span class="mi">30</span><span class="n">m</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="w">   </span><span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">g6hujkirf7</span><span class="o">-</span><span class="n">df65g</span><span class="w">        </span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="w">     </span><span class="n">Running</span><span class="w">   </span><span class="mi">0</span><span class="w">          </span><span class="mi">30</span><span class="n">m</span>
+</span></code></pre></div>
 </details>
 <p>You can then continue ahead with creating the required user accounts.</p>
 <h1 id="creating-admin-user">Creating Admin user<a class="headerlink" href="#creating-admin-user" title="Permanent link">&para;</a></h1>
 <p>The Kubernetes dashboard supports a few ways to manage access control. In this example, we’ll be creating an admin user account with full privileges to modify the cluster and use tokens.</p>
 <p>Start by making a new directory for the dashboard configuration files.
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/dashboard<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/dashboard
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mkdir<span class="w"> </span>~/dashboard<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/dashboard
+</span></code></pre></div>
 Create the following configuration and save it as a dashboard-admin.yaml file. Note that indentation matters in the YAML files which should use two spaces in a regular text editor.</p>
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>dashboard-admin.yaml
-</code></pre></div>
-<p><div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin-user</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
-<span class="nn">---</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRoleBinding</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin-user</span>
-<span class="nt">roleRef</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
-<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admin</span>
-<span class="nt">subjects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin-user</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>vim<span class="w"> </span>dashboard-admin.yaml
+</span></code></pre></div>
+<p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin-user</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nn">---</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRoleBinding</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin-user</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nt">roleRef</span><span class="p">:</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admin</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="nt">subjects</span><span class="p">:</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin-user</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
+</span></code></pre></div>
 Once set, save the file and exit the editor.</p>
 <p>Then deploy the admin user role with the next command.</p>
-<p><div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>dashboard-admin.yaml
-</code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>dashboard-admin.yaml
+</span></code></pre></div>
 You should see a service account and a cluster role binding created.</p>
 <details class="success">
 <summary>Output</summary>
-<div class="highlight"><pre><span></span><code><span class="n">serviceaccount</span><span class="o">/</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span><span class="w"> </span><span class="n">created</span>
-<span class="n">clusterrolebinding</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span><span class="w"> </span><span class="n">created</span>
-</code></pre></div>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">serviceaccount</span><span class="o">/</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">clusterrolebinding</span><span class="p">.</span><span class="n">rbac</span><span class="p">.</span><span class="n">authorization</span><span class="p">.</span><span class="n">k8s</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span><span class="w"> </span><span class="n">created</span>
+</span></code></pre></div>
 </details>
 <p>Using this method doesn’t require setting up or memorising passwords, instead, accessing the dashboard will require a token.</p>
 <p>Get the admin token using the command below.
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>serviceaccount<span class="w"> </span>admin-user<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.secrets[0].name}&quot;</span><span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.token}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>serviceaccount<span class="w"> </span>admin-user<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.secrets[0].name}&quot;</span><span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.token}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode
+</span></code></pre></div>
 You’ll then see an output of a long string of seemingly random characters like in the example below.</p>
 <details class="success">
 <summary>Output</summary>
@@ -1733,71 +1733,71 @@ cY7odZDaz5lmxAflpE5S4m-AwsTvT42ENh_bq8PS7FsMd8mK9nELyQu_a-yocYUggju_m-BxLjgc
 <h1 id="creating-read-only-user">Creating Read-Only user<a class="headerlink" href="#creating-read-only-user" title="Permanent link">&para;</a></h1>
 <p>If you wish to provide access to your Kubernetes dashboard, for example, for demonstrative purposes, you can create a read-only view for the cluster.</p>
 <p>Similarly to the admin account, save the following configuration in dashboard-read-only.yaml
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>dashboard-read-only.yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-user</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
-<span class="nn">---</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">rbac.authorization.kubernetes.io/autoupdate</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-clusterrole</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="nt">rules</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span>
-<span class="nn">---</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRoleBinding</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-binding</span>
-<span class="nt">roleRef</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-clusterrole</span>
-<span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
-<span class="nt">subjects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-user</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>vim<span class="w"> </span>dashboard-read-only.yaml
+</span></code></pre></div>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-user</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nn">---</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nt">rbac.authorization.kubernetes.io/autoupdate</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-clusterrole</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">  </span><span class="nt">verbs</span><span class="p">:</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">  </span><span class="nt">verbs</span><span class="p">:</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="w">  </span><span class="nt">verbs</span><span class="p">:</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="nn">---</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRoleBinding</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-binding</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="nt">roleRef</span><span class="p">:</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-clusterrole</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="nt">subjects</span><span class="p">:</span>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read-only-user</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-dashboard</span>
+</span></code></pre></div></p>
 <p>Once set, save the file and exit the editor.</p>
 <p>Then deploy the read-only user account with the command below.</p>
-<p><div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>dashboard-read-only.yaml
-</code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>dashboard-read-only.yaml
+</span></code></pre></div>
 To allow users to log in via the read-only account, you’ll need to provide a token that can be fetched using the next command.
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>serviceaccount<span class="w"> </span>read-only-user<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.secrets[0].name}&quot;</span><span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.token}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>serviceaccount<span class="w"> </span>read-only-user<span class="w"> </span>-n<span class="w"> </span>kubernetes-dashboard<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.secrets[0].name}&quot;</span><span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.token}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode
+</span></code></pre></div>
 The toke will be a long series of characters and unique to the dashboard currently running.</p>
 <h1 id="accessing-the-dashboard">Accessing the dashboard<a class="headerlink" href="#accessing-the-dashboard" title="Permanent link">&para;</a></h1>
 <p>We’ve now deployed the dashboard and created user accounts for it. Next, we can get started managing the Kubernetes cluster itself.</p>
 <p>However, before we can log in to the dashboard, it needs to be made available by creating a proxy service on the localhost. Run the next command on your Kubernetes cluster.
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>proxy
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubectl<span class="w"> </span>proxy
+</span></code></pre></div>
 This will start the server at 127.0.0.1:8001 as shown by the output.</p>
 <details class="success">
 <summary>Output</summary>
