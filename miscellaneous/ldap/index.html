@@ -1808,105 +1808,105 @@
 
 <h1 id="install-and-configure-openldap-server-on-ubuntu">Install and Configure OpenLDAP Server on Ubuntu<a class="headerlink" href="#install-and-configure-openldap-server-on-ubuntu" title="Permanent link">&para;</a></h1>
 <h2 id="set-hostname-for-the-ubuntu-server">Set hostname for the Ubuntu server<a class="headerlink" href="#set-hostname-for-the-ubuntu-server" title="Permanent link">&para;</a></h2>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>ldap.k8sengineers.com
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>ldap.k8sengineers.com
+</code></pre></div>
 Add the IP and FQDN to file <mark>/etc/hosts</mark> 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vim<span class="w"> </span>/etc/hosts
-</span></code></pre></div></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="m">192</span>.168.0.151<span class="w"> </span>ldap.k8sengineers.com<span class="w"> </span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="m">192</span>.168.0.151<span class="w"> </span>ldap.k8sengineers.com<span class="w"> </span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Replace ldap.k8sengineers.com with your correct hostname/valid domain name.</p>
 </div>
 <h2 id="install-openldap-server-on-ubuntu">Install OpenLDAP Server on Ubuntu<a class="headerlink" href="#install-openldap-server-on-ubuntu" title="Permanent link">&para;</a></h2>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>slapd<span class="w"> </span>ldap-utils
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>slapd<span class="w"> </span>ldap-utils
+</code></pre></div>
 During the installation, you’ll be prompted to set LDAP admin password, provide your desired password, then press <OK></p>
 <p><img alt="image" src="../../img/ldap01.PNG" /></p>
 <p>Confirm the password and continue the installation by selecting <ok> 
 <img alt="image" src="../../img/ldap02.PNG" /></p>
 <p>You can confirm that your installation was successful using the commandslapcat to output SLAPD database contents.</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>slapcat
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dn:<span class="w"> </span><span class="nv">dc</span><span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>objectClass:<span class="w"> </span>top
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>objectClass:<span class="w"> </span>dcObject
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>objectClass:<span class="w"> </span>organization
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>o:<span class="w"> </span>k8sengineers.com
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>dc:<span class="w"> </span>k8sengineers
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>structuralObjectClass:<span class="w"> </span>organization
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>entryUUID:<span class="w"> </span>0139eef2-f01c-103b-8cf7-cb31a244bcdd
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>creatorsName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>createTimestamp:<span class="w"> </span>20211213045057Z
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>entryCSN:<span class="w"> </span><span class="m">20211213045057</span>.125264Z#000000#000#000000
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>modifiersName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>modifyTimestamp:<span class="w"> </span>20211213045057Z
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>dn:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>objectClass:<span class="w"> </span>simpleSecurityObject
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>objectClass:<span class="w"> </span>organizationalRole
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>cn:<span class="w"> </span>admin
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>description:<span class="w"> </span>LDAP<span class="w"> </span>administrator
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>userPassword::<span class="w"> </span><span class="nv">e1NTSEF9aXpJOXpJT2tTUUNIUzkrVzJpUVQ5L1M4WVRzZjMvUU4</span><span class="o">=</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>structuralObjectClass:<span class="w"> </span>organizationalRole
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>entryUUID:<span class="w"> </span>013a5ebe-f01c-103b-8cf8-cb31a244bcdd
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>creatorsName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>createTimestamp:<span class="w"> </span>20211213045057Z
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>entryCSN:<span class="w"> </span><span class="m">20211213045057</span>.128175Z#000000#000#000000
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>modifiersName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>modifyTimestamp:<span class="w"> </span>20211213045057Z<span class="w">  </span>
-</span></code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>slapcat
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>dn:<span class="w"> </span><span class="nv">dc</span><span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+objectClass:<span class="w"> </span>top
+objectClass:<span class="w"> </span>dcObject
+objectClass:<span class="w"> </span>organization
+o:<span class="w"> </span>k8sengineers.com
+dc:<span class="w"> </span>k8sengineers
+structuralObjectClass:<span class="w"> </span>organization
+entryUUID:<span class="w"> </span>0139eef2-f01c-103b-8cf7-cb31a244bcdd
+creatorsName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+createTimestamp:<span class="w"> </span>20211213045057Z
+entryCSN:<span class="w"> </span><span class="m">20211213045057</span>.125264Z#000000#000#000000
+modifiersName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+modifyTimestamp:<span class="w"> </span>20211213045057Z
+
+dn:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+objectClass:<span class="w"> </span>simpleSecurityObject
+objectClass:<span class="w"> </span>organizationalRole
+cn:<span class="w"> </span>admin
+description:<span class="w"> </span>LDAP<span class="w"> </span>administrator
+userPassword::<span class="w"> </span><span class="nv">e1NTSEF9aXpJOXpJT2tTUUNIUzkrVzJpUVQ5L1M4WVRzZjMvUU4</span><span class="o">=</span>
+structuralObjectClass:<span class="w"> </span>organizationalRole
+entryUUID:<span class="w"> </span>013a5ebe-f01c-103b-8cf8-cb31a244bcdd
+creatorsName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+createTimestamp:<span class="w"> </span>20211213045057Z
+entryCSN:<span class="w"> </span><span class="m">20211213045057</span>.128175Z#000000#000#000000
+modifiersName:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+modifyTimestamp:<span class="w"> </span>20211213045057Z<span class="w">  </span>
+</code></pre></div></p>
 <h2 id="add-base-dn-for-users-and-groups">Add base dn for Users and Groups<a class="headerlink" href="#add-base-dn-for-users-and-groups" title="Permanent link">&para;</a></h2>
 <p>The next step is adding a base DN for users and groups. Create a file named basedn.ldif with the below contents:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vim<span class="w"> </span>basedn.ldif
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dn:<span class="w"> </span><span class="nv">ou</span><span class="o">=</span>people,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>objectClass:<span class="w"> </span>organizationalUnit
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>ou:<span class="w"> </span>people
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>dn:<span class="w"> </span><span class="nv">ou</span><span class="o">=</span>groups,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>objectClass:<span class="w"> </span>organizationalUnit
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>ou:<span class="w"> </span>groups
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>basedn.ldif
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>dn:<span class="w"> </span><span class="nv">ou</span><span class="o">=</span>people,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+objectClass:<span class="w"> </span>organizationalUnit
+ou:<span class="w"> </span>people
+
+dn:<span class="w"> </span><span class="nv">ou</span><span class="o">=</span>groups,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+objectClass:<span class="w"> </span>organizationalUnit
+ou:<span class="w"> </span>groups
+</code></pre></div>
 Replace <mark>k8sengineers and com</mark> with your correct domain components.</p>
 <p>Now add the file by running the command:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ldapadd<span class="w"> </span>-x<span class="w"> </span>-D<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com<span class="w"> </span>-W<span class="w"> </span>-f<span class="w"> </span>basedn.ldif
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>ldapadd<span class="w"> </span>-x<span class="w"> </span>-D<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com<span class="w"> </span>-W<span class="w"> </span>-f<span class="w"> </span>basedn.ldif
+</code></pre></div>
 Enter LDAP Password:</p>
 <details class="success" open="open">
 <summary>Output</summary>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;ou=people,dc=k8sengineers,dc=com&quot;</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;ou=groups,dc=k8sengineers,dc=com&quot;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;ou=people,dc=k8sengineers,dc=com&quot;</span>
+<span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;ou=groups,dc=k8sengineers,dc=com&quot;</span>
+</code></pre></div>
 </details>
 <h2 id="add-user-accounts-and-groups">Add User Accounts and Groups<a class="headerlink" href="#add-user-accounts-and-groups" title="Permanent link">&para;</a></h2>
 <p>Generate a password for the user account to add.</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>slappasswd
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>slappasswd
+</code></pre></div>
 Set the Password</p>
 <details class="success" open="open">
 <summary>Output</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>{SSHA}ls2kqhrLiMuKg9w3JcMq4y1Cefi0amAx
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>{SSHA}ls2kqhrLiMuKg9w3JcMq4y1Cefi0amAx
+</code></pre></div>
 </details>
 <p>Create a ldif file for adding users.</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>vim<span class="w"> </span>ldapusers.ldif
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dn:<span class="w"> </span><span class="nv">uid</span><span class="o">=</span>admin,ou<span class="o">=</span>people,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>objectClass:<span class="w"> </span>inetOrgPerson
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>objectClass:<span class="w"> </span>posixAccount
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>objectClass:<span class="w"> </span>shadowAccount
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>cn:<span class="w"> </span>admin
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>sn:<span class="w"> </span>Wiz
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>userPassword:<span class="w"> </span><span class="o">{</span>SSHA<span class="o">}</span>ls2kqhrLiMuKg9w3JcMq4y1Cefi0amAx
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>loginShell:<span class="w"> </span>/bin/bash
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>uidNumber:<span class="w"> </span><span class="m">2000</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>gidNumber:<span class="w"> </span><span class="m">2000</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>homeDirectory:<span class="w"> </span>/home/admin
-</span></code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>ldapusers.ldif
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>dn:<span class="w"> </span><span class="nv">uid</span><span class="o">=</span>admin,ou<span class="o">=</span>people,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+objectClass:<span class="w"> </span>inetOrgPerson
+objectClass:<span class="w"> </span>posixAccount
+objectClass:<span class="w"> </span>shadowAccount
+cn:<span class="w"> </span>admin
+sn:<span class="w"> </span>Wiz
+userPassword:<span class="w"> </span><span class="o">{</span>SSHA<span class="o">}</span>ls2kqhrLiMuKg9w3JcMq4y1Cefi0amAx
+loginShell:<span class="w"> </span>/bin/bash
+uidNumber:<span class="w"> </span><span class="m">2000</span>
+gidNumber:<span class="w"> </span><span class="m">2000</span>
+homeDirectory:<span class="w"> </span>/home/admin
+</code></pre></div></p>
 <ul>
 <li>Replace admin with the username to add</li>
 <li>dc=k8sengineers,dc=com with your correct domain values.</li>
@@ -1914,35 +1914,35 @@ Set the Password</p>
 <li>{SSHA}ls2kqhrLiMuKg9w3JcMq4y1Cefi0amAx with your hashed password</li>
 </ul>
 <p>When done with the edit, add an account by running.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ldapadd<span class="w"> </span>-x<span class="w"> </span>-D<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com<span class="w"> </span>-W<span class="w"> </span>-f<span class="w"> </span>ldapusers.ldif<span class="w"> </span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>ldapadd<span class="w"> </span>-x<span class="w"> </span>-D<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com<span class="w"> </span>-W<span class="w"> </span>-f<span class="w"> </span>ldapusers.ldif<span class="w"> </span>
+</code></pre></div>
 <details class="success" open="open">
 <summary>Output</summary>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;uid=admin,ou=people,dc=k8sengineers,dc=com&quot;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;uid=admin,ou=people,dc=k8sengineers,dc=com&quot;</span>
+</code></pre></div>
 </details>
 <p>Do the same for the group. Create a ldif file:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>vim<span class="w"> </span>ldapgroups.ldif
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dn:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,ou<span class="o">=</span>groups,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>objectClass:<span class="w"> </span>posixGroup
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>cn:<span class="w"> </span>admin
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>gidNumber:<span class="w"> </span><span class="m">2000</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>memberUid:<span class="w"> </span>admin
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>ldapgroups.ldif
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>dn:<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,ou<span class="o">=</span>groups,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com
+objectClass:<span class="w"> </span>posixGroup
+cn:<span class="w"> </span>admin
+gidNumber:<span class="w"> </span><span class="m">2000</span>
+memberUid:<span class="w"> </span>admin
+</code></pre></div>
 Add group:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ldapadd<span class="w"> </span>-x<span class="w"> </span>-D<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com<span class="w"> </span>-W<span class="w"> </span>-f<span class="w"> </span>ldapgroups.ldif
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>ldapadd<span class="w"> </span>-x<span class="w"> </span>-D<span class="w"> </span><span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>k8sengineers,dc<span class="o">=</span>com<span class="w"> </span>-W<span class="w"> </span>-f<span class="w"> </span>ldapgroups.ldif
+</code></pre></div>
 <details class="success" open="open">
 <summary>Output</summary>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;cn=admin,ou=groups,dc=k8sengineers,dc=com&quot;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">adding</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="s">&quot;cn=admin,ou=groups,dc=k8sengineers,dc=com&quot;</span>
+</code></pre></div>
 </details>
 <p>You can combine the two into single file.</p>
 <h2 id="install-ldap-account-manager-on-ubuntu">Install LDAP Account Manager on Ubuntu<a class="headerlink" href="#install-ldap-account-manager-on-ubuntu" title="Permanent link">&para;</a></h2>
 <p>Install Apache Web server &amp; PHP
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>apache2<span class="w"> </span>php<span class="w"> </span>php-cgi<span class="w"> </span>libapache2-mod-php<span class="w"> </span>php-mbstring<span class="w"> </span>php-common<span class="w"> </span>php-pear
-</span></code></pre></div></p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>apache2<span class="w"> </span>php<span class="w"> </span>php-cgi<span class="w"> </span>libapache2-mod-php<span class="w"> </span>php-mbstring<span class="w"> </span>php-common<span class="w"> </span>php-pear
+</code></pre></div></p>
 <ul>
 <li>
 <p>For Ubuntu 22.04:sudo a2enconf php8.0-cgi</p>
@@ -1955,16 +1955,16 @@ Add group:</p>
 </li>
 </ul>
 <p>Here I'm using Ubuntu 20.04:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>a2enconf<span class="w"> </span>php7.4-cgi
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>a2enconf<span class="w"> </span>php7.4-cgi
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2
+</code></pre></div>
 Install LDAP Account Manager
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>ldap-account-manager
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>ldap-account-manager
+</code></pre></div>
 Configure LDAP Account Manager
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>http://&lt;<span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span>&gt;/lam
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>http://&lt;<span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span>&gt;/lam
+</code></pre></div>
 <img alt="image" src="../../img/ldap03.PNG" /></p>
 <p>The LDAP Account Manager Login form will be shown. We need to set our LDAP server profile by clicking on[LAM configuration] at the upper right corner.
 <img alt="image" src="../../img/ldap04.PNG" /></p>
@@ -1998,13 +1998,13 @@ Once you have the groups for user accounts to be added, click on Users &gt; New 
 <h2 id="configure-your-ubuntu-220420041804-as-ldap-client">Configure your Ubuntu 22.04|20.04|18.04 as LDAP Client<a class="headerlink" href="#configure-your-ubuntu-220420041804-as-ldap-client" title="Permanent link">&para;</a></h2>
 <h3 id="the-last-step-is-to-configure-the-systems-in-your-network-to-authenticate-against-the-ldap-server-weve-just-configured">The last step is to configure the systems in your network to authenticate against the LDAP server we’ve just configured:<a class="headerlink" href="#the-last-step-is-to-configure-the-systems-in-your-network-to-authenticate-against-the-ldap-server-weve-just-configured" title="Permanent link">&para;</a></h3>
 <p>Add LDAP server address to /etc/hosts file if you don’t have an active DNS server in your network.
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/hosts
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="m">192</span>.168.18.50<span class="w"> </span>ldap.k8sengineers.com
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/hosts
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="m">192</span>.168.18.50<span class="w"> </span>ldap.k8sengineers.com
+</code></pre></div>
 Install LDAP client utilities on your Ubuntu system:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libnss-ldap<span class="w"> </span>libpam-ldap<span class="w"> </span>ldap-utils
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libnss-ldap<span class="w"> </span>libpam-ldap<span class="w"> </span>ldap-utils
+</code></pre></div>
 Begin configuring the settings to look like below
 * Set LDAP URI- This can be IP address or hostname
 <img alt="image" src="../../img/ldap13.PNG" /></p>
@@ -2022,25 +2022,25 @@ Begin configuring the settings to look like below
 <li>Provide LDAP root account Password</li>
 </ul>
 <p>After the installation, edit <mark>/etc/nsswitch.conf</mark> and add ldap authentication to passwd and group lines.
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>vim<span class="w"> </span>/etc/nsswitch.conf
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>passwd:<span class="w"> </span>compat<span class="w"> </span>systemd<span class="w"> </span>ldap
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>group:<span class="w"> </span>compat<span class="w"> </span>systemd<span class="w"> </span>ldap
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>shadow:<span class="w"> </span>compat
-</span></code></pre></div></p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/nsswitch.conf
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>passwd:<span class="w"> </span>compat<span class="w"> </span>systemd<span class="w"> </span>ldap
+group:<span class="w"> </span>compat<span class="w"> </span>systemd<span class="w"> </span>ldap
+shadow:<span class="w"> </span>compat
+</code></pre></div></p>
 <p>Modify the file <mark>/etc/pam.d/common-password</mark> Remove use_authtok on line 26 to look like below.
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>vim<span class="w"> </span>/etc/pam.d/common-password
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>password<span class="w"> </span><span class="o">[</span><span class="nv">success</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">user_unknown</span><span class="o">=</span>ignore<span class="w"> </span><span class="nv">default</span><span class="o">=</span>die<span class="o">]</span><span class="w"> </span>pam_ldap.so<span class="w"> </span>try_first_pass
-</span></code></pre></div></p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/pam.d/common-password
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>password<span class="w"> </span><span class="o">[</span><span class="nv">success</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">user_unknown</span><span class="o">=</span>ignore<span class="w"> </span><span class="nv">default</span><span class="o">=</span>die<span class="o">]</span><span class="w"> </span>pam_ldap.so<span class="w"> </span>try_first_pass
+</code></pre></div></p>
 <p>Enable creation of home directory on the first login by adding the following line to the end of file /etc/pam.d/common-session
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>session<span class="w"> </span>optional<span class="w"> </span>pam_mkhomedir.so<span class="w"> </span><span class="nv">skel</span><span class="o">=</span>/etc/skel<span class="w"> </span><span class="nv">umask</span><span class="o">=</span><span class="m">077</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>session<span class="w"> </span>optional<span class="w"> </span>pam_mkhomedir.so<span class="w"> </span><span class="nv">skel</span><span class="o">=</span>/etc/skel<span class="w"> </span><span class="nv">umask</span><span class="o">=</span><span class="m">077</span>
+</code></pre></div>
 See the below screenshot:
 <img alt="image" src="../../img/ldap15.PNG" /></p>
 <p>Test by switching to a user account on LDAP</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>&lt;username&gt;
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>&lt;username&gt;
+</code></pre></div>
 
 
 

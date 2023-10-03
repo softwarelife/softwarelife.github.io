@@ -1641,15 +1641,15 @@
 <p><strong>Set up a build pipeline:</strong> In the project, create a new build pipeline and configure it to use the appropriate build agent. Then, add a task to install the necessary dependencies for running Playwright tests, such as Node.js and Playwright.</p>
 </li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
+</code></pre></div>
 <ul>
 <li><strong>Configure the Playwright test task:</strong> Add a new task to the build pipeline for running Playwright tests. This task should run the command to execute your Playwright tests, such as "npx playwright test" or "npm test". You can also configure this task to specify the browser and environment in which the tests should run.</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>npm<span class="w"> </span><span class="nb">test</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
+
+npm<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Set up test reporting:</strong> To view the results of your Playwright tests in Azure DevOps, you can add a test reporting task to the build pipeline. This task should publish the test results to Azure DevOps so that you can view them in the test summary.</p>

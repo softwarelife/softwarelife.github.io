@@ -1652,42 +1652,42 @@
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>yum<span class="w"> </span>install<span class="w"> </span>java-1.8.0-openjdk.x86_64<span class="w"> </span>wget<span class="w"> </span>-y<span class="w">   </span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/nexus/<span class="w">   </span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/nexus/<span class="w">                           </span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">cd</span><span class="w"> </span>/tmp/nexus
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">NEXUSURL</span><span class="o">=</span><span class="s2">&quot;https://download.sonatype.com/nexus/3/latest-unix.tar.gz&quot;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>wget<span class="w"> </span><span class="nv">$NEXUSURL</span><span class="w"> </span>-O<span class="w"> </span>nexus.tar.gz
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">EXTOUT</span><span class="o">=</span><span class="sb">`</span>tar<span class="w"> </span>xzvf<span class="w"> </span>nexus.tar.gz<span class="sb">`</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">NEXUSDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$EXTOUT</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span>-f1<span class="sb">`</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/nexus/nexus.tar.gz
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>rsync<span class="w"> </span>-avzh<span class="w"> </span>/tmp/nexus/<span class="w"> </span>/opt/nexus/
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>useradd<span class="w"> </span>nexus
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>chown<span class="w"> </span>-R<span class="w"> </span>nexus.nexus<span class="w"> </span>/opt/nexus<span class="w"> </span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt;&gt; /etc/systemd/system/nexus.service</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s">[Unit]                                                                          </span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s">Description=nexus service                                                       </span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s">After=network.target                                                            </span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s">[Service]                                                                       </span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s">Type=forking                                                                    </span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s">LimitNOFILE=65536                                                               </span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s">ExecStart=/opt/nexus/$NEXUSDIR/bin/nexus start                                  </span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s">ExecStop=/opt/nexus/$NEXUSDIR/bin/nexus stop                                    </span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="s">User=nexus                                                                      </span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s">Restart=on-abort                                                                </span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="s">[Install]                                                                       </span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="s">WantedBy=multi-user.target                                                      </span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="s">EOT</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;run_as_user=&quot;nexus&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/opt/nexus/<span class="nv">$NEXUSDIR</span>/bin/nexus.rc
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>systemctl<span class="w"> </span>daemon-reload
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>systemctl<span class="w"> </span>start<span class="w"> </span>nexus
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nexus
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+yum<span class="w"> </span>install<span class="w"> </span>java-1.8.0-openjdk.x86_64<span class="w"> </span>wget<span class="w"> </span>-y<span class="w">   </span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/nexus/<span class="w">   </span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/nexus/<span class="w">                           </span>
+<span class="nb">cd</span><span class="w"> </span>/tmp/nexus
+<span class="nv">NEXUSURL</span><span class="o">=</span><span class="s2">&quot;https://download.sonatype.com/nexus/3/latest-unix.tar.gz&quot;</span>
+wget<span class="w"> </span><span class="nv">$NEXUSURL</span><span class="w"> </span>-O<span class="w"> </span>nexus.tar.gz
+<span class="nv">EXTOUT</span><span class="o">=</span><span class="sb">`</span>tar<span class="w"> </span>xzvf<span class="w"> </span>nexus.tar.gz<span class="sb">`</span>
+<span class="nv">NEXUSDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$EXTOUT</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span>-f1<span class="sb">`</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/nexus/nexus.tar.gz
+rsync<span class="w"> </span>-avzh<span class="w"> </span>/tmp/nexus/<span class="w"> </span>/opt/nexus/
+useradd<span class="w"> </span>nexus
+chown<span class="w"> </span>-R<span class="w"> </span>nexus.nexus<span class="w"> </span>/opt/nexus<span class="w"> </span>
+cat<span class="w"> </span><span class="s">&lt;&lt;EOT&gt;&gt; /etc/systemd/system/nexus.service</span>
+<span class="s">[Unit]                                                                          </span>
+<span class="s">Description=nexus service                                                       </span>
+<span class="s">After=network.target                                                            </span>
+
+<span class="s">[Service]                                                                       </span>
+<span class="s">Type=forking                                                                    </span>
+<span class="s">LimitNOFILE=65536                                                               </span>
+<span class="s">ExecStart=/opt/nexus/$NEXUSDIR/bin/nexus start                                  </span>
+<span class="s">ExecStop=/opt/nexus/$NEXUSDIR/bin/nexus stop                                    </span>
+<span class="s">User=nexus                                                                      </span>
+<span class="s">Restart=on-abort                                                                </span>
+
+<span class="s">[Install]                                                                       </span>
+<span class="s">WantedBy=multi-user.target                                                      </span>
+
+<span class="s">EOT</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;run_as_user=&quot;nexus&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/opt/nexus/<span class="nv">$NEXUSDIR</span>/bin/nexus.rc
+systemctl<span class="w"> </span>daemon-reload
+systemctl<span class="w"> </span>start<span class="w"> </span>nexus
+systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nexus
+</code></pre></div>
 
 
 

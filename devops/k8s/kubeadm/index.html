@@ -1757,73 +1757,73 @@
 </div>
 <h3 id="installing-docker">Installing Docker:<a class="headerlink" href="#installing-docker" title="Permanent link">&para;</a></h3>
 <p>Add the Docker repository key and Docker repository.
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>add-apt-repository<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s2">&quot;deb https://download.docker.com/linux/</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2"> \</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> \</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s2">stable&quot;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+add-apt-repository<span class="w"> </span><span class="se">\</span>
+<span class="s2">&quot;deb https://download.docker.com/linux/</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2"> \</span>
+<span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> \</span>
+<span class="s2">stable&quot;</span>
+</code></pre></div>
 Update the list of packages and install the docker</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>apt-get<span class="w"> </span>update
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;]}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/docker/daemon.json
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span>daemon-reload
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
-</span></code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>update
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;]}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/docker/daemon.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>daemon-reload
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
+</code></pre></div></p>
 <h3 id="installing-kubeadm-kublet-and-kubectl">Installing kubeadm, kublet, and kubectl:<a class="headerlink" href="#installing-kubeadm-kublet-and-kubectl" title="Permanent link">&para;</a></h3>
 <p>Add the Google repository key and Google repository</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://packages.cloud.google.com/apt/doc/apt-key.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>vim<span class="w"> </span>/etc/apt/sources.list.d/kubernetes.list
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>deb<span class="w"> </span>http://apt.kubernetes.io<span class="w"> </span>kubernetes-xenial<span class="w"> </span>main
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>https://packages.cloud.google.com/apt/doc/apt-key.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/apt/sources.list.d/kubernetes.list
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>deb<span class="w"> </span>http://apt.kubernetes.io<span class="w"> </span>kubernetes-xenial<span class="w"> </span>main
+</code></pre></div>
 Update the list of packages. And install kubelet, kubeadm, and kubectl.</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>apt-get<span class="w"> </span>update<span class="w"> </span>
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>apt-get<span class="w"> </span>install<span class="w"> </span>kubelet<span class="w"> </span>kubeadm<span class="w"> </span>kubectl<span class="w"> </span>-y
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>update<span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>kubelet<span class="w"> </span>kubeadm<span class="w"> </span>kubectl<span class="w"> </span>-y
+</code></pre></div>
 Disable the swap.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>swapoff<span class="w"> </span>-a
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>swapoff<span class="w"> </span>-a
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Setup Master Node to Connect with Worker Nodes</p>
 </div>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/ swap / s/^/#/&#39;</span><span class="w"> </span>/etc/fstab
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">NODENAME</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>-s<span class="k">)</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubeadm<span class="w"> </span>init<span class="w"> </span>--apiserver-advertise-address<span class="o">=</span><span class="m">172</span>.31.85.246<span class="w">  </span>--apiserver-cert-extra-sans<span class="o">=</span><span class="m">172</span>.31.85.246<span class="w">  </span>--pod-network-cidr<span class="o">=</span><span class="m">10</span>.0.0.0/16<span class="w"> </span>
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/ swap / s/^/#/&#39;</span><span class="w"> </span>/etc/fstab
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">NODENAME</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>-s<span class="k">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubeadm<span class="w"> </span>init<span class="w"> </span>--apiserver-advertise-address<span class="o">=</span><span class="m">172</span>.31.85.246<span class="w">  </span>--apiserver-cert-extra-sans<span class="o">=</span><span class="m">172</span>.31.85.246<span class="w">  </span>--pod-network-cidr<span class="o">=</span><span class="m">10</span>.0.0.0/16<span class="w"> </span>
+</code></pre></div>
 Now Create a Directory Name <mark>.kube</mark> in the master node home directory
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>mkdir<span class="w"> </span>.kube
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>.kube
+</code></pre></div>
 Copy the Default conf file to the .kube directory
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>cp<span class="w"> </span>/etc/kubernetes/admin.conf<span class="w"> </span>.kube/config
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>/etc/kubernetes/admin.conf<span class="w"> </span>.kube/config
+</code></pre></div>
 Replace the Ip address with your Instance Private Ip Address and set pod Network </p>
 <p>After Executing <mark>kubeadm init</mark> command you will get one command as output that need to execute on <mark>worker nodes</mark></p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>kubeadm<span class="w"> </span>join<span class="w"> </span><span class="m">172</span>.31.85.246:6443<span class="w"> </span>--token<span class="w"> </span>n6v08z.53b057pfwnj8mq10<span class="w">         </span>--discovery-token-ca-cert-hash<span class="w"> </span>sha256:9e8a38ddfc46c41ecb3317db9fc2145f70bddbdd2c6b8091fbdbab18e1dbcb19<span class="w"> </span>
-</span></code></pre></div>
+<p><div class="highlight"><pre><span></span><code>kubeadm<span class="w"> </span>join<span class="w"> </span><span class="m">172</span>.31.85.246:6443<span class="w"> </span>--token<span class="w"> </span>n6v08z.53b057pfwnj8mq10<span class="w">         </span>--discovery-token-ca-cert-hash<span class="w"> </span>sha256:9e8a38ddfc46c41ecb3317db9fc2145f70bddbdd2c6b8091fbdbab18e1dbcb19<span class="w"> </span>
+</code></pre></div>
 Configuring the Calico in Master Node
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://docs.projectcalico.org/manifests/calico.yaml
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://docs.projectcalico.org/manifests/calico.yaml
+</code></pre></div>
 Now check Kubectl commands
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>node
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>node
+</code></pre></div>
 Now test the cluster </p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>kubectl<span class="w"> </span>run<span class="w"> </span>pod<span class="w"> </span>--image<span class="o">=</span>nginx
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide
-</span></code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>run<span class="w"> </span>pod<span class="w"> </span>--image<span class="o">=</span>nginx
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pod
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide
+</code></pre></div></p>
 
 
 
