@@ -1727,13 +1727,8 @@
 <p>Here's an example of how these fields come together in a Kubernetes YAML file for creating a Pod:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes YAML file for a basic Pod</span>
 
-<span class="c1"># The &#39;apiVersion&#39; field specifies the Kubernetes API version.</span>
-<span class="c1"># Common API versions include:</span>
-<span class="c1"># - v1: Core resources like Pods, Services, ConfigMaps, and more.</span>
-<span class="c1"># - apps/v1: Resources like Deployments, StatefulSets, and DaemonSets.</span>
-<span class="c1"># - extensions/v1beta1: Older version for resources like Ingress.</span>
-<span class="c1"># - networking.k8s.io/v1: Resources like NetworkPolicies.</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"> </span><span class="c1"># (1)</span>
 
 <span class="c1"># The &#39;kind&#39; field defines the type of Kubernetes resource.</span>
 <span class="c1"># In this case, we are creating a Pod, but other common resource types include:</span>
@@ -1772,6 +1767,25 @@
 <span class="w">          </span><span class="c1"># &#39;containerPort&#39; specifies the port number (80) on which the container listens.</span>
 <span class="w">          </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
+<ol>
+<li>
+<p>The 'apiVersion' field specifies the Kubernetes API version. Common API versions include:</p>
+<ul>
+<li>
+<p>v1: Core resources like Pods, Services, ConfigMaps, and more.</p>
+</li>
+<li>
+<p>apps/v1: Resources like Deployments, StatefulSets, and DaemonSets.</p>
+</li>
+<li>
+<p>extensions/v1beta1: Older version for resources like Ingress.</p>
+</li>
+<li>
+<p>networking.k8s.io/v1: Resources like NetworkPolicies.</p>
+</li>
+</ul>
+</li>
+</ol>
 <p>In this example, we have:</p>
 <ul>
 <li><code>apiVersion: v1</code> indicating the core API version.</li>
@@ -1793,10 +1807,10 @@
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>run<span class="w"> </span>my-pod<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--port<span class="o">=</span><span class="m">80</span>
 </code></pre></div></p>
 <p><strong>3. Scale a Deployment:</strong>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>my-deployment<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>my-deployment<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="c1"># (1)</span>
 </code></pre></div></p>
 <ol>
-<li><img alt="🙋‍♂️" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f64b-200d-2642-fe0f.svg" title=":man_raising_hand:" /> set no of replicas</li>
+<li>🖐️ Modify the quantity of replicas here</li>
 </ol>
 <h3 id="real-time-use-case">Real-time Use Case:<a class="headerlink" href="#real-time-use-case" title="Permanent link">&para;</a></h3>
 <p>Suppose you have a sudden spike in traffic to your website, and you need to quickly scale up your application. Imperative commands allow you to react swiftly without worrying about YAML configuration files.</p>
