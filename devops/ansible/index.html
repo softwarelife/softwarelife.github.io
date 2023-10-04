@@ -1915,7 +1915,7 @@
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="cp">##Host Level</span>
+<div class="highlight"><span class="filename">inventory</span><pre><span></span><code><span class="cp">##Host Level</span>
 
 <span class="n">webserver01</span><span class="w">    </span><span class="n">ansible_host</span><span class="o">=&lt;</span><span class="n">Private</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;</span>
 <span class="n">webserver02</span><span class="w">    </span><span class="n">ansible_host</span><span class="o">=&lt;</span><span class="n">Private</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;</span>
@@ -1970,13 +1970,13 @@ To see details about the machine
 </div>
 </div>
 <p>Copy files to Remote machines name start with web
-<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span>&lt;Inventoryfile<span class="w"> </span>path&gt;<span class="w"> </span>-m<span class="w"> </span>copy<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;src=index.html dest=/var/www/html/index.html&quot;</span><span class="w"> </span><span class="s1">&#39;web*&#39;</span><span class="w"> </span>--become
+<div class="highlight"><span class="filename">Command Line</span><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span>&lt;Inventoryfile<span class="w"> </span>path&gt;<span class="w"> </span>-m<span class="w"> </span>copy<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;src=index.html dest=/var/www/html/index.html&quot;</span><span class="w"> </span><span class="s1">&#39;web*&#39;</span><span class="w"> </span>--become
 </code></pre></div>
 Installing <mark>httpd</mark> in centos Remote machine 
-<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span>&lt;Inventoryfile<span class="w"> </span>path&gt;<span class="w"> </span>-m<span class="w"> </span>yum<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;name=httpd state=present&quot;</span><span class="w"> </span>websrvgrp<span class="w"> </span>--become
+<div class="highlight"><span class="filename">Command Line</span><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span>&lt;Inventoryfile<span class="w"> </span>path&gt;<span class="w"> </span>-m<span class="w"> </span>yum<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;name=httpd state=present&quot;</span><span class="w"> </span>websrvgrp<span class="w"> </span>--become
 </code></pre></div>
 Start &amp; Enable <mark>httpd</mark> in centos Remote machine
-<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span>&lt;Inventoryfile<span class="w"> </span>path&gt;<span class="w"> </span>-m<span class="w"> </span>service<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;name=httpd state=started enabled=yes&quot;</span><span class="w"> </span>websrvgrp<span class="w"> </span>--become
+<div class="highlight"><span class="filename">Command Line</span><pre><span></span><code>ansible<span class="w"> </span>-i<span class="w"> </span>&lt;Inventoryfile<span class="w"> </span>path&gt;<span class="w"> </span>-m<span class="w"> </span>service<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;name=httpd state=started enabled=yes&quot;</span><span class="w"> </span>websrvgrp<span class="w"> </span>--become
 </code></pre></div></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -1988,7 +1988,7 @@ Start &amp; Enable <mark>httpd</mark> in centos Remote machine
 <div class="tabbed-block"></div>
 </div>
 </div>
-<p><div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Creating Files &amp; Directories</span>
+<p><div class="highlight"><span class="filename">1st_playbook.yaml</span><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Creating Files &amp; Directories</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;host&gt;</span>
 <span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 <span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
@@ -2006,7 +2006,7 @@ To Execute the playbook
 <div class="highlight"><pre><span></span><code>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>&lt;Inventory<span class="w"> </span>file<span class="w"> </span>path&gt;<span class="w"> </span>sample.yml
 </code></pre></div></p>
 <h2 id="writing-playbook-for-installing-httpd-service-in-remote-machines-with-start-and-enable-and-copying-indexhtml-files-from-local-machine-to-the-remote-machine">Writing Playbook For Installing Httpd service in remote machines with start and enable and copying index.html files from local machine to the remote machine 🌐<a class="headerlink" href="#writing-playbook-for-installing-httpd-service-in-remote-machines-with-start-and-enable-and-copying-indexhtml-files-from-local-machine-to-the-remote-machine" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install httpd and start the service</span>
+<div class="highlight"><span class="filename">installation_service.yaml</span><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install httpd and start the service</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
 <span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Installing the Apache package</span>
@@ -2032,7 +2032,7 @@ To Execute the playbook
 <span class="w">         </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restarted</span>
 </code></pre></div>
 <h2 id="writing-playbook-for-setting-up-website-in-remote-machine">Writing Playbook for Setting Up Website in Remote Machine 🌐<a class="headerlink" href="#writing-playbook-for-setting-up-website-in-remote-machine" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setting up Website</span>
+<div class="highlight"><span class="filename">website.yaml</span><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setting up Website</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">websrv</span>
 <span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
@@ -2078,7 +2078,7 @@ To Execute the playbook
 <span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restarted</span>
 </code></pre></div>
 <h2 id="writing-playbook-for-setting-up-website-in-remote-machine-with-conditions-handlers">Writing Playbook for Setting Up Website in Remote Machine with Conditions &amp; Handlers.🌐<a class="headerlink" href="#writing-playbook-for-setting-up-website-in-remote-machine-with-conditions-handlers" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Writing playbook for loops and conditions</span>
+<div class="highlight"><span class="filename">loops_conditions_handlers.yaml</span><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Writing playbook for loops and conditions</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
 <span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install packages on centos</span>
@@ -2210,7 +2210,7 @@ Creating File to store Variables
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<div class="highlight"><span class="filename">aws_vpc.yaml</span><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
 <span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
 <span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
@@ -2415,7 +2415,7 @@ Creating File to store Variables
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Launching Ec2 Instance</span>
+<div class="highlight"><span class="filename">aws_ec2.yaml</span><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Launching Ec2 Instance</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
 <span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
 <span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
@@ -2483,19 +2483,19 @@ Creating File to store Variables
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>defaults<span class="o">]</span>
-<span class="nv">host_key_checking</span><span class="o">=</span>False
-<span class="nv">inventory</span><span class="o">=</span>&lt;Inventory<span class="w"> </span>File<span class="w"> </span>Path&gt;
-<span class="nv">timeout</span><span class="o">=</span><span class="m">20</span>
-<span class="nv">log_path</span><span class="o">=</span>/var/log/ansible_world.log
-<span class="nv">remote_port</span><span class="o">=</span><span class="m">22</span>
-<span class="nv">remote_user</span><span class="o">=</span>&lt;username&gt;
+<div class="highlight"><span class="filename">ansible.cfg</span><pre><span></span><code><span class="p">[</span><span class="n">defaults</span><span class="p">]</span>
+<span class="n">host_key_checking</span><span class="o">=</span><span class="n">False</span>
+<span class="n">inventory</span><span class="o">=&lt;</span><span class="n">Inventory</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Path</span><span class="o">&gt;</span>
+<span class="n">timeout</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">log_path</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">ansible_world</span><span class="p">.</span><span class="n">log</span>
+<span class="n">remote_port</span><span class="o">=</span><span class="mi">22</span>
+<span class="n">remote_user</span><span class="o">=&lt;</span><span class="n">username</span><span class="o">&gt;</span>
 
-<span class="o">[</span>privilege_escalation<span class="o">]</span>
-<span class="nv">become</span><span class="o">=</span>True
-<span class="nv">become_method</span><span class="o">=</span>sudo
-<span class="nv">become_user</span><span class="o">=</span>root
-<span class="nv">become_ask_pass</span><span class="o">=</span>False
+<span class="p">[</span><span class="n">privilege_escalation</span><span class="p">]</span>
+<span class="n">become</span><span class="o">=</span><span class="n">True</span>
+<span class="n">become_method</span><span class="o">=</span><span class="n">sudo</span>
+<span class="n">become_user</span><span class="o">=</span><span class="n">root</span>
+<span class="n">become_ask_pass</span><span class="o">=</span><span class="n">False</span>
 </code></pre></div>
 
 
