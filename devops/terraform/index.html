@@ -1848,7 +1848,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Utilizing an existing key and security group</label><label for="__tabbed_2_2">Provisioning with New Key and Security Group</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
 <span class="p">}</span>
 
@@ -1865,7 +1865,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
 <span class="p">}</span>
 
@@ -1925,10 +1925,10 @@
 </div>
 <h2 id="terraform-vars">Terraform Vars<a class="headerlink" href="#terraform-vars" title="Permanent link">&para;</a></h2>
 <p>Using Variables</p>
-<p>Create a File vars.tf </p>
+<p>Create a File with name vars.tf </p>
 <p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>vars.tf
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">vars.tf</span><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
 <span class="p">}</span>
 
@@ -1948,14 +1948,14 @@
 <p>Example for AWS
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>provider.tf
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">provider.tf</span><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.REGION</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Launching Instance with Vars File</p>
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Instance.tf
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>main.tf
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;Instance&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">ami</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">var.AMIS[var.REGION</span><span class="p">]</span>
 <span class="w">  </span><span class="na">instance_type</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
 <span class="w">  </span><span class="na">key_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
@@ -1968,9 +1968,7 @@
 </code></pre></div>
 <h2 id="terraform-provisioning">Terraform Provisioning<a class="headerlink" href="#terraform-provisioning" title="Permanent link">&para;</a></h2>
 <p>Launching AWS Resources with Terraform Provisioning</p>
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>instance_prov.tf
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_key_pair&quot;</span><span class="w"> </span><span class="nv">&quot;testing007&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_key_pair&quot;</span><span class="w"> </span><span class="nv">&quot;testing007&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">key_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;testing007&quot;</span>
 <span class="w">  </span><span class="na">public_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;testing007.pub&quot;</span><span class="p">)</span>
 <span class="w"> </span><span class="p">}</span>
@@ -2009,7 +2007,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Variables file - vars.tf </p>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">vars.tf</span><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;REGION&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-2&quot;</span>
 <span class="p">}</span>
 
@@ -2032,7 +2030,7 @@
 </code></pre></div>
 <h2 id="to-store-state-remotely-in-s3-bucket">To Store State Remotely in S3 Bucket<a class="headerlink" href="#to-store-state-remotely-in-s3-bucket" title="Permanent link">&para;</a></h2>
 <p>Create an S3 Bucket</p>
-<div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-state-009&quot;</span>
 <span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform/remote&quot;</span>
@@ -2045,7 +2043,7 @@
 <summary>Info</summary>
 <p>Enable Authentications such as service connections, OAuth Tokens and etc of the required platform with your pipeline</p>
 </details>
-<div class="highlight"><pre><span></span><code><span class="err">Terraform</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Pipeline</span>
+<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="err">Terraform</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Pipeline</span>
 
 <span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
