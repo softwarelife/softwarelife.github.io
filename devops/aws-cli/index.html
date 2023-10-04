@@ -1633,12 +1633,23 @@
 <h1 id="aws">AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
 <p>Amazon Web Services (AWS) is the world’s most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.</p>
 <h1 id="aws-cli-command-line-interface">AWS CLI (Command Line Interface)<a class="headerlink" href="#aws-cli-command-line-interface" title="Permanent link">&para;</a></h1>
-<h2 id="setting-up-iam-user">Setting up IAM user<a class="headerlink" href="#setting-up-iam-user" title="Permanent link">&para;</a></h2>
-<h3 id="creating-user-with-access-key">Creating User with Access-key<a class="headerlink" href="#creating-user-with-access-key" title="Permanent link">&para;</a></h3>
-<p><img alt="image" src="../img/creating user.png" /></p>
-<h3 id="set-permissions-attaching-policies">Set permissions &amp; Attaching Policies<a class="headerlink" href="#set-permissions-attaching-policies" title="Permanent link">&para;</a></h3>
-<p><img alt="image" src="../img/Attaching policies.png" />
-<img alt="image" src="../img/User added.png" /></p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before you begin, ensure you have the following prerequisites in place:</p>
+<ol>
+<li>
+<p><strong>AWS Account</strong>: You need an active AWS account with necessary permissions to create resources like Ec2 Instances, IAM roles, VPC, etc.</p>
+</li>
+<li>
+<p><strong>AWS CLI</strong>: Install and configure the AWS Command Line Interface (CLI) on your local machine. You can download it from the <a href="https://aws.amazon.com/cli/">AWS CLI Documentation</a>.</p>
+</li>
+<li>
+<p><strong>IAM User</strong>: Create an AWS IAM user with programmatic access and necessary permissions (e.g., Ec2 Full Access, S3 Full Access). Note down the user's access key ID and secret access key. <a href="https://app.tango.us/app/workflow/Access-keys-3fcc9106131b4a74b77101368d548cbe">Reference Document Link</a></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Utilize Role-Based Authentication when working with Terraform on AWS Instances or Services, as it offers a higher level of security compared to using access keys.</p>
+</div>
 <h3 id="installing-aws-cli">Installing AWS-CLI<a class="headerlink" href="#installing-aws-cli" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-i
 </code></pre></div>
