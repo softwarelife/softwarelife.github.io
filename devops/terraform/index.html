@@ -1967,7 +1967,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="terraform-provisioning">Terraform Provisioning<a class="headerlink" href="#terraform-provisioning" title="Permanent link">&para;</a></h2>
-<p>Launching AWS Resources with Terraform Provisioning</p>
+<p>Launching AWS Resources and Setting Up a Website with Terraform with existing key-pair</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Generate a key pair using the 'ssh-keygen' command and then save the contents of the public and private keys into two new files named 'testing007.pub' and 'testing007'.</p>
+</div>
 <div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_key_pair&quot;</span><span class="w"> </span><span class="nv">&quot;testing007&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">key_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;testing007&quot;</span>
 <span class="w">  </span><span class="na">public_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;testing007.pub&quot;</span><span class="p">)</span>
@@ -2039,13 +2043,15 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="running-terraform-script-using-pipeline">Running Terraform Script using Pipeline<a class="headerlink" href="#running-terraform-script-using-pipeline" title="Permanent link">&para;</a></h2>
+<p>Launching EC2 Instances and Storing State Files in an S3 Bucket with Terraform</p>
 <details open="open">
 <summary>Info</summary>
 <p>Enable Authentications such as service connections, OAuth Tokens and etc of the required platform with your pipeline</p>
 </details>
-<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="err">Terraform</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Pipeline</span>
-
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Launching EC2 Instance</label><label for="__tabbed_3_2">Provisioning Website</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">main.tf</span><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
 <span class="p">}</span>
 
@@ -2072,7 +2078,7 @@
 <span class="w">    </span><span class="na">to_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">22</span>
 <span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
 <span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;183.82.115.199/32&quot;</span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 
 <span class="w">  </span><span class="nb">ingress</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">from_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
@@ -2103,17 +2109,90 @@
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-azuredevops-saitejairrinki-org&quot;</span>
-
 <span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform/remote&quot;</span>
-
 <span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
-
 <span class="w">  </span><span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>```hcl title"main.tf"
+provider "aws" {
+  region = "us-east-1"
+}</p>
+<p>resource "aws_key_pair" "example_keypair" {
+  key_name   = "satrun"
+  public_key = tls_private_key.example_keypair.public_key_openssh
+}</p>
+<p>resource "tls_private_key" "example_keypair" {
+  algorithm = "RSA"
+}</p>
+<p>resource "local_file" "private_key_file" {
+  content  = tls_private_key.example_keypair.private_key_pem
+  filename = "satrun.pem"
+}</p>
+<p>resource "aws_security_group" "example_security_group" {
+  name        = "satrun-security-group"
+  description = "Example Security Group"</p>
+<p>ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }</p>
+<p>ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }</p>
+<p>egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}</p>
+<p>resource "aws_instance" "example_instance" {
+  ami                = "ami-09e67e426f25ce0d7" # Ubuntu 20.04 LTS in us-east-1 (N. Virginia) region
+  instance_type      = "t2.micro"
+  key_name           = aws_key_pair.example_keypair.key_name
+  vpc_security_group_ids = [aws_security_group.example_security_group.id]</p>
+<p>tags = {
+    Name = "satrun-instance"
+  }</p>
+<p>provisioner "file" {
+    source      = "./web.sh"
+    destination = "/tmp/web.sh"
+  }</p>
+<p>provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/web.sh",
+      "sudo /tmp/web.sh"
+    ]
+  }</p>
+<p>connection {
+    type        = "ssh"
+    user        = "ubuntu"  # Change to the appropriate SSH user for your AMI
+    private_key = tls_private_key.example_keypair.private_key_pem
+    host        = self.public_ip
+  }
+}</p>
+<p>output "PublicIP" {
+  value = aws_instance.example_instance.public_ip
+}</p>
+<p>terraform {
+  backend "s3" {
+    bucket = "1terraform"
+    key    = "terraform/remote"
+    region = "us-east-1"
+  }
+}
+```</p>
+</div>
+</div>
+</div>
 
 
 
