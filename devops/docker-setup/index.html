@@ -1771,7 +1771,7 @@
 <p>To streamline the installation process, you can use the following script to install Docker Engine and Docker Compose on both Ubuntu and CentOS:
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>docker_setup.sh
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
 apt<span class="w"> </span>--help<span class="w"> </span>&gt;&gt;/dev/null
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span>
 <span class="w">   </span><span class="k">then</span><span class="w"> </span>
@@ -2096,7 +2096,7 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Single Image</label><label for="__tabbed_5_2">Mltiple Images</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<div class="highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">website</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe:v1</span>
@@ -2105,7 +2105,7 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<div class="highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
