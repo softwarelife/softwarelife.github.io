@@ -2092,14 +2092,33 @@ Now Access From the Browser, Make sure you have to allow the port number in my c
 </div>
 </div>
 </div>
-<p>Creating Docker Compose for DockerHub Images
+<p>Creating Docker Compose for DockerHub Images</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Single Image</label><label for="__tabbed_5_2">Mltiple Images</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">website</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe:v1</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8085:80&quot;</span>
-</code></pre></div></p>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8085:80&quot;</span>
+<span class="w">  </span><span class="nt">wavecafe</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe:v1</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8086:80&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>Start all containers defined in the docker-compose.yml file
 <div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up
 </code></pre></div></p>
@@ -2145,7 +2164,7 @@ Follow logs in real-time
 <p>Remove containers for services not defined in the docker-compose.yml file
 <div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>down<span class="w"> </span>--remove-orphans
 </code></pre></div></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Docker Volume 💽</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Docker Volume 💽</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
