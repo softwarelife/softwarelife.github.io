@@ -1290,42 +1290,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#templatesdeploymentyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      templates/deployment.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templatesserviceyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      templates/service.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chartyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chart.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#valuesyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      values.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#step-by-step-guide" class="md-nav__link">
     <span class="md-ellipsis">
       Step-by-Step Guide:
@@ -2163,42 +2127,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#templatesdeploymentyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      templates/deployment.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templatesserviceyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      templates/service.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chartyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chart.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#valuesyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      values.yaml:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#step-by-step-guide" class="md-nav__link">
     <span class="md-ellipsis">
       Step-by-Step Guide:
@@ -2271,44 +2199,48 @@
 </ul>
 <h3 id="sample-helm-project-files">🚀 Sample Helm Project Files:<a class="headerlink" href="#sample-helm-project-files" title="Permanent link">&para;</a></h3>
 <p>Now, let's dive into a sample Helm project to see how these concepts come together:</p>
-<h4 id="templatesdeploymentyaml">templates/deployment.yaml:<a class="headerlink" href="#templatesdeploymentyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">K8s Deployment File</label><label for="__tabbed_1_2">K8s Service File</label><label for="__tabbed_1_3">Charts File</label><label for="__tabbed_1_4">Values File</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">templates/deployment.yaml</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.deploymentname</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w">  </span><span class="c1"># 🚀 Name of the Deployment</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.deploymentname</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w">  </span><span class="c1"># 🚀 Name of the Deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">  </span><span class="c1"># 🚶 Number of desired replicas</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">  </span><span class="c1"># 🚶 Number of desired replicas</span>
+<span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.appname</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w">  </span><span class="c1"># 🏷️ Selector to match pods with the label &quot;app: cafe&quot;</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.appname</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w">  </span><span class="c1"># 🏷️ Selector to match pods with the label &quot;app: cafe&quot;</span>
+<span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.appname</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w">  </span><span class="c1"># 🏷️ Labels applied to pods created by this template</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-container</span><span class="w">  </span><span class="c1"># 📦 Name of the container</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">.Values.image.name</span><span class="nv"> </span><span class="s">}}:{{</span><span class="nv"> </span><span class="s">.Values.image.tag</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w">  </span><span class="c1"># 🐳 Docker image to use</span>
-<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">.Values.image.name</span><span class="nv"> </span><span class="s">}}:{{</span><span class="nv"> </span><span class="s">.Values.image.tag</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w">  </span><span class="c1"># 🐳 Docker image to use</span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cafe-port</span><span class="w">  </span><span class="c1"># 🌐 Name of the port</span>
-<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># 🚪 Port that the container listens on</span>
+<span class="w">            </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># 🚪 Port that the container listens on</span>
 </code></pre></div>
-<h4 id="templatesserviceyaml">templates/service.yaml:<a class="headerlink" href="#templatesserviceyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">templates/service.yaml</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wave-cafe</span><span class="w">  </span><span class="c1"># ☕ Name of the Service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wave-cafe</span><span class="w">  </span><span class="c1"># ☕ Name of the Service</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.appname</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w">  </span><span class="c1"># 🏷️ Select pods with the label &quot;app: cafe&quot;</span>
-<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="nt">ports</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w">  </span><span class="c1"># 🌐 Protocol for the port</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># 🚪 Port on the Service</span>
-<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cafe-port</span><span class="w">  </span><span class="c1"># 🚀 Port on the pods to forward traffic to</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># 🚪 Port on the Service</span>
+<span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cafe-port</span><span class="w">  </span><span class="c1"># 🚀 Port on the pods to forward traffic to</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
 </code></pre></div>
-<h4 id="chartyaml">Chart.yaml:<a class="headerlink" href="#chartyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Chart.yaml</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavecafe</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A Helm chart for Kubernetes</span>
 
@@ -2318,15 +2250,19 @@
 
 <span class="nt">appVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.16.0&quot;</span>
 </code></pre></div>
-<h4 id="valuesyaml">values.yaml:<a class="headerlink" href="#valuesyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">appname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavecafe</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">values.yaml</span><pre><span></span><code><span class="nt">appname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavecafe</span>
 <span class="nt">deploymentname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wavecafe</span>
 <span class="nt">servicename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wave-cafe</span>
 
 <span class="nt">image</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saitejairrinki/wavecafe</span>
+<span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="step-by-step-guide">Step-by-Step Guide:<a class="headerlink" href="#step-by-step-guide" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
@@ -2340,7 +2276,7 @@
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>Update YAML Files</strong>: Update the <code>deployment.yaml</code> and <code>service.yaml</code> files with the provided content.</p>
+<p><strong>Update YAML Files</strong>: Update the <code>deployment.yaml</code> and <code>service.yaml</code> files with the above provided content in templates folder. wrt <code>values.yaml</code> file.</p>
 </li>
 <li>
 <p><strong>Install the Chart</strong>: Deploy your application using Helm with the following command:
