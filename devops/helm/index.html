@@ -2180,6 +2180,17 @@
 </ol>
 <h3 id="components-in-a-helm-chart">🧩 Components in a Helm Chart:<a class="headerlink" href="#components-in-a-helm-chart" title="Permanent link">&para;</a></h3>
 <p>When you crack open a Helm chart, you'll find several key components:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">my-chart/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── charts/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── templates/</span>
+<span class="l l-Scalar l-Scalar-Plain">│ ├── NOTES.txt</span>
+<span class="l l-Scalar l-Scalar-Plain">│ ├── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│ ├── service.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│ └── ... (other k8s manifest files)</span>
+<span class="l l-Scalar l-Scalar-Plain">├── Chart.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">├── values.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">└── README.md</span>
+</code></pre></div>
 <ol>
 <li><strong>Chart.yaml</strong>: Metadata about the chart, including name, version, and dependencies.</li>
 <li><strong>Templates</strong>: Kubernetes manifest files with placeholders for dynamic values.</li>
@@ -2188,17 +2199,6 @@
 <li><strong>README.md</strong>: Documentation providing instructions and guidance on using the chart.</li>
 <li><strong>NOTES.txt</strong>: Helpful information and post-installation notes for users.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">my-chart/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── charts/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── templates/</span>
-<span class="l l-Scalar l-Scalar-Plain">│ ├── NOTES.txt</span>
-<span class="l l-Scalar l-Scalar-Plain">│ ├── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│ ├── service.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│ └── ... (other template files)</span>
-<span class="l l-Scalar l-Scalar-Plain">├── Chart.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">├── values.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">└── ...</span>
-</code></pre></div>
 <h3 id="helm-basic-commands">⚙️ Helm Basic Commands:<a class="headerlink" href="#helm-basic-commands" title="Permanent link">&para;</a></h3>
 <p>Getting started with Helm is a breeze thanks to its intuitive command-line interface. Here are some essential commands:</p>
 <ul>
