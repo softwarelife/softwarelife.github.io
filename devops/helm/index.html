@@ -2188,29 +2188,18 @@
 <li><strong>README.md</strong>: Documentation providing instructions and guidance on using the chart.</li>
 <li><strong>NOTES.txt</strong>: Helpful information and post-installation notes for users.</li>
 </ol>
-<p><div class="highlight"><pre><span></span><code><span class="n">my</span><span class="o">-</span><span class="n">chart</span><span class="o">/</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">charts</span><span class="o">/</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">templates</span><span class="o">/</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">NOTES</span><span class="p">.</span><span class="n">txt</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">_helpers</span><span class="p">.</span><span class="n">tpl</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">deployment</span><span class="p">.</span><span class="n">yaml</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">yaml</span>
-<span class="err">│</span><span class="w"> </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="n">files</span><span class="p">)</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">Chart</span><span class="p">.</span><span class="n">yaml</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">values</span><span class="p">.</span><span class="n">yaml</span>
-<span class="err">└──</span><span class="w"> </span><span class="p">...</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">my-chart/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── charts/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── templates/</span>
+<span class="l l-Scalar l-Scalar-Plain">│ ├── NOTES.txt</span>
+<span class="l l-Scalar l-Scalar-Plain">│ ├── _helpers.tpl</span>
+<span class="l l-Scalar l-Scalar-Plain">│ ├── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│ ├── service.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│ └── ... (other template files)</span>
+<span class="l l-Scalar l-Scalar-Plain">├── Chart.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">├── values.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">└── ...</span>
 </code></pre></div>
-<pre class="mermaid-experimental"><code>graph LR;
-    A[my-chart] --&gt; B(charts);
-    A --&gt; C(templates);
-    C --&gt; D(NOTES.txt);
-    C --&gt; E(_helpers.tpl);
-    C --&gt; F(deployment.yaml);
-    C --&gt; G(service.yaml);
-    C --&gt; H(...);
-    A --&gt; I(Chart.yaml);
-    A --&gt; J(values.yaml);
-    A --&gt; K(...);</code></pre></p>
 <h3 id="helm-basic-commands">⚙️ Helm Basic Commands:<a class="headerlink" href="#helm-basic-commands" title="Permanent link">&para;</a></h3>
 <p>Getting started with Helm is a breeze thanks to its intuitive command-line interface. Here are some essential commands:</p>
 <ul>
