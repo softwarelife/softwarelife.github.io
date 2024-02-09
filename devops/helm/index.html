@@ -2188,6 +2188,17 @@
 <li><strong>README.md</strong>: Documentation providing instructions and guidance on using the chart.</li>
 <li><strong>NOTES.txt</strong>: Helpful information and post-installation notes for users.</li>
 </ol>
+<pre class="mermaid-experimental"><code>graph TD;
+    A[my-chart] --&gt; B(charts);
+    A --&gt; C(templates);
+    C --&gt; D(NOTES.txt);
+    C --&gt; E(_helpers.tpl);
+    C --&gt; F(deployment.yaml);
+    C --&gt; G(service.yaml);
+    C --&gt; H(...);
+    A --&gt; I(Chart.yaml);
+    A --&gt; J(values.yaml);
+    A --&gt; K(...);</code></pre>
 <h3 id="helm-basic-commands">⚙️ Helm Basic Commands:<a class="headerlink" href="#helm-basic-commands" title="Permanent link">&para;</a></h3>
 <p>Getting started with Helm is a breeze thanks to its intuitive command-line interface. Here are some essential commands:</p>
 <ul>
