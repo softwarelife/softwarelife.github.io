@@ -1150,9 +1150,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-create-an-eks-cluster" class="md-nav__link">
+  <a href="#step-2-install-kubectl" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Create an EKS Cluster
+      Step 2: Install Kubectl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-install-eksctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Install eksctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-create-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create an EKS Cluster
     </span>
   </a>
   
@@ -2150,9 +2168,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-create-an-eks-cluster" class="md-nav__link">
+  <a href="#step-2-install-kubectl" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Create an EKS Cluster
+      Step 2: Install Kubectl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-install-eksctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Install eksctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-create-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create an EKS Cluster
     </span>
   </a>
   
@@ -2257,13 +2293,27 @@
 <h3 id="step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key">Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:<a class="headerlink" href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>aws configure
 </code></pre></div>
-<h3 id="step-2-create-an-eks-cluster">Step 2: Create an EKS Cluster<a class="headerlink" href="#step-2-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
+<h3 id="step-2-install-kubectl">Step 2: Install Kubectl<a class="headerlink" href="#step-2-install-kubectl" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-O<span class="w"> </span>https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.17/2023-10-17/bin/linux/amd64/kubectl
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>kubectl<span class="w"> </span>/usr/local/bin/kubectl
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>version<span class="w"> </span>--client
+</code></pre></div>
+<h3 id="step-3-install-eksctl">Step 3: Install eksctl<a class="headerlink" href="#step-3-install-eksctl" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--silent<span class="w"> </span>--location<span class="w"> </span><span class="s2">&quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_amd64.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mv<span class="w"> </span>/tmp/eksctl<span class="w"> </span>/usr/local/bin
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>version
+</code></pre></div>
+<h3 id="step-4-create-an-eks-cluster">Step 4: Create an EKS Cluster<a class="headerlink" href="#step-4-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
 <p>Here are all the commands:</p>
 <h3 id="command-1-create-an-eks-cluster">Command 1: Create an EKS Cluster<a class="headerlink" href="#command-1-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--version<span class="w"> </span>&lt;k8s-version&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--nodegroup-name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--node-type<span class="w"> </span>&lt;node-type&gt;<span class="w"> </span>--nodes<span class="w"> </span>&lt;node-count&gt;<span class="w"> </span>--nodes-min<span class="w"> </span>&lt;min-nodes&gt;<span class="w"> </span>--nodes-max<span class="w"> </span>&lt;max-nodes&gt;
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.23<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--nodegroup-name<span class="w"> </span>kube-app<span class="w"> </span>--node-type<span class="w"> </span>t2.micro<span class="w"> </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes-max<span class="w"> </span><span class="m">3</span>
+<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>kube-app<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.24<span class="w"> </span>--region<span class="w"> </span>eu-central-1<span class="w"> </span>--nodegroup-name<span class="w"> </span>kube-node-demo<span class="w"> </span>--node-type<span class="w"> </span>t2.micro<span class="w"> </span>--nodes<span class="w"> </span><span class="m">2</span><span class="w"> </span>--nodes-min<span class="w"> </span><span class="m">2</span><span class="w"> </span>--nodes-max<span class="w"> </span><span class="m">3</span>
 </code></pre></div>
 <h3 id="command-2-get-information-about-nodes">Command 2: Get Information About Nodes<a class="headerlink" href="#command-2-get-information-about-nodes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>nodes
