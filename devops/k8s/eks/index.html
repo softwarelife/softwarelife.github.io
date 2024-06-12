@@ -2343,7 +2343,7 @@
 </code></pre></div>
 <details class="tip" open="open">
 <summary>After setting up your EKS Cluster, go ahead and deploy my coffeeshop website for a warm-up. Enjoy the deployment! ☕🚀</summary>
-<p><a href="https://softwarelife.github.io/devops/k8s/exercise01/#kubernetes-syntax">https://softwarelife.github.io/devops/k8s/exercise01/#kubernetes-syntax</a></p>
+<p><a href="https://softwarelife.github.io/devops/k8s/exercise01/#website-deployment">https://softwarelife.github.io/devops/k8s/exercise01/#website-deployment</a></p>
 </details>
 <h3 id="command-3-update-node-group-maximum-nodes-and-minimum-nodes">Command 3: Update Node Group Maximum Nodes and Minimum Nodes<a class="headerlink" href="#command-3-update-node-group-maximum-nodes-and-minimum-nodes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>update<span class="w"> </span>nodegroup<span class="w"> </span>--cluster<span class="o">=</span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="o">=</span>&lt;region&gt;<span class="w"> </span>--name<span class="o">=</span>&lt;nodegroup-name&gt;<span class="w"> </span>--nodes-min<span class="o">=</span>&lt;min-nodes&gt;<span class="w"> </span>--nodes-max<span class="o">=</span>&lt;max-nodes&gt;
