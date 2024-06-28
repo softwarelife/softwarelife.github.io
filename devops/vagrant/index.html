@@ -2256,7 +2256,11 @@ Now you can see the prompt of the centos machine, If you wanna exit type  👉 e
 <p><a href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a></p>
 </details>
 <h2 id="multi-vm-vagrantfile">Multi VM Vagrantfile 📦<a class="headerlink" href="#multi-vm-vagrantfile" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<p><div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>vagrantvms<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>vagrantvms
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>Vagrantfile
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span><span class="w"> </span>
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">hostmanager</span><span class="o">.</span><span class="n">manage_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
 
@@ -2322,6 +2326,10 @@ Now you can see the prompt of the centos machine, If you wanna exit type  👉 e
 
 <span class="k">end</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>up
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vagrant<span class="w"> </span>ssh
+</code></pre></div></p>
 
 
 
