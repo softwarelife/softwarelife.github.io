@@ -1141,36 +1141,45 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" class="md-nav__link">
+  <a href="#step1-install-aws-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:
+      Step1: Install AWS CLI
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-install-kubectl" class="md-nav__link">
+  <a href="#step-2-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Install Kubectl
+      Step 2: Configure the AWS CLI with the IAM user's access key ID and secret access key:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3-install-eksctl" class="md-nav__link">
+  <a href="#step-3-install-kubectl" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Install eksctl
+      Step 3: Install Kubectl
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-create-an-eks-cluster" class="md-nav__link">
+  <a href="#step-4-install-eksctl" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Create an EKS Cluster
+      Step 4: Install eksctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-create-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Create an EKS Cluster
     </span>
   </a>
   
@@ -2182,36 +2191,45 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" class="md-nav__link">
+  <a href="#step1-install-aws-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:
+      Step1: Install AWS CLI
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-install-kubectl" class="md-nav__link">
+  <a href="#step-2-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Install Kubectl
+      Step 2: Configure the AWS CLI with the IAM user's access key ID and secret access key:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3-install-eksctl" class="md-nav__link">
+  <a href="#step-3-install-kubectl" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Install eksctl
+      Step 3: Install Kubectl
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-create-an-eks-cluster" class="md-nav__link">
+  <a href="#step-4-install-eksctl" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Create an EKS Cluster
+      Step 4: Install eksctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-create-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Create an EKS Cluster
     </span>
   </a>
   
@@ -2300,7 +2318,7 @@
 <p><strong>AWS Account</strong>: You need an active AWS account with necessary permissions to create resources like EKS clusters, IAM roles, VPC, etc.</p>
 </li>
 <li>
-<p><strong>AWS CLI</strong>: Install and configure the AWS Command Line Interface (CLI) on your local machine. You can download it from the <a href="https://aws.amazon.com/cli/">AWS CLI Documentation</a>.</p>
+<p><strong>AWS CLI</strong>: Install and configure the AWS Command Line Interface (CLI) on your local machine. You can download it from the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI Documentation</a>.</p>
 </li>
 <li>
 <p><strong>kubectl</strong>: Install <code>kubectl</code>, the Kubernetes command-line tool, to interact with your cluster. You can follow the installation instructions in the <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubernetes Documentation</a>.</p>
@@ -2313,13 +2331,32 @@
 </li>
 </ol>
 <h2 id="steps-to-create-an-eks-cluster">Steps to Create an EKS Cluster<a class="headerlink" href="#steps-to-create-an-eks-cluster" title="Permanent link">&para;</a></h2>
-<h3 id="step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key">Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:<a class="headerlink" href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" title="Permanent link">&para;</a></h3>
+<h3 id="step1-install-aws-cli">Step1: Install AWS CLI<a class="headerlink" href="#step1-install-aws-cli" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux 🐧</label><label for="__tabbed_1_2">Windows 🪟</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;awscliv2.zip&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>awscliv2.zip
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./aws/install
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>choco<span class="w"> </span>install<span class="w"> </span>awscli
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>--version
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="step-2-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key">Step 2: Configure the AWS CLI with the IAM user's access key ID and secret access key:<a class="headerlink" href="#step-2-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>aws configure
 </code></pre></div>
 <img alt="image" src="../../img/aws configure.png" />
 Once it is done try some aws cli commands like <mark>aws s3 ls</mark> If u have any buckets in your s3 it will list (Checking Access)</p>
-<h3 id="step-2-install-kubectl">Step 2: Install Kubectl<a class="headerlink" href="#step-2-install-kubectl" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux 🐧</label><label for="__tabbed_1_2">Windows 🪟</label></div>
+<h3 id="step-3-install-kubectl">Step 3: Install Kubectl<a class="headerlink" href="#step-3-install-kubectl" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux 🐧</label><label for="__tabbed_2_2">Windows 🪟</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-O<span class="w"> </span>https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.17/2023-10-17/bin/linux/amd64/kubectl
@@ -2337,8 +2374,8 @@ Once it is done try some aws cli commands like <mark>aws s3 ls</mark> If u have 
 </div>
 </div>
 </div>
-<h3 id="step-3-install-eksctl">Step 3: Install eksctl<a class="headerlink" href="#step-3-install-eksctl" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux 🐧</label><label for="__tabbed_2_2">Windows 🪟</label></div>
+<h3 id="step-4-install-eksctl">Step 4: Install eksctl<a class="headerlink" href="#step-4-install-eksctl" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux 🐧</label><label for="__tabbed_3_2">Windows 🪟</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--silent<span class="w"> </span>--location<span class="w"> </span><span class="s2">&quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_amd64.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp
@@ -2356,7 +2393,7 @@ Once it is done try some aws cli commands like <mark>aws s3 ls</mark> If u have 
 </div>
 </div>
 </div>
-<h3 id="step-4-create-an-eks-cluster">Step 4: Create an EKS Cluster<a class="headerlink" href="#step-4-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
+<h3 id="step-5-create-an-eks-cluster">Step 5: Create an EKS Cluster<a class="headerlink" href="#step-5-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
 <p>Here are all the commands:</p>
 <h3 id="command-1-create-an-eks-cluster">Command 1: Create an EKS Cluster<a class="headerlink" href="#command-1-create-an-eks-cluster" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--version<span class="w"> </span>&lt;k8s-version&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span>--nodegroup-name<span class="w"> </span>&lt;nodegroup-name&gt;<span class="w"> </span>--node-type<span class="w"> </span>&lt;node-type&gt;<span class="w"> </span>--nodes<span class="w"> </span>&lt;node-count&gt;<span class="w"> </span>--nodes-min<span class="w"> </span>&lt;min-nodes&gt;<span class="w"> </span>--nodes-max<span class="w"> </span>&lt;max-nodes&gt;
