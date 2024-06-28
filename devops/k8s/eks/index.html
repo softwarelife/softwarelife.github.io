@@ -2314,8 +2314,10 @@
 </ol>
 <h2 id="steps-to-create-an-eks-cluster">Steps to Create an EKS Cluster<a class="headerlink" href="#steps-to-create-an-eks-cluster" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key">Step 1: Configure the AWS CLI with the IAM user's access key ID and secret access key:<a class="headerlink" href="#step-1-configure-the-aws-cli-with-the-iam-users-access-key-id-and-secret-access-key" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>aws configure
+<p><div class="highlight"><pre><span></span><code>aws configure
 </code></pre></div>
+<img alt="image" src="../../img/aws configure.png" />
+Once it is done try some aws cli commands like <mark>aws s3 ls</mark> If u have any buckets in your s3 it will list (Checking Access)</p>
 <h3 id="step-2-install-kubectl">Step 2: Install Kubectl<a class="headerlink" href="#step-2-install-kubectl" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux 🐧</label><label for="__tabbed_1_2">Windows 🪟</label></div>
 <div class="tabbed-content">
