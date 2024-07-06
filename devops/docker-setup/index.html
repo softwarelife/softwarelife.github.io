@@ -2308,16 +2308,38 @@ Pull an image from a registry</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Docker Instructions</label><label for="__tabbed_3_2">Sample Dockerfile</label><label for="__tabbed_3_3">Using Variables</label><label for="__tabbed_3_4">Using Existing zip/tar File</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>🏁 FROM - Base Image to run other instructions or commands
-🏃‍♂️ RUN - Run commands
-📂 WORKDIR - Set working directory in the container
-📜 CMD - Command to run within the container
-🔑 ENTRYPOINT - Configures a command that will run as the container starts, overriding the CMD instruction if both are specified.
-📦 VOLUME - Mount a directory from the host to the container
-📝 COPY - Copy files or directories to the container
-➕ ADD - Copy files or directories to the container with additional features (like extracting TAR files)
-🏷️ LABEL - Add metadata to the image
-🌐 EXPOSE - Expose a port to enable network access to the container</p>
+<ul>
+<li>
+<p>🏁 FROM - Base Image to run other instructions or commands</p>
+</li>
+<li>
+<p>🏃‍♂️ RUN - Run commands</p>
+</li>
+<li>
+<p>📂 WORKDIR - Set working directory in the container</p>
+</li>
+<li>
+<p>📜 CMD - Command to run within the container</p>
+</li>
+<li>
+<p>🔑 ENTRYPOINT - Configures a command that will run as the container starts, overriding the CMD instruction if both are specified.</p>
+</li>
+<li>
+<p>📦 VOLUME - Mount a directory from the host to the container</p>
+</li>
+<li>
+<p>📝 COPY - Copy files or directories to the container</p>
+</li>
+<li>
+<p>➕ ADD - Copy files or directories to the container with additional features (like extracting TAR files)</p>
+</li>
+<li>
+<p>🏷️ LABEL - Add metadata to the image</p>
+</li>
+<li>
+<p>🌐 EXPOSE - Expose a port to enable network access to the container</p>
+</li>
+</ul>
 </div>
 <div class="tabbed-block">
 <p>Sample Dockerfile for Deploying a Static website.</p>
