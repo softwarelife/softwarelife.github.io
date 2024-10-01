@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.37">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -2353,7 +2353,11 @@ Pull an image from a registry</p>
 <span class="n">LABEL</span><span class="w"> </span><span class="s">&quot;Project&quot;</span><span class="o">=</span><span class="s">&quot;Wave&quot;</span>
 
 <span class="cp"># Install necessary packages - Apache, wget, and unzip</span>
-<span class="n">RUN</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="err">&#39;</span><span class="n">s</span><span class="o">/</span><span class="n">mirrorlist</span><span class="o">/</span><span class="err">#</span><span class="n">mirrorlist</span><span class="o">/</span><span class="n">g</span><span class="err">&#39;</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">CentOS</span><span class="o">-*</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="err">&#39;</span><span class="n">s</span><span class="o">|</span><span class="err">#</span><span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="o">:</span><span class="c1">//mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-*</span>
+<span class="n">RUN</span><span class="w">  </span><span class="n">yum</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">yum</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">httpd</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="o">-</span><span class="n">y</span>
 
 <span class="cp"># Download the website template</span>
 <span class="n">RUN</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//www.tooplate.com/zip-templates/2121_wave_cafe.zip</span>
@@ -2841,7 +2845,7 @@ Now Connect with that IP
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "content.code.select", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
         <script src="../../js/prism.js"></script>
       
