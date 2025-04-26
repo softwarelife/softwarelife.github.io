@@ -2311,31 +2311,39 @@
 <p>If you're just stepping into the world of CI/CD (Continuous Integration and Continuous Deployment), Azure DevOps Pipelines is a powerful tool that helps automate your code delivery process. In this page, we’ll go from printing a simple Hello World to building and deploying a sample project using HTML, CSS, and JavaScript.</p>
 <h2 id="yaml-pipelines">YAML Pipelines<a class="headerlink" href="#yaml-pipelines" title="Permanent link">&para;</a></h2>
 <h3 id="azure-devops-yaml-pipeline-to-print-hello-world">Azure DevOps YAML Pipeline to Print "Hello World"<a class="headerlink" href="#azure-devops-yaml-pipeline-to-print-hello-world" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><span class="filename">helloworld.yml</span><pre><span></span><code># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;
+<div class="highlight"><span class="filename">helloworld.yml</span><pre><span></span><code><span class="c1"># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;</span>
 
-# &#39;trigger&#39; defines which branch will trigger the pipeline automatically.
-trigger:
-  - main  # (1)!
+<span class="c1"># &#39;trigger&#39; defines which branch will trigger the pipeline automatically.</span>
+<span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span><span class="w">  </span><span class="c1"># (1)!</span>
 
-# &#39;pool&#39; specifies the agent (virtual machine) where the pipeline will run.
-pool:
-  vmImage: ubuntu-latest  # (2)!
+<span class="c1"># &#39;pool&#39; specifies the agent (virtual machine) where the pipeline will run.</span>
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w">  </span><span class="c1"># (2)!</span>
 
-# &#39;steps&#39; define the tasks the pipeline will execute.
-steps:
-  - script: echo &quot;Hello World from Azure DevOps!&quot; # (3)!
-    displayName: &#39;Print Hello World&#39;  
-</code></pre></div>
-1.  trigger — Start the Pipeline Automatically. The trigger field specifies the branch that kicks off the pipeline.</p>
-<div class="highlight"><pre><span></span><code>- main
-
-- development
-
-- feature1
-
-- feature2
+<span class="c1"># &#39;steps&#39; define the tasks the pipeline will execute.</span>
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Hello World from Azure DevOps!&quot;</span><span class="w"> </span><span class="c1"># (3)!</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World&#39;</span><span class="w">  </span>
 </code></pre></div>
 <ol>
+<li>
+<p>trigger — Start the Pipeline Automatically. The trigger field specifies the branch that kicks off the pipeline.</p>
+<ul>
+<li>
+<p>main</p>
+</li>
+<li>
+<p>development</p>
+</li>
+<li>
+<p>feature1</p>
+</li>
+<li>
+<p>feature2</p>
+</li>
+</ul>
+</li>
 <li>
 <p>pool — Choose an Agent. The pool defines where the pipeline runs.</p>
 <ul>
