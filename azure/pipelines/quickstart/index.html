@@ -1847,19 +1847,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#yaml-pipelines" class="md-nav__link">
+  <a href="#hello-world-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
-      YAML Pipelines
+      Hello-World Pipeline
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="YAML Pipelines">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#azure-devops-yaml-pipeline-to-print-hello-world" class="md-nav__link">
     <span class="md-ellipsis">
       Azure DevOps YAML Pipeline to Print "Hello World"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inline-variables-inside-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inline variables inside YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-external-variables-in-azure-devops-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using External Variables in Azure DevOps Pipeline
     </span>
   </a>
   
@@ -2268,19 +2295,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#yaml-pipelines" class="md-nav__link">
+  <a href="#hello-world-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
-      YAML Pipelines
+      Hello-World Pipeline
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="YAML Pipelines">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#azure-devops-yaml-pipeline-to-print-hello-world" class="md-nav__link">
     <span class="md-ellipsis">
       Azure DevOps YAML Pipeline to Print "Hello World"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inline-variables-inside-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inline variables inside YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-external-variables-in-azure-devops-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using External Variables in Azure DevOps Pipeline
     </span>
   </a>
   
@@ -2309,8 +2363,8 @@
 
 <h1 id="getting-started-with-azure-devops-pipelines-from-hello-world-to-real-world-deployments">Getting Started with Azure DevOps Pipelines: From Hello World to Real-World Deployments<a class="headerlink" href="#getting-started-with-azure-devops-pipelines-from-hello-world-to-real-world-deployments" title="Permanent link">&para;</a></h1>
 <p>If you're just stepping into the world of CI/CD (Continuous Integration and Continuous Deployment), Azure DevOps Pipelines is a powerful tool that helps automate your code delivery process. In this page, we’ll go from printing a simple Hello World to building and deploying a sample project using HTML, CSS, and JavaScript.</p>
-<h2 id="yaml-pipelines">YAML Pipelines<a class="headerlink" href="#yaml-pipelines" title="Permanent link">&para;</a></h2>
-<h3 id="azure-devops-yaml-pipeline-to-print-hello-world">Azure DevOps YAML Pipeline to Print "Hello World"<a class="headerlink" href="#azure-devops-yaml-pipeline-to-print-hello-world" title="Permanent link">&para;</a></h3>
+<h2 id="hello-world-pipeline">Hello-World Pipeline<a class="headerlink" href="#hello-world-pipeline" title="Permanent link">&para;</a></h2>
+<h2 id="azure-devops-yaml-pipeline-to-print-hello-world">Azure DevOps YAML Pipeline to Print "Hello World"<a class="headerlink" href="#azure-devops-yaml-pipeline-to-print-hello-world" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">helloworld.yml</span><pre><span></span><code><span class="c1"># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;</span>
 
 <span class="c1"># &#39;trigger&#39; defines which branch will trigger the pipeline automatically.</span>
@@ -2377,6 +2431,98 @@
 <p><code>trigger</code> → tells when to run (based on branch).</p>
 <p><code>pool</code> → tells where to run (which agent image).</p>
 <p><code>steps</code> → tells what to run (the actual commands).</p>
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
+<h3 id="inline-variables-inside-yaml">Inline variables inside YAML<a class="headerlink" href="#inline-variables-inside-yaml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure DevOps Pipeline to print Hello World using variables</span>
+
+<span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">greeting</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Azure</span><span class="nv"> </span><span class="s">DevOps</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">Variables!&quot;</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span><span class="w"> </span><span class="c1">#Calling Variable</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">Variable&#39;</span>
+</code></pre></div>
+<h3 id="using-external-variables-in-azure-devops-pipeline">Using External Variables in Azure DevOps Pipeline<a class="headerlink" href="#using-external-variables-in-azure-devops-pipeline" title="Permanent link">&para;</a></h3>
+<p>Earlier, we learned how to define variables inside the YAML file itself.<br />
+Now, let's take the next step and <strong>separate variables cleanly</strong>.</p>
+<ul>
+<li>
+<p><strong>Version 1:</strong> Using a file to store variables.</p>
+</li>
+<li>
+<p><strong>Version 2:</strong> Using a Variable Group from Azure DevOps Library.</p>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Version 1: Load Variable from a File</label><label for="__tabbed_1_2">Version 2: Load Variables from a Variable Group</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>In this version, we'll keep the variable inside a file (for example, variables/vars.txt) and use it inside our pipeline.</p>
+<ul>
+<li>Create a file in your Repo in this location <code>variables/vars.txt</code></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>variables/vars.txt
+</code></pre></div>
+* Paste the below content
+<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<span class="nt">greeting</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template!&quot;</span>
+</code></pre></div></p>
+<ul>
+<li>Create the Main Pipeline YAML</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">displayName</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template</span><span class="nv"> </span><span class="s">Variable&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>This time, we will <strong>create a Variable Group</strong> from the Azure DevOps UI and use it inside the pipeline.</p>
+<ul>
+<li>
+<p>Create a Variable Group</p>
+</li>
+<li>
+<p>Go to <strong>Azure DevOps Portal</strong> → <strong>Pipelines</strong> → <strong>Library</strong> → <strong>+ Variable group</strong></p>
+</li>
+<li>Create a group named (for example): <code>hello-world-vars</code></li>
+<li>Add a variable:</li>
+<li><strong>Name:</strong> greeting</li>
+<li><strong>Value:</strong> Hello World from Variable Group!</li>
+</ul>
+<p>✅ Save it.</p>
+<ul>
+<li>Create the Main Pipeline YAML</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-world-vars</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">displayName</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Variable</span><span class="nv"> </span><span class="s">Group&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 
 
 
