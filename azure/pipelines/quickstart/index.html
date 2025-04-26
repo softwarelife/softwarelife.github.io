@@ -1853,21 +1853,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Hello-World Pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#azure-devops-yaml-pipeline-to-print-hello-world" class="md-nav__link">
-    <span class="md-ellipsis">
-      Azure DevOps YAML Pipeline to Print "Hello World"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1876,30 +1861,6 @@
       Variables
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inline-variables-inside-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inline variables inside YAML
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-external-variables-in-azure-devops-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using External Variables in Azure DevOps Pipeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2316,21 +2277,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Hello-World Pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#azure-devops-yaml-pipeline-to-print-hello-world" class="md-nav__link">
-    <span class="md-ellipsis">
-      Azure DevOps YAML Pipeline to Print "Hello World"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2339,30 +2285,6 @@
       Variables
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inline-variables-inside-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inline variables inside YAML
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-external-variables-in-azure-devops-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using External Variables in Azure DevOps Pipeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2394,7 +2316,7 @@
 <h1 id="getting-started-with-azure-devops-pipelines-from-hello-world-to-real-world-deployments">Getting Started with Azure DevOps Pipelines: From Hello World to Real-World Deployments<a class="headerlink" href="#getting-started-with-azure-devops-pipelines-from-hello-world-to-real-world-deployments" title="Permanent link">&para;</a></h1>
 <p>If you're just stepping into the world of CI/CD (Continuous Integration and Continuous Deployment), Azure DevOps Pipelines is a powerful tool that helps automate your code delivery process. In this page, we’ll go from printing a simple Hello World to building and deploying a sample project using HTML, CSS, and JavaScript.</p>
 <h2 id="hello-world-pipeline">Hello-World Pipeline<a class="headerlink" href="#hello-world-pipeline" title="Permanent link">&para;</a></h2>
-<h3 id="azure-devops-yaml-pipeline-to-print-hello-world">Azure DevOps YAML Pipeline to Print "Hello World"<a class="headerlink" href="#azure-devops-yaml-pipeline-to-print-hello-world" title="Permanent link">&para;</a></h3>
+<p><strong>Azure DevOps YAML Pipeline to Print "Hello World"</strong></p>
 <div class="highlight"><span class="filename">helloworld.yml</span><pre><span></span><code><span class="c1"># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;</span>
 
 <span class="c1"># &#39;trigger&#39; defines which branch will trigger the pipeline automatically.</span>
@@ -2461,8 +2383,9 @@
 <p><code>trigger</code> → tells when to run (based on branch).</p>
 <p><code>pool</code> → tells where to run (which agent image).</p>
 <p><code>steps</code> → tells what to run (the actual commands).</p>
+<hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
-<h3 id="inline-variables-inside-yaml">Inline variables inside YAML<a class="headerlink" href="#inline-variables-inside-yaml" title="Permanent link">&para;</a></h3>
+<p><strong>Inline variables inside YAML</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Azure DevOps Pipeline to print Hello World using variables</span>
 
 <span class="nt">trigger</span><span class="p">:</span>
@@ -2478,7 +2401,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span><span class="w"> </span><span class="c1">#Calling Variable</span>
 <span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">Variable&#39;</span>
 </code></pre></div>
-<h3 id="using-external-variables-in-azure-devops-pipeline">Using External Variables in Azure DevOps Pipeline<a class="headerlink" href="#using-external-variables-in-azure-devops-pipeline" title="Permanent link">&para;</a></h3>
+<p><strong>Using External Variables in Azure DevOps Pipeline</strong></p>
 <p>Earlier, we learned how to define variables inside the YAML file itself.<br />
 Now, let's take the next step and <strong>separate variables cleanly</strong>.</p>
 <ul>
@@ -2553,6 +2476,7 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 </div>
 </div>
 </div>
+<hr />
 <h2 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h2>
 
 
