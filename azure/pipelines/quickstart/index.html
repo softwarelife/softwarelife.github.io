@@ -2317,7 +2317,7 @@
 <p>If you're just stepping into the world of CI/CD (Continuous Integration and Continuous Deployment), Azure DevOps Pipelines is a powerful tool that helps automate your code delivery process. In this page, we’ll go from printing a simple Hello World to building and deploying a sample project using HTML, CSS, and JavaScript.</p>
 <h2 id="hello-world-pipeline">Hello-World Pipeline<a class="headerlink" href="#hello-world-pipeline" title="Permanent link">&para;</a></h2>
 <p><strong>Azure DevOps YAML Pipeline to Print "Hello World"</strong></p>
-<div class="highlight"><span class="filename">helloworld.yml</span><pre><span></span><code><span class="c1"># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;</span>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="c1"># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;</span>
 
 <span class="c1"># &#39;trigger&#39; defines which branch will trigger the pipeline automatically.</span>
 <span class="nt">trigger</span><span class="p">:</span>
@@ -2386,7 +2386,7 @@
 <hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
 <p><strong>Inline variables inside YAML</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Azure DevOps Pipeline to print Hello World using variables</span>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="c1"># Azure DevOps Pipeline to print Hello World using variables</span>
 
 <span class="nt">trigger</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
@@ -2422,17 +2422,18 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <p><div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>variables/vars.txt
 </code></pre></div>
 * Paste the below content
-<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
 <span class="nt">greeting</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template!&quot;</span>
 </code></pre></div></p>
 <ul>
 <li>Create the Main Pipeline YAML</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 
+<span class="c1"># Load variables from an external YAML file</span>
 <span class="nt">variables</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span><span class="w">  </span><span class="c1"># Load greeting variable from variables/vars.yml</span>
 
 <span class="nt">pool</span><span class="p">:</span>
 <span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -2460,11 +2461,11 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <ul>
 <li>Create the Main Pipeline YAML</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-
+<span class="c1"># Load variables from Azure DevOps Variable Groups</span>
 <span class="nt">variables</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-world-vars</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-world-vars</span><span class="w"> </span>
 
 <span class="nt">pool</span><span class="p">:</span>
 <span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
