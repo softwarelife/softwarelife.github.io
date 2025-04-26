@@ -1873,6 +1873,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stages
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2297,6 +2306,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stages
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2479,6 +2497,40 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 </div>
 <hr />
 <h2 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h2>
+<p>Environment in Azure DevOps is a way to define a target place (like Dev, QA, Prod servers) where you deploy your application and control approvals, checks, history, etc.</p>
+<p><strong>Creating Environment</strong></p>
+<ul>
+<li>Go to Azure DevOps → Pipelines → Environments.</li>
+<li>Create a New Environment (example: Dev-Environment).</li>
+<li>Inside that Environment, go to Approvals and Checks.</li>
+<li>Add an Approval → Example: Add yourself or your team to approve.</li>
+</ul>
+<p>⚡ Super Simple Flow:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Code</span><span class="w"> </span><span class="n">Push</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Pipeline</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Environment</span><span class="w"> </span><span class="n">Approval</span><span class="w"> </span><span class="n">Needed</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Approver</span><span class="w"> </span><span class="n">Clicks</span><span class="w"> </span><span class="s">&quot;Approve&quot;</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Pipeline</span><span class="w"> </span><span class="n">Continues</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span><span class="w">  </span><span class="c1"># Load greeting variable from variables/vars.yml</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="c1"># Define the steps</span>
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template</span><span class="nv"> </span><span class="s">Variable&#39;</span>
+
+<span class="c1"># Link this pipeline to an Environment</span>
+<span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">   </span><span class="c1"># Specify the environment name </span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>✅ You can attach your pipeline to an Environment, and then configure approvals (like someone must manually approve) before the pipeline can proceed.</p>
+</div>
+<h2 id="stages">Stages<a class="headerlink" href="#stages" title="Permanent link">&para;</a></h2>
 
 
 
