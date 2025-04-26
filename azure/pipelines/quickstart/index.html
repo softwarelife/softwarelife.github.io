@@ -2311,7 +2311,7 @@
 <p>If you're just stepping into the world of CI/CD (Continuous Integration and Continuous Deployment), Azure DevOps Pipelines is a powerful tool that helps automate your code delivery process. In this page, we’ll go from printing a simple Hello World to building and deploying a sample project using HTML, CSS, and JavaScript.</p>
 <h2 id="yaml-pipelines">YAML Pipelines<a class="headerlink" href="#yaml-pipelines" title="Permanent link">&para;</a></h2>
 <h3 id="azure-devops-yaml-pipeline-to-print-hello-world">Azure DevOps YAML Pipeline to Print "Hello World"<a class="headerlink" href="#azure-devops-yaml-pipeline-to-print-hello-world" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">helloworld.yml</span><pre><span></span><code># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;
+<p><div class="highlight"><span class="filename">helloworld.yml</span><pre><span></span><code># Basic Azure DevOps Pipeline YAML to print &quot;Hello World&quot;
 
 # &#39;trigger&#39; defines which branch will trigger the pipeline automatically.
 trigger:
@@ -2323,36 +2323,52 @@ pool:
 
 # &#39;steps&#39; define the tasks the pipeline will execute.
 steps:
-  - script: echo &quot;Hello World from Azure DevOps!&quot;
-    displayName: &#39;Print Hello World&#39;  # (3)!
+  - script: echo &quot;Hello World from Azure DevOps!&quot; # (3)!
+    displayName: &#39;Print Hello World&#39;  
+</code></pre></div>
+1.  trigger — Start the Pipeline Automatically. The trigger field specifies the branch that kicks off the pipeline.</p>
+<div class="highlight"><pre><span></span><code>- main
+
+- development
+
+- feature1
+
+- feature2
 </code></pre></div>
 <ol>
-<li>trigger — Start the Pipeline Automatically
-The trigger field specifies the branch that kicks off the pipeline.</li>
-</ol>
-<p>Example:
-trigger: - main triggers the pipeline when changes are pushed to the main branch.</p>
-<p>🔹 Typical branch examples:</p>
-<p>develop → Development environment</p>
-<p>qa → Testing/QA environment</p>
-<p>main or master → Production environment</p>
-<ol>
-<li>pool — Choose an Agent
-The pool defines where the pipeline runs.</li>
-</ol>
-<p>vmImage: ubuntu-latest uses a ready-to-go Ubuntu machine provided by Microsoft.</p>
-<p>🔹 Other options:</p>
+<li>
+<p>pool — Choose an Agent. The pool defines where the pipeline runs.</p>
+<ul>
+<li>
+<p>ubuntu-latest uses a ready-to-go Ubuntu machine provided by Microsoft.</p>
+</li>
+<li>
 <p>windows-latest</p>
+</li>
+<li>
 <p>macos-latest</p>
-<ol>
-<li>steps — Define the Tasks
-steps list the actions the agent should perform.</li>
-</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>steps — Define the Tasks. steps list the actions the agent should perform.</p>
+<ul>
+<li>
 <p>script: echo "Hello World..." simply runs a command to print a message in the pipeline logs.</p>
-<p>📌 Summary:
-trigger → tells when to run (based on branch).</p>
-<p>pool → tells where to run (which agent image).</p>
-<p>steps → tells what to run (the actual commands).</p>
+</li>
+<li>
+<p>script: run main.py #Run Python Script</p>
+</li>
+<li>
+<p>script: Any other "Commands Here"</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>📌 <strong>Summary</strong>:</p>
+<p><code>trigger</code> → tells when to run (based on branch).</p>
+<p><code>pool</code> → tells where to run (which agent image).</p>
+<p><code>steps</code> → tells what to run (the actual commands).</p>
 
 
 
