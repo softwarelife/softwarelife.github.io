@@ -1874,6 +1874,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stages" class="md-nav__link">
     <span class="md-ellipsis">
       Stages
@@ -2307,6 +2316,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stages" class="md-nav__link">
     <span class="md-ellipsis">
       Stages
@@ -2398,9 +2416,28 @@
 </li>
 </ol>
 <p>📌 <strong>Summary</strong>:</p>
-<p><code>trigger</code> → tells when to run (based on branch).</p>
-<p><code>pool</code> → tells where to run (which agent image).</p>
-<p><code>steps</code> → tells what to run (the actual commands).</p>
+<table>
+<thead>
+<tr>
+<th><strong>Concept</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>trigger</strong></td>
+<td>Tells <strong>when</strong> to run (based on branch).</td>
+</tr>
+<tr>
+<td><strong>pool</strong></td>
+<td>Tells <strong>where</strong> to run (which agent image).</td>
+</tr>
+<tr>
+<td><strong>steps</strong></td>
+<td>Tells <strong>what</strong> to run (the actual commands).</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
 <p><strong>Inline variables inside YAML</strong></p>
@@ -2517,20 +2554,148 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <span class="nt">pool</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 
+<span class="c1"># Link this pipeline to an Environment</span>
+<span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">   </span><span class="c1"># Specify the environment name </span>
+
 <span class="c1"># Define the steps</span>
 <span class="nt">steps</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
 <span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template</span><span class="nv"> </span><span class="s">Variable&#39;</span>
-
-<span class="c1"># Link this pipeline to an Environment</span>
-<span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">   </span><span class="c1"># Specify the environment name </span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>✅ You can attach your pipeline to an Environment, and then configure approvals (like someone must manually approve) before the pipeline can proceed.</p>
 </div>
+<hr />
+<h2 id="jobs">jobs<a class="headerlink" href="#jobs" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A <strong>job</strong> is a collection of steps that run together on the same agent.  </li>
+<li><strong>Each job</strong> gets its <strong>own clean machine</strong> (agent).  </li>
+<li>If you have multiple jobs, they can run <strong>parallel</strong> or <strong>sequential</strong> based on how you design.</li>
+<li>Jobs help <strong>organize tasks</strong> like "Build", "Test", "Deploy" into separate logical blocks.</li>
+</ul>
+<p>⚡ Super Simple Flow:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Job</span><span class="w"> </span><span class="n">Start</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="s">&quot;n&quot;</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="n">End</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span><span class="w">  </span><span class="c1"># Load greeting variable from external file</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PrintJob</span><span class="w">  </span><span class="c1"># Define a Job named &#39;PrintJob&#39;</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Greeting</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">  </span><span class="c1"># Attach Environment directly to Job ✅</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">  </span><span class="c1"># Steps inside the Job</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template</span><span class="nv"> </span><span class="s">Variable&#39;</span>
+</code></pre></div>
+<p>📌 <strong>Summary</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Concept</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Steps</strong></td>
+<td>Small tasks (scripts, copy files, etc.)</td>
+</tr>
+<tr>
+<td><strong>Job</strong></td>
+<td>A <strong>collection of steps</strong></td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>Can be attached at the <strong>Job</strong> level too if needed</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2 id="stages">Stages<a class="headerlink" href="#stages" title="Permanent link">&para;</a></h2>
+<p>A <strong>stage</strong> in Azure DevOps is like a <strong>big chapter</strong> inside your pipeline.</p>
+<p>Each stage groups related steps together.<br />
+Example:
+- One stage for <strong>building</strong> your code (<code>Build</code> stage)
+- Another stage for <strong>deploying</strong> your app (<code>Deploy</code> stage)</p>
+<p>✅ Stages help you <strong>organize</strong> your pipeline.<br />
+✅ You can also <strong>control approvals</strong>, <strong>conditions</strong>, and <strong>flows</strong> between stages.</p>
+<div class="admonition tip">
+<p class="admonition-title">In Simple Terms</p>
+<p>If Build succeeds ➔ then go to Deploy after approval.</p>
+</div>
+<p>⚡ Super Simple Flow:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Trigger</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Build</span><span class="w"> </span><span class="n">Stage</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Deploy</span><span class="w"> </span><span class="n">Stage</span><span class="w"> </span><span class="p">(</span><span class="n">Approval</span><span class="p">)</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Done</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="c1"># Load variables from external file</span>
+<span class="nt">variables</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+
+<span class="c1"># Use Ubuntu agent</span>
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="c1"># Define stages</span>
+<span class="nt">stages</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Stage&#39;</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Build</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Building project...&quot;</span>
+<span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Step&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Greeting</span><span class="nv"> </span><span class="s">Message&#39;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">Stage&#39;</span>
+<span class="w">  </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span><span class="w"> </span><span class="c1"># wait for build to complete</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Deploy</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">  </span><span class="c1"># Add Approval Here ✅</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Deploying to server...&quot;</span>
+<span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deployment</span><span class="nv"> </span><span class="s">Step&#39;</span>
+</code></pre></div>
+<p>📌 <strong>Summary</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Concept</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Steps</strong></td>
+<td>Small tasks (scripts, copy files, etc.)</td>
+</tr>
+<tr>
+<td><strong>Job</strong></td>
+<td>A <strong>collection of steps</strong></td>
+</tr>
+<tr>
+<td><strong>Stages</strong></td>
+<td>A <strong>collection of jobs</strong>, representing a larger unit of work</td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>Can be attached at the <strong>Job</strong> level too if needed</td>
+</tr>
+</tbody>
+</table>
 
 
 
