@@ -2849,11 +2849,13 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <span class="w">          </span><span class="no">echo &quot;Deploying the project...&quot;</span>
 <span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Steps&#39;</span>
 </code></pre></div>
-<p>!!! "Note"
-    If you have only a single dependency (example: dependsOn a single job like dependsOn: BuildJob), you can skip square brackets and just write it directly without [ ].</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If you have only a single dependency (example: dependsOn a single job like dependsOn: BuildJob), you can skip square brackets and just write it directly without [ ].</p>
+</div>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 
 <span class="nt">variables</span><span class="p">:</span>
@@ -2892,8 +2894,10 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <span class="w">          </span><span class="no">echo &quot;Deploying the project...&quot;</span>
 <span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Steps&#39;</span>
 </code></pre></div>
-!!! "Note"
-    When you have multiple dependencies (example: dependsOn multiple jobs like dependsOn: [BuildJob, TestJob]), you must use square brackets [ ] to list them.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>When you have multiple dependencies (example: dependsOn multiple jobs like dependsOn: [BuildJob, TestJob]), you must use square brackets [ ] to list them.</p>
+</div>
 </div>
 </div>
 </div>
