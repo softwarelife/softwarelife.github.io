@@ -1865,6 +1865,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pre-defined-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-defined Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifact-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#environment" class="md-nav__link">
     <span class="md-ellipsis">
       Environment
@@ -2307,6 +2325,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pre-defined-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-defined Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifact-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#environment" class="md-nav__link">
     <span class="md-ellipsis">
       Environment
@@ -2532,6 +2568,209 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 </div>
 </div>
 </div>
+<hr />
+<h2 id="pre-defined-variables">Pre-defined Variables<a class="headerlink" href="#pre-defined-variables" title="Permanent link">&para;</a></h2>
+<p>Pre-defined variables in Azure DevOps are automatically available during pipeline execution. These variables provide useful information about the pipeline's execution environment, build system, and process details. These variables can be used in pipeline definitions to access dynamic data, such as paths, build numbers, and agent details.</p>
+<p><strong>Working Directory Variables</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$(Build.SourcesDirectory)</code></td>
+<td>The directory where the source code is checked out.</td>
+<td><code>/home/vsts/work/1/s</code></td>
+</tr>
+<tr>
+<td><code>$(Build.ArtifactStagingDirectory)</code></td>
+<td>The directory where build artifacts are staged before being published.</td>
+<td><code>/home/vsts/work/1/a</code></td>
+</tr>
+<tr>
+<td><code>$(Build.BinariesDirectory)</code></td>
+<td>The directory where build output (binaries) are stored.</td>
+<td><code>/home/vsts/work/1/b</code></td>
+</tr>
+<tr>
+<td><code>$(Build.DropDirectory)</code></td>
+<td>The directory for the final drop of artifacts or outputs.</td>
+<td><code>/home/vsts/work/1/d</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="artifact-variables"><strong>Artifact Variables</strong><a class="headerlink" href="#artifact-variables" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$(Build.ArtifactStagingDirectory)</code></td>
+<td>The directory where the build artifacts are staged before being published.</td>
+<td><code>/home/vsts/work/1/a</code></td>
+</tr>
+<tr>
+<td><code>$(Build.ArtifactName)</code></td>
+<td>The name of the artifact being published.</td>
+<td><code>myArtifact.zip</code></td>
+</tr>
+<tr>
+<td><code>$(Build.BuildId)</code></td>
+<td>A unique ID of the current build.</td>
+<td><code>12345</code></td>
+</tr>
+<tr>
+<td><code>$(Build.DefinitionName)</code></td>
+<td>The name of the build definition.</td>
+<td><code>BuildPipeline</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Agent/System Variables</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$(Agent.HomeDirectory)</code></td>
+<td>The home directory of the agent on the machine.</td>
+<td><code>/home/vsts/agent</code></td>
+</tr>
+<tr>
+<td><code>$(Agent.OS)</code></td>
+<td>The operating system of the agent.</td>
+<td><code>Linux</code></td>
+</tr>
+<tr>
+<td><code>$(Agent.WorkFolder)</code></td>
+<td>The directory used by the agent to store temporary files.</td>
+<td><code>/home/vsts/work</code></td>
+</tr>
+<tr>
+<td><code>$(Agent.TempDirectory)</code></td>
+<td>The temporary directory for the agent during builds.</td>
+<td><code>/home/vsts/temp</code></td>
+</tr>
+<tr>
+<td><code>$(Pipeline.Workspace)</code></td>
+<td>The workspace directory where pipeline data is stored.</td>
+<td><code>/home/vsts/work/1/s</code></td>
+</tr>
+<tr>
+<td><code>$(Pipeline.BuildId)</code></td>
+<td>The unique identifier of the current build.</td>
+<td><code>12345</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Build and Release Variables</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$(Build.BuildId)</code></td>
+<td>A unique ID for the current build.</td>
+<td><code>12345</code></td>
+</tr>
+<tr>
+<td><code>$(Build.DefinitionName)</code></td>
+<td>The name of the build pipeline definition.</td>
+<td><code>CI-CD Pipeline</code></td>
+</tr>
+<tr>
+<td><code>$(Build.SourceBranch)</code></td>
+<td>The source branch for the current build.</td>
+<td><code>refs/heads/main</code></td>
+</tr>
+<tr>
+<td><code>$(Build.Repository.Name)</code></td>
+<td>The name of the repository associated with the build.</td>
+<td><code>MyRepo</code></td>
+</tr>
+<tr>
+<td><code>$(Release.ReleaseId)</code></td>
+<td>The unique identifier of the release.</td>
+<td><code>98765</code></td>
+</tr>
+<tr>
+<td><code>$(Release.EnvironmentName)</code></td>
+<td>The name of the environment in the release pipeline.</td>
+<td><code>Production</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more details on available variables in Azure DevOps, please refer to the <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-pipelines&amp;tabs=yaml%2Cbatch">official Microsoft documentation</a>.</p>
+</div>
+<p><strong>Agent Workspace Path: <code>/home/vsts/work/s/a</code> Breakdown</strong></p>
+<table>
+<thead>
+<tr>
+<th>Full Path Component</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/home/vsts/</code></td>
+<td>The base directory for the agent.</td>
+<td><code>/home/vsts/</code></td>
+</tr>
+<tr>
+<td><code>/work/</code></td>
+<td>The working directory where the agent works.</td>
+<td><code>/home/vsts/work/</code></td>
+</tr>
+<tr>
+<td><code>/1/</code></td>
+<td>A unique number identifying a specific build.</td>
+<td><code>/home/vsts/work/1/</code></td>
+</tr>
+<tr>
+<td><code>/s/</code></td>
+<td>The source code directory where your repository is checked out.</td>
+<td><code>/home/vsts/work/1/s/</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Sample Pipeline</strong></p>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self</span><span class="w">  </span><span class="c1"># Checkout the code from the main branch of the Azure Repo</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">echo &quot;Listing files in $(Build.SourcesDirectory):&quot;</span>
+<span class="w">      </span><span class="no">ls $(Build.SourcesDirectory)  # List all files in the source directory</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;List</span><span class="nv"> </span><span class="s">Files</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Repo&#39;</span>
+</code></pre></div>
 <hr />
 <h2 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h2>
 <p>Environment in Azure DevOps is a way to define a target place (like Dev, QA, Prod servers) where you deploy your application and control approvals, checks, history, etc.</p>
