@@ -2796,6 +2796,9 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <p>⚡ Super Simple Flow:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Job</span><span class="w"> </span><span class="n">Start</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="s">&quot;n&quot;</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="n">End</span>
 </code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Single Job Pipeline</label><label for="__tabbed_2_2">Single Job Pipeline</label><label for="__tabbed_2_3">Multi-Job Pipeline (Multiple Dependencies)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 
@@ -2814,6 +2817,85 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
 <span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template</span><span class="nv"> </span><span class="s">Variable&#39;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span><span class="w">  </span><span class="c1"># Load variables from external template</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">  </span><span class="c1"># Attach Environment directly to the Build job</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo $(greeting)  # Use the greeting variable from the template</span>
+<span class="w">          </span><span class="no">echo &quot;Building the project...&quot;</span>
+<span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Build</span><span class="nv"> </span><span class="s">Steps&#39;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span><span class="w">  </span><span class="c1"># This job depends on &#39;BuildJob&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">  </span><span class="c1"># Attach the same environment to Deploy job (can be different too)</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo $(greeting)  # Use the greeting variable again</span>
+<span class="w">          </span><span class="no">echo &quot;Deploying the project...&quot;</span>
+<span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Steps&#39;</span>
+</code></pre></div>
+<p>!!! "Note"
+    If you have only a single dependency (example: dependsOn a single job like dependsOn: BuildJob), you can skip square brackets and just write it directly without [ ].</p>
+</div>
+<div class="tabbed-block">
+<p><div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span><span class="w">  </span><span class="c1"># Load variables from external template</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">  </span><span class="c1"># Attach Environment directly to the Build job</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo $(greeting)  # Use the greeting variable from the template</span>
+<span class="w">          </span><span class="no">echo &quot;Building the project...&quot;</span>
+<span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Build</span><span class="nv"> </span><span class="s">Steps&#39;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TestJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Test</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span><span class="w">  </span><span class="c1"># This job depends on &#39;BuildJob&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test-Environment</span><span class="w">  </span><span class="c1"># Attach a different environment to the Test job</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo $(greeting)  # Use the greeting variable again</span>
+<span class="w">          </span><span class="no">echo &quot;Running tests...&quot;</span>
+<span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Steps&#39;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">BuildJob</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">TestJob</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># This job depends on both &#39;BuildJob&#39; and &#39;TestJob&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test-Environment</span><span class="w">  </span><span class="c1"># Attach the Test environment to Deploy job</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo $(greeting)  # Use the greeting variable again</span>
+<span class="w">          </span><span class="no">echo &quot;Deploying the project...&quot;</span>
+<span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Steps&#39;</span>
+</code></pre></div>
+!!! "Note"
+    When you have multiple dependencies (example: dependsOn multiple jobs like dependsOn: [BuildJob, TestJob]), you must use square brackets [ ] to list them.</p>
+</div>
+</div>
+</div>
 <p>📌 <strong>Summary</strong>:</p>
 <table>
 <thead>
@@ -2834,6 +2916,10 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <tr>
 <td><strong>Environment</strong></td>
 <td>Can be attached at the <strong>Job</strong> level too if needed</td>
+</tr>
+<tr>
+<td><strong>dependsOn Usage</strong></td>
+<td>Use [ ] when depending on multiple jobs, no [ ] needed for single job</td>
 </tr>
 </tbody>
 </table>
