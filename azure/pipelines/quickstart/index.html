@@ -3033,6 +3033,15 @@ Example:
 <li>Promote consistency across pipelines</li>
 <li>Centralized maintenance of reusable logic</li>
 </ul>
+<p>⚡ Super Simple Flow:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Code</span><span class="w"> </span><span class="n">Push</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Pipeline</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span>
+<span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Variables</span><span class="w"> </span><span class="n">Loaded</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Template</span><span class="w"> </span><span class="p">(</span><span class="n">vars</span><span class="p">.</span><span class="n">yml</span><span class="p">)</span>
+<span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Shared</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="n">Template</span><span class="w"> </span><span class="n">Executes</span><span class="w"> </span><span class="n">Build</span>
+<span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Environment</span><span class="w"> </span><span class="n">Approval</span><span class="w"> </span><span class="n">Needed</span>
+<span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Approver</span><span class="w"> </span><span class="n">Clicks</span><span class="w"> </span><span class="s">&quot;Approve&quot;</span>
+<span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Deployment</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Template</span><span class="w"> </span><span class="n">Executes</span><span class="w"> </span>
+<span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Pipeline</span><span class="w"> </span><span class="n">Complete</span>
+</code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Basic Step Template</label><label for="__tabbed_3_2">Job Template</label><label for="__tabbed_3_3">Using Templates from Another Repository</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
