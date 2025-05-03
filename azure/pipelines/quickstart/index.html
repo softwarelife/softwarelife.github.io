@@ -1900,6 +1900,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Templates
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2346,6 +2355,15 @@
   <a href="#stages" class="md-nav__link">
     <span class="md-ellipsis">
       Stages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Templates
     </span>
   </a>
   
@@ -3006,6 +3024,164 @@ Example:
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
+<p>Templates in Azure DevOps Pipelines allow you to <strong>reuse pipeline logic</strong> just like functions or modules in code. You can abstract <code>steps</code>, <code>jobs</code>, or <code>stages</code> into separate files and call them in multiple pipelines or even from other repositories.</p>
+<p><strong>Why Use Templates?</strong></p>
+<ul>
+<li>Follow DRY (Don't Repeat Yourself) principles</li>
+<li>Promote consistency across pipelines</li>
+<li>Centralized maintenance of reusable logic</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Basic Step Template</label><label for="__tabbed_3_2">Job Template</label><label for="__tabbed_3_3">Using Templates from Another Repository</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Template File: <code>templates/print-greeting.yml</code></strong></p>
+<div class="highlight"><span class="filename">templates/print-greeting.yml</span><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Greeting</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template&#39;</span>
+</code></pre></div>
+<p><strong>Main Pipeline: <code>azure-pipelines.yml</code></strong></p>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span><span class="w">  </span><span class="c1"># External variable template</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/print-greeting.yml</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><strong>Template File: <code>templates/job-template.yml</code></strong></p>
+<div class="highlight"><span class="filename">templates/job-template.yml</span><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobName</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environmentName</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">message</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.jobName }}</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Job:</span><span class="nv"> </span><span class="s">${{</span><span class="nv"> </span><span class="s">parameters.jobName</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.environmentName }}</span>
+<span class="w">    </span><span class="nt">pool</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;${{ parameters.message }}&quot;</span>
+<span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Run</span><span class="nv"> </span><span class="s">Common</span><span class="nv"> </span><span class="s">Task&quot;</span>
+</code></pre></div>
+<p><strong>Main Pipeline: <code>azure-pipelines.yml</code></strong></p>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/job-template.yml</span>
+<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span>
+<span class="w">      </span><span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Running</span><span class="nv"> </span><span class="s">build</span><span class="nv"> </span><span class="s">template&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/job-template.yml</span>
+<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TestJob</span>
+<span class="w">      </span><span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QA</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Running</span><span class="nv"> </span><span class="s">tests</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">template&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/job-template.yml</span>
+<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployJob</span>
+<span class="w">      </span><span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prod</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploying</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">shared</span><span class="nv"> </span><span class="s">template&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>To use a template from another repository:</p>
+<ol>
+<li>Declare the external repo in <code>resources</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">repositories</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sharedtemplates</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-org/shared-template-repo</span>
+</code></pre></div>
+<ol>
+<li>Checkout both repos:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sharedtemplates</span>
+</code></pre></div>
+<ol>
+<li>Reference the external template using <code>@repoAlias</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/deploy.yml@sharedtemplates</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">repositories</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sharedtemplates</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-org/shared-template-repo</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sharedtemplates</span>
+
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/deploy.yml@sharedtemplates</span><span class="w"> </span><span class="c1"># using template from the sharedtemplates repo</span>
+<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dev&#39;</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploying</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">shared</span><span class="nv"> </span><span class="s">template&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>📌 <strong>Summary</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Concept</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step Template</td>
+<td>Reuse grouped steps like <code>echo</code> or build tasks</td>
+</tr>
+<tr>
+<td>Job Template</td>
+<td>Share common job logic with parameters</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>Use <code>type: string</code> for clarity in templates</td>
+</tr>
+<tr>
+<td>Variable Template</td>
+<td>Include shared variables with <code>- template: variables/vars.yml</code></td>
+</tr>
+<tr>
+<td>Cross-Repo Usage</td>
+<td>Use <code>resources</code>, <code>checkout</code>, and <code>@repo</code> to import external logic</td>
+</tr>
+</tbody>
+</table>
+<hr />
 
 
 
