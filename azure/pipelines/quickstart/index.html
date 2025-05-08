@@ -2502,8 +2502,11 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <li>
 <p><strong>Version 2:</strong> Using a Variable Group from Azure DevOps Library.</p>
 </li>
+<li>
+<p><strong>Version 3:</strong> Using a Azure Key Vault.</p>
+</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Version 1</label><label for="__tabbed_1_2">Version 2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Version 1</label><label for="__tabbed_1_2">Version 2</label><label for="__tabbed_1_3">Version 3</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Loading Variable from a File (for example, variables/vars.txt) and use it inside our pipeline.</p>
@@ -2564,6 +2567,58 @@ Now, let's take the next step and <strong>separate variables cleanly</strong>.</
 <span class="nt">steps</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">displayName</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Variable</span><span class="nv"> </span><span class="s">Group&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>✅ Prerequisite</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Azure Key Vault</strong></td>
+<td>A Key Vault must be created in your Azure subscription.</td>
+</tr>
+<tr>
+<td><strong>Secret Name</strong></td>
+<td><code>greeting</code></td>
+</tr>
+<tr>
+<td><strong>Secret Value</strong></td>
+<td><code>Hello World from Key Vault!</code></td>
+</tr>
+<tr>
+<td><strong>Access Configuration</strong></td>
+<td>The Azure DevOps service connection must have <code>Get</code> permissions on secrets in the Key Vault.</td>
+</tr>
+</tbody>
+</table>
+<p>Create a Variable Group Linked to Azure Key Vault**</p>
+<ol>
+<li>Go to <strong>Azure DevOps → Pipelines → Library</strong></li>
+<li>Click <strong>+ Variable group</strong></li>
+<li>Name it: <code>hello-world-kv-vars</code></li>
+<li>Enable <strong>Link secrets from an Azure Key Vault as variables</strong></li>
+<li>Select your Azure subscription and the Key Vault name</li>
+<li>Select the secret <code>greeting</code></li>
+<li>Save the variable group</li>
+</ol>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="c1"># Load variables from the Key Vault-linked Variable Group</span>
+<span class="nt">variables</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-world-kv-vars</span>
+
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Key</span><span class="nv"> </span><span class="s">Vault&#39;</span>
 </code></pre></div>
 </div>
 </div>
