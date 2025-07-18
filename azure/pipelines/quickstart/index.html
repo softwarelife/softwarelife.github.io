@@ -3503,7 +3503,7 @@ Example:
 <span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Deployment</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Template</span><span class="w"> </span><span class="n">Executes</span><span class="w"> </span>
 <span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Pipeline</span><span class="w"> </span><span class="n">Complete</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Basic Step Template</label><label for="__tabbed_4_2">Job Template</label><label for="__tabbed_4_3">Using Templates from Another Repository</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Basic Step Template</label><label for="__tabbed_4_2">Job Template</label><label for="__tabbed_4_3">Stage Template</label><label for="__tabbed_4_4">Using Templates from Another Repository</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><strong>Template File: <code>templates/print-greeting.yml</code></strong></p>
@@ -3573,6 +3573,54 @@ Example:
 </code></pre></div>
 </div>
 <div class="tabbed-block">
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Build</span><span class="nv"> </span><span class="s">Stage&quot;</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/job-template.yml</span>
+<span class="w">        </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span>
+<span class="w">          </span><span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev</span>
+<span class="w">          </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Running</span><span class="nv"> </span><span class="s">build</span><span class="nv"> </span><span class="s">template&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToDev</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Dev&quot;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/job-template.yml</span>
+<span class="w">        </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DevDeployJob</span>
+<span class="w">          </span><span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev</span>
+<span class="w">          </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Dev</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">template&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToTest</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Test&quot;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToDev</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/job-template.yml</span>
+<span class="w">        </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TestDeployJob</span>
+<span class="w">          </span><span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QA</span>
+<span class="w">          </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">template&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToProd</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Prod&quot;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToTest</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/job-template.yml</span>
+<span class="w">        </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProdDeployJob</span>
+<span class="w">          </span><span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prod</span>
+<span class="w">          </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Production</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">template&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <p>To use a template from another repository:</p>
 <ul>
 <li>Declare the external repo in <code>resources</code>:</li>
@@ -3616,6 +3664,48 @@ Example:
 <span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dev&#39;</span>
 <span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploying</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">shared</span><span class="nv"> </span><span class="s">template&#39;</span>
+</code></pre></div>
+<ul>
+<li>Example of a Multi-Stage Pipeline Using External Templates</li>
+</ul>
+<div class="highlight"><span class="filename">templates/deploy.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">repositories</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sharedtemplates</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-org/shared-template-repo</span><span class="w">  </span><span class="c1"># Replace with your actual project/repo path</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToDev</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Dev</span><span class="nv"> </span><span class="s">Environment&quot;</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/deploy.yml@sharedtemplates</span>
+<span class="w">        </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dev&#39;</span>
+<span class="w">          </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Dev</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">shared</span><span class="nv"> </span><span class="s">template&#39;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToQA</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">QA</span><span class="nv"> </span><span class="s">Environment&quot;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToDev</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/deploy.yml@sharedtemplates</span>
+<span class="w">        </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;qa&#39;</span>
+<span class="w">          </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">QA</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">shared</span><span class="nv"> </span><span class="s">template&#39;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToProd</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">Environment&quot;</span>
+<span class="w">    </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToQA</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/deploy.yml@sharedtemplates</span>
+<span class="w">        </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;prod&#39;</span>
+<span class="w">          </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploying</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">shared</span><span class="nv"> </span><span class="s">template&#39;</span>
 </code></pre></div>
 </div>
 </div>
