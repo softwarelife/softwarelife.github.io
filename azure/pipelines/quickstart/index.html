@@ -1923,15 +1923,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step" class="md-nav__link">
-    <span class="md-ellipsis">
-      azure-pipelines.ymltrigger: - main # Load variables from external file variables: - template: variables/vars.yml # Use Ubuntu agent pool: vmImage: ubuntu-latest # Define stages stages: - stage: Build displayName: &#39;Build Stage&#39; jobs: - job: BuildJob displayName: &#39;Run Build Job&#39; steps: - script: echo &quot;Building project...&quot; displayName: &#39;Build Step&#39; - script: echo $(greeting) displayName: &#39;Print Greeting Message&#39; - stage: Deploy displayName: &#39;Deploy Stage&#39; dependsOn: Build # wait for build to complete jobs: - job: DeployJob displayName: &#39;Run Deploy Job&#39; environment: Dev-Environment # Add Approval Here ✅ steps: - script: echo &quot;Deploying to server...&quot; displayName: &#39;Deployment Step&#39;
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#deployment-job-with-approval" class="md-nav__link">
     <span class="md-ellipsis">
       🚀 Deployment Job with Approval
@@ -2558,15 +2549,6 @@
   <a href="#stages" class="md-nav__link">
     <span class="md-ellipsis">
       🚦 Stages
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step" class="md-nav__link">
-    <span class="md-ellipsis">
-      azure-pipelines.ymltrigger: - main # Load variables from external file variables: - template: variables/vars.yml # Use Ubuntu agent pool: vmImage: ubuntu-latest # Define stages stages: - stage: Build displayName: &#39;Build Stage&#39; jobs: - job: BuildJob displayName: &#39;Run Build Job&#39; steps: - script: echo &quot;Building project...&quot; displayName: &#39;Build Step&#39; - script: echo $(greeting) displayName: &#39;Print Greeting Message&#39; - stage: Deploy displayName: &#39;Deploy Stage&#39; dependsOn: Build # wait for build to complete jobs: - job: DeployJob displayName: &#39;Run Deploy Job&#39; environment: Dev-Environment # Add Approval Here ✅ steps: - script: echo &quot;Deploying to server...&quot; displayName: &#39;Deployment Step&#39;
     </span>
   </a>
   
@@ -3290,7 +3272,7 @@ Example:
 <p>⚡ Super Simple Flow:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Trigger</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Build</span><span class="w"> </span><span class="n">Stage</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Deploy</span><span class="w"> </span><span class="n">Stage</span><span class="w"> </span><span class="p">(</span><span class="n">Approval</span><span class="p">)</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Done</span>
 </code></pre></div>
-<h2 id="azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step"><div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 
 <span class="c1"># Load variables from external file</span>
@@ -3324,7 +3306,8 @@ Example:
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Deploying to server...&quot;</span>
 <span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deployment</span><span class="nv"> </span><span class="s">Step&#39;</span>
-</code></pre></div><a class="headerlink" href="#azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step" title="Permanent link">&para;</a></h2>
+</code></pre></div>
+<hr />
 <h2 id="deployment-job-with-approval">🚀 Deployment Job with Approval<a class="headerlink" href="#deployment-job-with-approval" title="Permanent link">&para;</a></h2>
 <p>A <strong>deployment job</strong> is a special type of job used to <strong>deploy applications to specific environments</strong>.</p>
 <p>✅ It supports:
