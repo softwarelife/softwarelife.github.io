@@ -1923,6 +1923,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deployment-job-with-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Deployment Job with Approval
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Deployment Job with Approval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-a-deployment-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ When to Use a Deployment Job?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#templates" class="md-nav__link">
     <span class="md-ellipsis">
       🧩 Templates
@@ -2546,6 +2570,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deployment-job-with-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Deployment Job with Approval
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Deployment Job with Approval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-a-deployment-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ When to Use a Deployment Job?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#templates" class="md-nav__link">
     <span class="md-ellipsis">
       🧩 Templates
@@ -3092,6 +3140,10 @@ Environments help you manage deployments, set up approvals and checks, track dep
 <p class="admonition-title">Info</p>
 <p>✅ You can attach your pipeline to an Environment, and then configure approvals (like someone must manually approve) before the pipeline can proceed.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To enable full approval flow, you must convert it to a deployment job, because only deployment jobs support pre/post deployment approvals and checks. See below... how to use deployment job.</p>
+</div>
 <hr />
 <h2 id="jobs">🧱 Jobs<a class="headerlink" href="#jobs" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3136,8 +3188,8 @@ Environments help you manage deployments, set up approvals and checks, track dep
 <span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span>
-<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span><span class="w"> </span><span class="c1">#This is the internal name (used in dependsOn)</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Job&#39;</span><span class="w"> </span><span class="c1">#This is the visible name in the UI    </span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span><span class="w">  </span><span class="c1"># Attach Environment directly to the Build job</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -3285,6 +3337,115 @@ Example:
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Deploying to server...&quot;</span>
 <span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deployment</span><span class="nv"> </span><span class="s">Step&#39;</span>
 </code></pre></div>
+<h2 id="deployment-job-with-approval">🚀 Deployment Job with Approval<a class="headerlink" href="#deployment-job-with-approval" title="Permanent link">&para;</a></h2>
+<p>A <strong>deployment job</strong> is a special type of job used to <strong>deploy applications to specific environments</strong>.</p>
+<p>✅ It supports:
+- <strong>Approvals</strong>
+- <strong>Checks</strong>
+- <strong>Deployment strategies</strong> (like <code>runOnce</code>, <code>rolling</code>, <code>canary</code>, etc.)</p>
+<hr />
+<h3 id="when-to-use-a-deployment-job">🛡️ When to Use a Deployment Job?<a class="headerlink" href="#when-to-use-a-deployment-job" title="Permanent link">&para;</a></h3>
+<p>Use it when:
+- You want to trigger <strong>approvals</strong> before deployment.
+- You need <strong>auditing and traceability</strong> in the Azure DevOps UI.
+- You want to <strong>track deployments per environment</strong>.
+- You plan to use <strong>deployment strategies</strong> (like canary or rolling).</p>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Sample Pipeline</label><label for="__tabbed_3_2">Multi-Stage Deployment Pipeline</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w">      </span>
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToDev</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">runOnce</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $(greeting)</span>
+<span class="w">            </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Print</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Template</span><span class="nv"> </span><span class="s">Variable&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Each deployment uses a <strong>deployment job</strong>.</li>
+<li>Approvals are handled via the <strong><code>environment</code></strong> in each stage.</li>
+<li><code>dependsOn</code> ensures order: Dev → Test → Prod.</li>
+</ul>
+<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="nt">pool</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variables/vars.yml</span><span class="w">      </span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="c1"># ---------------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Stage&#39;</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildJob</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Run</span><span class="nv"> </span><span class="s">Build</span><span class="nv"> </span><span class="s">Job&#39;</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Building the app...&quot;</span>
+<span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Build</span><span class="nv"> </span><span class="s">Step&#39;</span>
+
+<span class="c1"># ---------------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy_Dev</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Dev&#39;</span>
+<span class="w">  </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToDev</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Dev</span><span class="nv"> </span><span class="s">Environment&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dev-Environment</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">runOnce</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Deploying to Dev...&quot;</span>
+<span class="w">            </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">Step</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Dev&#39;</span>
+
+<span class="c1"># ---------------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy_Test</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Test&#39;</span>
+<span class="w">  </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy_Dev</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToTest</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Environment&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test-Environment</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">runOnce</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Deploying to Test...&quot;</span>
+<span class="w">            </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">Step</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Test&#39;</span>
+
+<span class="c1"># ---------------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy_Prod</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Prod&#39;</span>
+<span class="w">  </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy_Test</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeployToProd</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">Environment&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prod-Environment</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">runOnce</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Deploying to Production...&quot;</span>
+<span class="w">            </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deploy</span><span class="nv"> </span><span class="s">Step</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Prod&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>📌 <strong>Summary</strong>:</p>
 <table>
 <thead>
@@ -3296,19 +3457,31 @@ Example:
 <tbody>
 <tr>
 <td><strong>Steps</strong></td>
-<td>Small tasks (scripts, copy files, etc.)</td>
+<td>Individual tasks like <code>script</code>, <code>checkout</code>, <code>download</code>, etc.</td>
 </tr>
 <tr>
 <td><strong>Job</strong></td>
-<td>A <strong>collection of steps</strong></td>
+<td>A <strong>collection of steps</strong>, runs on a single agent</td>
+</tr>
+<tr>
+<td><strong>Deployment Job</strong></td>
+<td>A special job type used for deploying to an <strong>environment</strong></td>
 </tr>
 <tr>
 <td><strong>Stages</strong></td>
-<td>A <strong>collection of jobs</strong>, representing a larger unit of work</td>
+<td>A <strong>collection of jobs</strong>, represents a phase like Build, Test, Deploy, etc.</td>
 </tr>
 <tr>
 <td><strong>Environment</strong></td>
-<td>Can be attached at the <strong>Job</strong> level too if needed</td>
+<td>Logical target for deployments, can include <strong>approval gates</strong> and history</td>
+</tr>
+<tr>
+<td><strong>dependsOn</strong></td>
+<td>Controls <strong>execution order</strong> between stages or jobs</td>
+</tr>
+<tr>
+<td><strong>strategy.runOnce.deploy</strong></td>
+<td>Defines the steps executed during a <strong>deployment job</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3330,7 +3503,7 @@ Example:
 <span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Deployment</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Template</span><span class="w"> </span><span class="n">Executes</span><span class="w"> </span>
 <span class="w">          </span><span class="err">➔</span><span class="w"> </span><span class="n">Pipeline</span><span class="w"> </span><span class="n">Complete</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Basic Step Template</label><label for="__tabbed_3_2">Job Template</label><label for="__tabbed_3_3">Using Templates from Another Repository</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Basic Step Template</label><label for="__tabbed_4_2">Job Template</label><label for="__tabbed_4_3">Using Templates from Another Repository</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><strong>Template File: <code>templates/print-greeting.yml</code></strong></p>
