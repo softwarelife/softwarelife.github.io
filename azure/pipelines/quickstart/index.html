@@ -1923,26 +1923,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      azure-pipelines.ymltrigger: - main # Load variables from external file variables: - template: variables/vars.yml # Use Ubuntu agent pool: vmImage: ubuntu-latest # Define stages stages: - stage: Build displayName: &#39;Build Stage&#39; jobs: - job: BuildJob displayName: &#39;Run Build Job&#39; steps: - script: echo &quot;Building project...&quot; displayName: &#39;Build Step&#39; - script: echo $(greeting) displayName: &#39;Print Greeting Message&#39; - stage: Deploy displayName: &#39;Deploy Stage&#39; dependsOn: Build # wait for build to complete jobs: - job: DeployJob displayName: &#39;Run Deploy Job&#39; environment: Dev-Environment # Add Approval Here ✅ steps: - script: echo &quot;Deploying to server...&quot; displayName: &#39;Deployment Step&#39;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deployment-job-with-approval" class="md-nav__link">
     <span class="md-ellipsis">
       🚀 Deployment Job with Approval
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="🚀 Deployment Job with Approval">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#when-to-use-a-deployment-job" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛡️ When to Use a Deployment Job?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2570,26 +2564,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      azure-pipelines.ymltrigger: - main # Load variables from external file variables: - template: variables/vars.yml # Use Ubuntu agent pool: vmImage: ubuntu-latest # Define stages stages: - stage: Build displayName: &#39;Build Stage&#39; jobs: - job: BuildJob displayName: &#39;Run Build Job&#39; steps: - script: echo &quot;Building project...&quot; displayName: &#39;Build Step&#39; - script: echo $(greeting) displayName: &#39;Print Greeting Message&#39; - stage: Deploy displayName: &#39;Deploy Stage&#39; dependsOn: Build # wait for build to complete jobs: - job: DeployJob displayName: &#39;Run Deploy Job&#39; environment: Dev-Environment # Add Approval Here ✅ steps: - script: echo &quot;Deploying to server...&quot; displayName: &#39;Deployment Step&#39;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deployment-job-with-approval" class="md-nav__link">
     <span class="md-ellipsis">
       🚀 Deployment Job with Approval
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="🚀 Deployment Job with Approval">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#when-to-use-a-deployment-job" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛡️ When to Use a Deployment Job?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3302,7 +3290,7 @@ Example:
 <p>⚡ Super Simple Flow:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Trigger</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Build</span><span class="w"> </span><span class="n">Stage</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Deploy</span><span class="w"> </span><span class="n">Stage</span><span class="w"> </span><span class="p">(</span><span class="n">Approval</span><span class="p">)</span><span class="w"> </span><span class="err">➔</span><span class="w"> </span><span class="n">Done</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
+<h2 id="azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step"><div class="highlight"><span class="filename">azure-pipelines.yml</span><pre><span></span><code><span class="nt">trigger</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 
 <span class="c1"># Load variables from external file</span>
@@ -3336,21 +3324,21 @@ Example:
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Deploying to server...&quot;</span>
 <span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Deployment</span><span class="nv"> </span><span class="s">Step&#39;</span>
-</code></pre></div>
+</code></pre></div><a class="headerlink" href="#azure-pipelinesymltrigger-main-load-variables-from-external-file-variables-template-variablesvarsyml-use-ubuntu-agent-pool-vmimage-ubuntu-latest-define-stages-stages-stage-build-displayname-build-stage-jobs-job-buildjob-displayname-run-build-job-steps-script-echo-building-project-displayname-build-step-script-echo-greeting-displayname-print-greeting-message-stage-deploy-displayname-deploy-stage-dependson-build-wait-for-build-to-complete-jobs-job-deployjob-displayname-run-deploy-job-environment-dev-environment-add-approval-here-steps-script-echo-deploying-to-server-displayname-deployment-step" title="Permanent link">&para;</a></h2>
 <h2 id="deployment-job-with-approval">🚀 Deployment Job with Approval<a class="headerlink" href="#deployment-job-with-approval" title="Permanent link">&para;</a></h2>
 <p>A <strong>deployment job</strong> is a special type of job used to <strong>deploy applications to specific environments</strong>.</p>
 <p>✅ It supports:
 - <strong>Approvals</strong>
 - <strong>Checks</strong>
 - <strong>Deployment strategies</strong> (like <code>runOnce</code>, <code>rolling</code>, <code>canary</code>, etc.)</p>
-<hr />
-<h3 id="when-to-use-a-deployment-job">🛡️ When to Use a Deployment Job?<a class="headerlink" href="#when-to-use-a-deployment-job" title="Permanent link">&para;</a></h3>
+<ul>
+<li>When to Use a Deployment Job?</li>
+</ul>
 <p>Use it when:
 - You want to trigger <strong>approvals</strong> before deployment.
 - You need <strong>auditing and traceability</strong> in the Azure DevOps UI.
 - You want to <strong>track deployments per environment</strong>.
 - You plan to use <strong>deployment strategies</strong> (like canary or rolling).</p>
-<hr />
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Sample Pipeline</label><label for="__tabbed_3_2">Multi-Stage Deployment Pipeline</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
